@@ -23,16 +23,4 @@ Route::get('about', function () {
     return view('about');
 });
 
-Route::get('customers', function(){
-    $customers = [
-        "John Doe",
-        "Jane Doe",
-        "Stephcyrille"
-    ];
-
-    $context = [
-        'customers' => $customers
-    ];
-
-    return view('internals.customers', $context);
-});
+Route::get('customers', 'CustomersController@list');
