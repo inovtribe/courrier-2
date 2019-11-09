@@ -51,59 +51,8 @@
 			  </div>
 			  <!-- Menu left: start -->
 
-	    <div class="nav-wrapper">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="fas fa-folder"></i>
-              <span>Tous les Courriers</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="#" disabled>
-                <i class="fas fa-upload"></i>
-              <span>Courriers Non Traités</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="fas fa-vr-cardboard"></i>
-                <span>Courriers Traités</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="far fa-square"></i>
-              <span>Courriers Archivés</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-            <i class="far fa-images"></i>
-            <span>Courriers Supprimés</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-            <i class="fas fa-exchange-alt"></i>
-            <span>Profile</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-            <i class="fas fa-crosshairs"></i>
-            <span>Contact</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="#">
-              <i class="fas fa-cog"></i>
-              <span>Configuration</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+        @include("layouts.nav")
+	    
 			  <!-- Menu left: end -->
 			</aside>
 			<!-- End Main Sidebar -->
@@ -121,8 +70,11 @@
 			      <ul class="navbar-nav cds-border-left flex-row">
 			        <li class="nav-item dropdown">
 			          <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-			            <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar">
-			            <span class="d-none d-md-inline-block cds-font-white">bojiko</span>
+                  <!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
+			            <span class="d-none d-md-inline-block cds-font-white">
+                    <i class="fas fa-user"></i>  
+                    User
+                  </span>
 			          </a>
 			          <div class="dropdown-menu dropdown-menu-small">
 			            <a class="dropdown-item" href="#">
@@ -153,7 +105,7 @@
 			  </div>
 			  <footer class="main-footer d-flex p-2 px-3 cds-bg-gray6 border-top" style="font-size: 14px; font-weight: 400">
 			    <span class="copyright ml-auto my-auto mr-2" style="color:white">Copyright © 2019 - All Rights Reserved,
-			      <a href='http://www.conids.cm' style="color:#D8D200">SCS-Services </a>
+			      <a href='#' style="color:#000"> &copy; 2018 Tous les droits reservés </a>
 			    </span>
 			  </footer>
 			</main>

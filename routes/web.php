@@ -11,16 +11,32 @@
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
-Route::get('contact', function () {
-    return view('contact');
-});
 
-Route::get('about', function () {
-    return view('about');
-});
+
+
+
+
 
 Route::get('customers', 'CustomersController@list');
+
+Auth::routes();
+
+Route::get('/', 'DashboardController@all')->name('dashboard');
+
+Route::get('mails/all', 'MailsController@list')->name('all_mails');
+Route::get('mails/nottreated', 'MailsController@not_treated')->name('not_treated_mails');
+Route::get('mails/treated', 'MailsController@treated')->name('treated_mails');
+Route::get('mails/archived', 'MailsController@archived')->name('archived_mails');
+Route::get('mails/deleted', 'MailsController@deleted')->name('deleted_mails');
+
+Route::get('contact', 'ContactsController@list')->name('contact');
+
+Route::get('profile', 'UserProfilesController@list')->name('profile');
+
+Route::get('settings', 'SettingsController@list')->name('settings');
+
+Route::get('/home', 'HomeController@index')->name('home');

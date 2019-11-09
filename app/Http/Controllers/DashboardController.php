@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CustomersController extends Controller
+class DashboardController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -17,17 +18,17 @@ class CustomersController extends Controller
     }
 
     
-    public function list() {
-        $customers = [
+    public function all() {
+        $all = [
             "John Doe",
             "Jane Doe",
             "Stephcyrille"
         ];
     
         $context = [
-            'customers' => $customers
+            'all' => $all
         ];
     
-        return view('internals.customers', $context);
+        return view('dashboard.all', $context);
     }
 }
