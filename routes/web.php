@@ -32,6 +32,8 @@ Route::get('mails/nottreated', 'MailsController@not_treated')->name('not_treated
 Route::get('mails/treated', 'MailsController@treated')->name('treated_mails');
 Route::get('mails/archived', 'MailsController@archived')->name('archived_mails');
 Route::get('mails/deleted', 'MailsController@deleted')->name('deleted_mails');
+Route::get('mails/add', 'MailsController@add')->name('add_mail');
+Route::post('mails/add','MailsController@addMail')->name('add_mail_post');
 
 Route::get('contact', 'ContactsController@list')->name('contact');
 

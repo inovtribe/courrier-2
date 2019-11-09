@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contact;
 
 class ContactsController extends Controller
 {
@@ -19,11 +20,7 @@ class ContactsController extends Controller
 
     
     public function list() {
-      $all_contact = [
-          "John Doe",
-          "Jane Doe",
-          "Stephcyrille"
-      ];
+      $all_contact = Contact::all();
   
       $context = [
           'all_contact' => $all_contact
