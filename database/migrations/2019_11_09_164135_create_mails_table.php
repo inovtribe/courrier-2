@@ -20,6 +20,8 @@ class CreateMailsTable extends Migration
             $table->string('type');
             $table->string('details');
             $table->string('status');
+            $table->boolval('archived');
+            $table->boolval('deleted');
             $table->timestamps();
         });
     }
