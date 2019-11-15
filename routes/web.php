@@ -36,6 +36,12 @@ Route::get('mails/add', 'MailsController@add')->name('add_mail');
 Route::post('mails/add','MailsController@addMail')->name('add_mail_post');
 
 Route::get('contact', 'ContactsController@list')->name('contact');
+Route::get('contact/add', 'ContactsController@add')->name('add_contact');
+Route::post('contact/add', 'ContactsController@addContact')->name('add_contact_post');
+
+Route::get('services', 'ServicesController@list')->name('services');
+Route::get('services/add', 'ServicesController@add')->name('add_services');
+Route::post('services/add', 'ServicesController@addService')->name('add_services_post');
 
 Route::get('profile', 'UserProfilesController@list')->name('profile');
 

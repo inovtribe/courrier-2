@@ -38,6 +38,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link " href="{{ route('services') }}">
+      <i class="fas fa-crosshairs"></i>
+      <span>Services</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link " href="{{ route('contact') }}">
       <i class="fas fa-crosshairs"></i>
       <span>Contact</span>
