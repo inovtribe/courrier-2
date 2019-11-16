@@ -54,11 +54,11 @@
                     <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                         <label for="responsable">Responsable du service</label>
                     </div>
-                    <select  name="responsable" class="form-control" id="responsable">
+                    <select  name="responsable_id" class="form-control" id="responsable">
                         <option value="" disabled>Nom du responsable du service</option>
-                        <option value=1>Albert Martin</option>
-                        <option value=2>Herve Ambroise</option>
-                        <option value=3>Gaston Owona</option>
+                        @foreach ($responsables as $item)
+                          <option value="{{ $item->id }}">{{ $item->username }}</option>
+                        @endforeach
                     </select>
                 </div>
               </div>

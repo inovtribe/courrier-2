@@ -50,6 +50,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link " href="{{ route('types') }}">
+      <i class="fas fa-crosshairs"></i>
+      <span>Types de courrier</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link " href="{{ route('profile') }}">
       <i class="fas fa-exchange-alt"></i>
       <span>Profile</span>

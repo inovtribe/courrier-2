@@ -140,11 +140,9 @@
                   </div>
                   <select name="initiate_service" class="form-control" id="service_initiateur">
                     <option value="" disabled>Service initiateur</option>
-                    <option value="service1">Service 1</option>
-                    <option value="service2">Service 2</option>
-                    <option value="service3">Service 3</option>
-                    <option value="service4">Service 4</option>
-                    <option value="service5">Service 5</option>
+                    @foreach ($services as $item)
+                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="input-group mb-3">
@@ -164,15 +162,13 @@
                 </div>  
                 <div class="input-group mb-3">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
-                    <label for="">Service traitant</label>
+                    <label for="service_dealing">Service traitant</label>
                   </div>
-                  <select name="treatened_service" class="form-control" id="service_traitant">
+                  <select name="service_dealing" class="form-control" id="service_traitant">
                     <option value="" disabled>Service traitant</option>
-                    <option value="service1">Service 1</option>
-                    <option value="service2">Service 2</option>
-                    <option value="service3">Service 3</option>
-                    <option value="service4">Service 4</option>
-                    <option value="service5">Service 5</option>
+                    @foreach ($services as $item)
+                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
                   </select>
                 </div> 
                 <div class="input-group mb-3">

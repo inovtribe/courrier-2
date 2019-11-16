@@ -9,11 +9,11 @@ class Contact extends Model
     //
     protected $guarded = [];
 
-    public function scopeCompany($query){
+    public function scopeGetCompany($query){
         return  $query->where('entity_type', 'company');
     }
 
-    public function scopePersonal($query){
+    public function scopeGetPersonal($query){
         return  $query->where('entity_type', 'personal');
     }
 }

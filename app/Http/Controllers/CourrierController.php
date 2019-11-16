@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mail;
+use App\Courrier;
+use App\Service;
 use App\Traits\UploadTrait;
 
-class MailsController extends Controller
+class CourrierController extends Controller
 {
 
     /**
@@ -14,10 +15,10 @@ class MailsController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     
     public function list() {
@@ -31,7 +32,7 @@ class MailsController extends Controller
             'all_mails' => $all_mails
         ];
     
-        return view('mails.all', $context);
+        return view('courriers.all', $context);
     }
 
     public function not_treated() {
@@ -45,7 +46,7 @@ class MailsController extends Controller
           'all_mails' => $all_mails
       ];
   
-      return view('mails.not_treated', $context);
+      return view('courriers.not_treated', $context);
     }
 
     public function treated() {
@@ -59,7 +60,7 @@ class MailsController extends Controller
           'all_mails' => $all_mails
       ];
   
-      return view('mails.treated', $context);
+      return view('courriers.treated', $context);
     }
 
     public function archived() {
@@ -87,7 +88,7 @@ class MailsController extends Controller
           'all_mails' => $all_mails
       ];
   
-      return view('mails.deleted', $context);
+      return view('courriers.deleted', $context);
     }
 
     public function add() {
@@ -103,6 +104,7 @@ class MailsController extends Controller
             "Nouveau destinataire 3",
             "Nouveau destinataire 4",
         ];
+        $services = Service::all();
 
         $destinataire = [
             "Nouveau destinataire 1",
@@ -114,9 +116,10 @@ class MailsController extends Controller
         $context = [
             'all' => $all,
             'destinataire' => $destinataire,
+            'services' => $services,
         ];
 
-        return view('mails.form.add', $context);
+        return view('courriers.form.add', $context);
     }
 
     public function addMail(Request $request) {

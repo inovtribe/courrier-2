@@ -21,8 +21,8 @@ class ContactsController extends Controller
     
     public function list() {
       $all_contact = Contact::all();
-      $personal_contact = Contact::personal()->get();
-      $company_contact = Contact::company()->get();
+      $personal_contact = Contact::getCompany()->get();
+      $company_contact = Contact::getPersonal()->get();
   
       $context = [
           'all_contact'      => $all_contact,

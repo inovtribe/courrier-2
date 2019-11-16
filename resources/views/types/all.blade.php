@@ -2,13 +2,13 @@
 
 @section('content')
 
-    <h2>Tous les services</h2>
+    <h2>Tous les types de service</h2>
 
     <div class="row">
         <div class="col">
             <div class="row">
               <div class="col" style="padding-top: 20px;">
-                <a href="{{ route('add_services') }}" class="btn btn-md btn-primary">Nouveau service</a> 
+                <a href="{{ route('add_types') }}" class="btn btn-md btn-primary">Nouveau type de service</a> 
               </div>
             </div>
             <span class="mb-0 mt-6" id="infoAlert"></span>
@@ -18,21 +18,15 @@
 
                     <thead>
                       <tr>
-                        <th scope="col">Nom du service</th>
-                        <th scope="col">Acronyme</th>
-                        <th scope="col">Responsable</th>
-                        <th scope="col">Nbre employé</th>
+                        <th scope="col">Libéllé du type</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      @foreach ($services as $service)
+                      @foreach ($types as $item)
                         <tr>
-                          <td> {{ $service->name }}</td>
-                          <td> {{ $service->acronym }} </td>
-                          <td> {{ $service->responsable->username }} </td>
-                          <td> 12 </td>
+                          <td> {{ $item->name }}</td>
                           <td> 
                             <a href="#" class="btn btn-primary">Consulter</a> 
                             <a href="" class="btn btn-danger">Supprimer</a> 
