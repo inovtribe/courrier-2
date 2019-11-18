@@ -14,6 +14,14 @@ class Service extends Model
     }
 
     public function responsable(){
-        return $this->belongsTo(Profile::class);
+        return $this->hasOne(Profile::class);
+    }
+
+    public function courrier(){
+        return $this->belongsTo(Courrier::class);
+    }
+
+    public function parapheur(){
+        return $this->belongsTo(Parapheur::class);
     }
 }

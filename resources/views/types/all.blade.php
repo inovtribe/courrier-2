@@ -2,13 +2,13 @@
 
 @section('content')
 
-    <h2>Tous les types de service</h2>
+    <h2>Tous les types de courrier</h2>
 
     <div class="row">
         <div class="col">
             <div class="row">
               <div class="col" style="padding-top: 20px;">
-                <a href="{{ route('add_types') }}" class="btn btn-md btn-primary">Nouveau type de service</a> 
+                <a href="{{ route('add_types') }}" class="btn btn-md btn-primary">Nouveau type de courrier</a> 
               </div>
             </div>
             <span class="mb-0 mt-6" id="infoAlert"></span>

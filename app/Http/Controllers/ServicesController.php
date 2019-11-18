@@ -12,6 +12,7 @@ class ServicesController extends Controller
     public function list() {
         $services = Service::all();
     
+        // dd($services);
         $context = [
             'services' => $services
         ];

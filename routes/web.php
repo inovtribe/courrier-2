@@ -53,7 +53,7 @@ Route::post('services/add', 'ServicesController@addService')->name('add_services
 
 Route::get('types', 'TypesController@list')->name('types');
 Route::get('types/add', 'TypesController@add')->name('add_types');
-Route::post('types/add', 'TypesController@addService')->name('add_types_post');
+Route::post('types/add', 'TypesController@addType')->name('add_types_post');
 
 Route::get('profile', 'UserProfilesController@list')->name('profile');
 

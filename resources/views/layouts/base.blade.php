@@ -80,10 +80,19 @@
 			            <a class="dropdown-item" href="#">
 			              <i class="fas fa-user"></i>&nbsp;&nbsp; Profil</a>
 			            <div class="dropdown-divider"></div>
-						<a class="dropdown-item text-danger" href="#">
+									<a class="dropdown-item text-danger" href="#">
 			              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
 			          </div>
-			        </li>
+							</li>
+			        <li class="nav-item dropdown">
+			          <a class="nav-link text-nowrap px-3" href="{{ route('logout') }}" role="button" aria-haspopup="true" aria-expanded="false">
+                  <!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
+			            <span class="d-none d-md-inline-block cds-font-white text-danger">
+										<i class="fas fa-sign-out-alt"></i>
+										Déconnexion
+                  </span>
+			          </a>
+							</li>
 			      </ul>
 			      <nav class="nav"><div style="width:40px"></div></nav>
 			      <nav class="nav">

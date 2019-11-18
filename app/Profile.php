@@ -19,8 +19,12 @@ class Profile extends Model
     }
     
     public function serviceResponsable(){
-        return $this->hasOne(Service::class);
+        return $this->belongsTo(Service::class);
     } 
+
+    public function allCopieCourriers(){
+        return $this->belongsToMany(Courrier::class);
+    }
     
     public function courrier(){
         return $this->belongsTo(Courrier::class);

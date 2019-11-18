@@ -23,8 +23,6 @@ class CreateProfilesTable extends Migration
             $table->string('role');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('service_id')->nullable();
-            $table->unsignedInteger('courrier_id')->nullable();
             $table->timestamps();
         });
     }

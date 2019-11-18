@@ -13,16 +13,16 @@ class ContactsController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     
     public function list() {
       $all_contact = Contact::all();
-      $personal_contact = Contact::getCompany()->get();
-      $company_contact = Contact::getPersonal()->get();
+      $personal_contact = Contact::getPersonal()->get();
+      $company_contact = Contact::getCompany()->get();
   
       $context = [
           'all_contact'      => $all_contact,
