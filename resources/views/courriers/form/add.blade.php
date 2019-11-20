@@ -39,7 +39,7 @@
           {{ csrf_field() }}
           <div class="row">
             <div class="col-5">
-              <h5 class="pb-20">Informations du Courrier</h5>
+              <h5 class="pb-20" style="border-bottom: 1px solid lightgray; padding-top: 15px; color: orange">Informations du Courrier</h5>
                 <div class="form-group">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="">Doucment joint</label>
@@ -105,7 +105,7 @@
                     <label class="custom-control-label" for="customRadioInline2">Non</label>
                   </div>
                 </div>
-                {{-- <div class="input-group mb-3" style="text-align: left">
+                <div class="input-group mb-3" style="text-align: left">
                     <div class="col" style="padding-left: 0px; padding-top: 5px">
                       <label for="">Date du courrier</label>
                     </div>
@@ -120,7 +120,7 @@
                     <div class="col" style="padding-right: 5px">
                         <input class="form-control" name="mail_date_arrived" data-date-format="dd/mm/yyyy" id="datepicker2">
                     </div>
-                </div> --}}
+                </div>
                 <div class="input-group mb-3">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="">Expéditeur</label>
@@ -146,7 +146,7 @@
                   </div>
                   <select name="nature" class="form-control" id="nature">
                     <option value="" disabled>Choisissez la nature du courrier</option>
-                    <option value="1">Courrier</option>
+                    <option value="1">Courrier simple</option>
                     <option value="2">Dossier</option>
                   </select>
                 </div>
@@ -166,51 +166,41 @@
                 </div>
                 <div class="input-group mb-3">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
-                    <label for="">Objet</label>
+                    <label for="">Objet du courrier</label>
                   </div>
                     <input type="text" value="{{ old('subject') }}" class="form-control" placeholder="Objet" name="subject">
                   <div style="width: 100%; text-align: left; color: red">
                     <i style="font-size: 9px">{{ $errors->first('subject') }}</i> 
                   </div>
                 </div>   
-                <div class="input-group mb-3">
-                  <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
-                    <label for="">Mots clés</label>
-                  </div>
-                  <input type="text" value="{{ old('keywords') }}" class="form-control" placeholder="Objet" name="keywords" id="keywords">
-                  {{-- <div style="width: 100%; text-align: left; color: red">
-                    <i style="font-size: 9px">{{ $errors->first('keywords') }}</i> 
-                  </div> --}}
-                </div>  
-                <div class="input-group mb-3">
+                {{-- <div class="input-group mb-3">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="service_dealing">Service traitant</label>
                   </div>
                   <select name="service_dealing" class="form-control" id="service_traitant">
                     <option value="" disabled>Service traitant</option>
+                    <option value=" "></option>
                     @foreach ($services as $item)
                       <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                   </select>
                   <div style="width: 100%; text-align: left; color: red">
                     <i style="font-size: 9px">{{ $errors->first('service_dealing') }}</i> 
-                  </div>
-                </div> 
-                <div class="input-group mb-3">
+                  </div> 
+                </div>  --}}
+                {{-- <div class="input-group mb-3">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="">Destinataire</label>
                   </div>
                   <select name="destinator" class="form-control" id="destinataire">
                     <option value="" disabled>Destinataire</option>
+                    <option value=" "></option>
                     @foreach ($destinators as $item)
                       <option value="{{ $item->id }}">{{ $item->username }}</option>
                     @endforeach
-                  </select>
-                  <div style="width: 100%; text-align: left; color: red">
-                    <i style="font-size: 9px">{{ $errors->first('destinator') }}</i> 
-                  </div>
-                </div>  
-                <div class="input-group mb-3">
+                  </select> 
+                </div>  --}}
+                {{-- <div class="input-group mb-3">
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="">Destinataires en copie</label>
                   </div>
@@ -220,8 +210,7 @@
                       <option value="{{ $item->id }}">{{ $item->username }}</option>
                     @endforeach
                   </select>
-                </div>          
-                
+                </div>           --}}
                 {{-- <div class="form-group">
                   <div class="input-group mb-3" style="text-align: left">
                       <div class="col" style="padding-left: 0px; padding-top: 5px">
@@ -233,16 +222,29 @@
                       <div style="width: 100%; text-align: left; color: red">
                         <i style="font-size: 9px">{{ $errors->first('deadth_date') }}</i> 
                       </div>
-                  </div>
-                </div> --}}
+                  </div> 
+                </div>--}}
+                <div class="col-12 pl-0">
+                  <h6 style="border-bottom: 1px solid lightgray; padding-top: 15px; color: orange">Informations complémentaires</h6>
+                  <div class="input-group mb-3">
+                    <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
+                      <label for="">Mots clés</label>
+                    </div>
+                    <input type="text" value="{{ old('keywords') }}" class="form-control" placeholder="Objet" name="keywords" id="keywords">
+                    {{-- <div style="width: 100%; text-align: left; color: red">
+                      <i style="font-size: 9px">{{ $errors->first('keywords') }}</i> 
+                    </div> --}}
+                  </div>  
+                </div>
               </div>
+
               <div class="col-7 fixed" id="viewer">
               
               </div>
             </div>
             <div class="row" style="padding: 50px 0 30px 0px">
               <div class="col"  align="">
-                <a href="{{ route('all_mails') }}" class="btn btn-danger">Annuler</a> &nbsp; &nbsp;
+                <a href="{{ route('all_mails_arrived') }}" class="btn btn-danger">Annuler</a> &nbsp; &nbsp;
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
               </div>
             </div>
@@ -335,7 +337,7 @@
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
         todayHighlight: true,
-        format:'dd-mm-yyyy'
+        format:'yyyy-mm-dd'
     });
     $('#datepicker1').datepicker("setDate", new Date());
 
@@ -344,7 +346,7 @@
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
         todayHighlight: true,
-        format:'dd-mm-yyyy'
+        format:'yyyy-mm-dd'
     });
     $('#datepicker2').datepicker("setDate", new Date());
 
@@ -353,7 +355,7 @@
         daysOfWeekHighlighted: "6,0",
         autoclose: true,
         todayHighlight: true,
-        format:'dd-mm-yyyy'
+        format:'yyyy-mm-dd'
     });
     $('#datepicker3').datepicker("setDate", new Date());
   </script>

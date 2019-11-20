@@ -7,12 +7,23 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="{{ route('all_mails') }}">
+      <a class="nav-link" href="{{ route('all_mails_arrived') }}">
           <i class="fas fa-folder"></i>
-        <span>Tous les Courriers</span>
+        <span>Courriers arrivés</span>
       </a>
     </li>
-
+    <li class="nav-item">
+      <a class="nav-link " href="{{ route('all_mails_outgoing') }}">
+          <i class="fas fa-folder"></i>
+        <span>Courriers départ</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{{ route('all_mails_internal') }}">
+          <i class="fas fa-folder"></i>
+        <span>Courriers internes</span>
+      </a>
+    </li>
     <li class="nav-item">
       <a class="nav-link " href="{{ route('not_treated_mails') }}" disabled>
           <i class="fas fa-upload"></i>

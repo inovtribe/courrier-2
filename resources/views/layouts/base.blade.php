@@ -20,11 +20,11 @@
     	<link rel="stylesheet" href="{{ asset('shards/css/shards-dashboards.1.1.0.css') }}">
     	<link rel="stylesheet" href="{{ asset('shards/css/extras.1.1.0.min.css') }}">
 	    <!-- Custom styles for conids template -->
-      <link rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
+      <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.css') }}"/>
 
-      <script src="jquery/jquery-3.4.1.min.js"></script>
-      <script src="bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
-      <script src="DataTables/datatables.js"></script>
+      <script src="{{ asset('jquery/jquery-3.4.1.min.js') }}"></script>
+      <script src="{{ asset('bootstrap-4.3.1/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('DataTables/datatables.js') }}"></script>
 
       @yield('customCSS')
 
@@ -48,10 +48,12 @@
 			        <i class="material-icons">&#xE5C4;</i>
 			      </a>
 			    </nav>
-			  </div>
+				</div>
+				
 			  <!-- Menu left: start -->
-
-        @include("layouts.nav")
+				@section('navbar')
+					@include("layouts.nav")
+				@show
 	    
 			  <!-- Menu left: end -->
 			</aside>
