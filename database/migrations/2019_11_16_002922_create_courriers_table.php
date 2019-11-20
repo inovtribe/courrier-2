@@ -26,8 +26,7 @@ class CreateCourriersTable extends Migration
             $table->dateTime('mail_date_arrived');
             $table->integer('expeditor_id')->unsigned()->nullable();
             $table->foreign('expeditor_id')->references('id')->on('contacts')->onDelete('cascade');
-            $table->integer('initiate_service_id')->unsigned()->nullable();
-            $table->foreign('initiate_service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->unsignedInteger('initiate_service_id');
             $table->string('subject');
             $table->string('nature');
             $table->string('keywords')->nullable();;
@@ -37,6 +36,8 @@ class CreateCourriersTable extends Migration
             $table->foreign('destinator_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->boolean('deleted')->nullable();
             $table->dateTime('deadth_date')->nullable();
+            $table->integer('parapher_id')->unsigned()->nullable();
+            $table->foreign('parapher_id')->references('id')->on('paraphers')->onDelete('cascade');
             $table->timestamps();
         });
     }

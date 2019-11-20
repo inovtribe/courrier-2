@@ -8,8 +8,14 @@
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{ route('all_mails') }}">
-          <i class="fas fa-folder"></i>
-        <span>Tous les Courriers</span>
+          <i class="fas fa-envelope"></i>
+        <span>Courriers arrivés</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{{ route('all_mails') }}">
+        <i class="fa fa-folder"></i>
+        <span>Mes Parapheurs</span>
       </a>
     </li>
 

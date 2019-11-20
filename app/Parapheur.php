@@ -9,11 +9,28 @@ class Parapheur extends Model
     // Massive assignement
     protected $guarded = [];
     
-    public function courrier(){
-        return $this->belongsTo(Courrier::class);
+
+    public function destinator(){
+        return $this->belongsTo(Profile::class);
+    }
+    
+    public function expeditor(){
+        return $this->belongsTo(Profile::class);
     }
 
-    public function service(){
+    // public function destinatorsInCopy(){
+    //     return $this->belongsTo(Profile::class);
+    // }
+
+    public function courrier(){
+        return $this->hasOne(Courrier::class);
+    }
+
+    public function initiateService(){
+        return $this->belongsTo(Service::class);
+    }
+    
+    public function dealingService(){
         return $this->belongsTo(Service::class);
     }
 

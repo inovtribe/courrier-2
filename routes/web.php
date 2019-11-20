@@ -42,6 +42,9 @@ Route::get('mails/archived', 'CourrierController@archived')->name('archived_mail
 Route::get('mails/deleted', 'CourrierController@deleted')->name('deleted_mails');
 Route::get('mails/add', 'CourrierController@add')->name('add_mail');
 Route::post('mails/add','CourrierController@addMail')->name('add_mail_post');
+Route::get('mails/single/{mail}', 'CourrierController@show')->name('show_single_mail');
+Route::get('mails/single/{mail}/parapher', 'CourrierController@parapher')->name('mail_to_parapher');
+Route::post('parapheur/{mail}/add', 'CourrierController@parapherAdd')->name('add_mail_to_parapher');
 
 Route::get('contact', 'ContactsController@list')->name('contact');
 Route::get('contact/add', 'ContactsController@add')->name('add_contact');

@@ -4,7 +4,7 @@
 
     <h2>Tous les courriers</h2>
 
-    <div class="row">
+    <div class="container">
         <div class="col">
             <div class="row">
               <div class="col" style="padding-top: 20px;">
@@ -18,56 +18,43 @@
 
                     <thead>
                       <tr>
-                        <th scope="col">Titre</th>
-                        <th scope="col">Taille</th>
-                        <th scope="col">Date depot</th>
-                        <th scope="col">Origine</th>
+                        <th scope="col">Reférence</th>
+                        <th scope="col">Objet</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Catégory</th>
+                        <th scope="col">Date d'arrivéé</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                       <tr>
-                            <td> Document de mise en forme des dossiers   </td>
-                            <td>2.9 Mo</td>
-                            <td>23 Juillet 2019</td>
-                            <td>Service Courier</td>
-                            <td> 
-                              <a href="#" class="btn btn-primary">Consulter</a> 
-                              <a href="" class="btn btn-danger">Supprimer</a> 
-                            </td>
-                       </tr>
-                       <tr>
-                            <td> Document de mise en forme des dossiers   </td>
-                            <td>2.9 Mo</td>
-                            <td>23 Juillet 2019</td>
-                            <td>DSI</td>
-                            <td> 
-                              <a href="#" class="btn btn-primary">Consulter</a> 
-                              <a href="" class="btn btn-danger">Supprimer</a> 
-                            </td>
-                       </tr>
-                       <tr>
-                            <td> Document de mise en forme des dossiers   </td>
-                            <td>2.9 Mo</td>
-                            <td>23 Juillet 2019</td>
-                            <td>SG</td>
-                            <td> 
-                              <a href="#" class="btn btn-primary">Consulter</a> 
-                              <a href="" class="btn btn-danger">Supprimer</a> 
-                            </td>
-                       </tr>
-                       <tr>
-                            <td> Document de mise en forme des dossiers   </td>
-                            <td>2.9 Mo</td>
-                            <td>23 Juillet 2019</td>
-                            <td>DAF</td>
-                            <td> 
-                              <a href="#" class="btn btn-primary">Consulter</a> 
-                              <a href="" class="btn btn-danger">Supprimer</a> 
-                            </td>
-                       </tr>
-    
+                      @foreach ($all_mails as $item)
+                        <tr>
+                          <td> {{ $item->reference }}</td>
+                          <td> {{ $item->subject }} </td>
+                          <td> {{ $item->type_id }} </td>
+                          <td> {{ $item->category }} </td>
+                          <td> {{ $item->mail_date_arrived }} </td>
+                          <td> 
+                            <div class="btn-group">
+                              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                                Action
+                              </button>
+                              <div class="dropdown-menu">
+                                <a href="/mails/single/{{ $item->id }}/parapher" class="dropdown-item">
+                                  Ajouter au parapheur
+                                </a>
+                                <a href="/mails/single/{{ $item->id }}" class="dropdown-item">
+                                  Consulter
+                                </a>
+                                <a href="/mails/single/{{ $item->id }}/delete" class="dropdown-item">
+                                  Supprimer
+                                </a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
                 </table>
     

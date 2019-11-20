@@ -13,7 +13,19 @@ class Profile extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    //
+    
+    public function parapherReceive(){
+        return $this->hasOne(Parapher::class);
+    }
+    
+    public function parapherSend(){
+        return $this->hasOne(Parapher::class);
+    }
+    
+    // public function allParaphers(){
+    //     return $this->hasMany(Parapher::class);
+    // }
+    
     public function service(){
         return $this->belongsTo(Service::class);
     }
@@ -22,9 +34,9 @@ class Profile extends Model
         return $this->belongsTo(Service::class);
     } 
 
-    public function allCopieCourriers(){
-        return $this->belongsToMany(Courrier::class);
-    }
+    // public function allCopieCourriers(){
+    //     return $this->belongsTo(Courrier::class);
+    // }
     
     public function courrier(){
         return $this->belongsTo(Courrier::class);

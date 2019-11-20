@@ -16,10 +16,11 @@ class CreateParapheursTable extends Migration
         Schema::create('parapheurs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('conformity')->nullable();
-            $table->integer('initiate_service')->unsigned()->nullable();
-            $table->foreign('initiate_service')->references('id')->on('services')->onDelete('cascade');
-            $table->integer('courrier_id')->unsigned()->nullable();
-            $table->foreign('courrier_id')->references('id')->on('courriers')->onDelete('cascade');
+            $table->string('status');
+            $table->unsignedInteger('initiate_service_id')->nullable();
+            $table->unsignedInteger('dealing_service_id')->nullable();
+            $table->unsignedInteger('destinator_id')->nullable();
+            $table->unsignedInteger('expeditor_id')->nullable();
             $table->timestamps();
         });
     }

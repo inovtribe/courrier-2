@@ -20,20 +20,21 @@ class Courrier extends Model
     public function expeditor(){
         return $this->hasOne(Contact::class);
     }
-    
-    public function service_dealing(){
-        return $this->hasOne(Service::class);
-    }
-    
-    public function initiate_service(){
-        return $this->hasOne(Service::class);
-    }
 
     public function destinatorInCopy(){
         return $this->belongsToMany(Profile::class);
     }
 
+    public function initiateService(){
+        return $this->belongsTo(Service::class);
+    }
+    
+    public function dealingService(){
+        return $this->belongsTo(Service::class);
+    }
+
     public function parapheur(){
         return $this->belongsTo(Parapheur::class);
     }
+
 }

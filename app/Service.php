@@ -9,7 +9,7 @@ class Service extends Model
     //
     protected $guarded = [];
 
-    public function profiles(){
+    public function collaborateurs(){
         return $this->hasMany(Profile::class);
     }
 
@@ -17,11 +17,15 @@ class Service extends Model
         return $this->hasOne(Profile::class);
     }
 
-    public function courrier(){
-        return $this->belongsTo(Courrier::class);
+    public function courriers(){
+        return $this->hasMany(Courrier::class);
     }
 
-    public function parapheur(){
-        return $this->belongsTo(Parapheur::class);
+    public function paraphersInitiate(){
+        return $this->hasMany(Parapher::class);
+    }
+
+    public function dealingParaphers(){
+        return $this->hasMany(Parapher::class);
     }
 }

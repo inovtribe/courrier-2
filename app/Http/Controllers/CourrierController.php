@@ -25,12 +25,11 @@ class CourrierController extends Controller
 
     
     public function list() {
-        $all_mails = [
-            "John Doe",
-            "Jane Doe",
-            "Stephcyrille"
-        ];
-    
+        // $all_mails = Courrier::where('category', 'arrived')->firstOrFail();
+        // $all_mails = Courrier::all();
+        $all_mails = Courrier::where('category', 'arrived')->get();
+        
+        // dd($all_mails);
         $context = [
             'all_mails' => $all_mails
         ];
@@ -117,69 +116,90 @@ class CourrierController extends Controller
         $uniqid = uniqid();
         $rand_start = rand(1,8);
         $ref = 'mail-'.date("d").date("m").date("Y").substr($uniqid, $rand_start, 5);
-
-        $d1 = date('Y-m-d H:i:s');
-        $d1 = date('Y-m-d H:i:s');
-        $d1 = date('Y-m-d H:i:s');
-        // dd(request());
-        // $data = request()->validate([
-        //     'attachment' => 'required|file|max:9124',
-        //     'category'          => 'required',
-        //     'type_id'           => 'required',
-        //     'priority'          => 'required',
-        //     'confidential'      => 'required',
-        //     'mail_date'         => 'required',
-        //     'mail_date_arrived' => 'required',
-        //     'expeditor'         => 'required',
-        //     'initiate_service'  => 'required',
-        //     'subject'           => 'required',
-        //     // 'keywords'          => 'required',
-        //     'service_dealing'   => 'required',
-        //     'destinator'        => 'required',
-        //     'deleted'           => 'required',
-        //     'deadth_date'       => 'required',
-        // ]);
-
-        /* 
-        $table->string('reference');
-        $table->string('subject');
-        $table->string('details');
-        $table->string('status');*/
         
-        $files=$request->file('attachment');
-        $name=$files->getClientOriginalName();
-        $files->move('pieces_jointes',$name);
-        $data = $request->all();
+        $files = $request->file('attachment');
+        $name = time().'.'.$request->file('attachment') ->getClientOriginalExtension();
+        $files->move(public_path('pieces_jointes'),$name);
+        
+        
+        // Set all dates with datetime
+        $d1 = date($request->get('mail_date').' H:i:s');
+        $d2 = date($request->get('mail_date_arrived').' H:i:s');
+        $d3 = date($request->get('deadth_date').' H:i:s');
+        
         $values = [
-              'attachment'        => $name,
-              'category'          => $request->get('category'),
-              'type_id'           => $request->get('type_id'),
-              'priority'          => $request->get('priority'),
-              'confidential'      => $request->get('confidential'),
-              'mail_date'         => $request->get('mail_date'),
-              'mail_date_arrived' => $request->get('mail_date_arrived'),
-              'expeditor'         => $request->get('expeditor'),
-              'initiate_service'  => $request->get('initiate_service'),
-              'subject'           => $request->get('subject'),
-              'keywords'          => $request->get('keywords'),
-              'service_dealing'   => $request->get('service_dealing'),
-              'destinator'        => $request->get('destinator'),
-              'deleted'           => $request->merge(['deleted'=>false]),
-              'deadth_date'       => $request->get('deadth_date'),
+              'attachment'           => $name,
+              'reference'            => strtoupper($ref),
+              'category'             => $request->get('category'),
+              'nature'               => $request->get('category'),
+              'type_id'              => $request->get('type_id'),
+              'priority'             => $request->get('priority'),
+              'confidentiality'      => $request->get('confidentiality'),
+              'mail_date'            => $d1,
+              'mail_date_arrived'    => $d2,
+              'expeditor_id'         => $request->get('expeditor'),
+              'subject'              => $request->get('subject'),
+              'initiate_service_id'  => $request->get('initiate_service'),
+              'keywords'             => $request->get('keywords'),
+              'deleted'              => false,
         ];
-        $data['deleted'] = false;
-        $data['attachment'] = $name;
-        $data['reference'] = strtoupper($ref);
-        $request->merge($data);
-        // Courrier::create($data);
-        // dd($request);
-        Courrier::create($request->all());
 
-            // DB::table('img')->insert([
-            // 'image' => $name
-            // ]);
-            
-        return back()->with('success','You have successfully upload image.');
+
+        Courrier::create($values);
+
+        return redirect()->route('all_mails');
+     }
+
+     public function show($mail){
+         $mail = Courrier::where('id', $mail)->firstOrFail();
+
+         $context = [
+             'courrier' => $mail,
+         ];
+
+        //  dd($mail);
+        return view('courriers.single', $context);
+     }
+
+     public function parapher($mail){
+        $mail = Courrier::where('id', $mail)->firstOrFail();
+        $services = Service::all();
+
+        $context = [
+        'services' => $services,
+        'courrier' => $mail,
+        ];
+
+        //  dd($mail);
+        return view('courriers.form.addParapher', $context);
+     }
+    
+     public function parapherAdd($mail){
+        $mail = Courrier::where('id', $mail)->firstOrFail();
+
+        $user = auth()->user();
+
+        $sdacl_responsable = Service::where('acronym', 'SDACL')->firstOrFail();
+        dd($sdacl_responsable);
+        
+        $values = [
+            'courrier_id'           => $request->get('courrier_id'),
+            'parapher_title'        => $request->get('parapher_title'),
+            'initiate_service'      => $request->get('initiate_service'),
+            // 'conformity'            => $request->get('conformity'),
+            'created_by'            => $user,
+            'destinator'            => $sdacl_responsable->responsable,
+        ];
+
+
+        Parapher::create($values);
+
+        $context = [
+            'courrier' => $mail,
+        ];
+
+        //  dd($mail);
+        return view('courriers.single', $context);
      }
     
 }
