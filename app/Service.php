@@ -13,15 +13,11 @@ class Service extends Model
         return $this->hasMany(Profile::class);
     }
 
-    public function responsable(){
+    public function profile(){
         return $this->hasOne(Profile::class);
     }
 
-    public function courrier(){
-        return $this->belongsTo(Courrier::class);
-    }
-
-    public function parapheur(){
-        return $this->belongsTo(Parapheur::class);
+    public function courriers(){
+        return $this->hasMany(Courrier::class);
     }
 }

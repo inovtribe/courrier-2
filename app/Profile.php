@@ -7,26 +7,35 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
 
+    // Mass assignement
     protected $guarded = [];
 
 
     public function user(){
         return $this->belongsTo(User::class);
     }
-    //
+    
     public function service(){
         return $this->belongsTo(Service::class);
+    } 
+    
+    public function courriers(){
+        return $this->hasMany(Courrier::class);
     }
     
-    public function serviceResponsable(){
-        return $this->belongsTo(Service::class);
-    } 
-
-    public function allCopieCourriers(){
-        return $this->belongsToMany(Courrier::class);
+    public function avis(){
+        return $this->hasMany(Avis::class);
+    }
+    
+    public function annotations(){
+        return $this->hasMany(Annotation::class);
     }
     
     public function courrier(){
         return $this->belongsTo(Courrier::class);
+    } 
+    
+    public function roles(){
+        return $this->hasMany(Role::class);
     }
 }

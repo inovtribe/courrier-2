@@ -21,9 +21,9 @@
 
 
 
-Route::get('customers', 'CustomersController@list');
 
 Auth::routes();
+Route::get('customers', 'CustomersController@list');
 
 Route::get('/', 'DashboardController@all')->name('dashboard');
 
@@ -36,8 +36,14 @@ Route::get('/', 'DashboardController@all')->name('dashboard');
 // Route::post('mails/add','MailsController@addMail')->name('add_mail_post');
 
 Route::get('courrier/all/arrived', 'CourrierController@listArrived')->name('all_mails_arrived');
+Route::get('courrier/single/{mail}/arrived','CourrierController@showArrived')->name('single_arrived_mail');
+Route::get('courrier/add/arrived', 'CourrierController@addArrived')->name('add_arrived_mail');
 Route::get('courrier/all/outgoing', 'CourrierController@listOutgoing')->name('all_mails_outgoing');
+Route::get('courrier/single/{mail}/outgoing','CourrierController@showOutgoing')->name('single_outgoing_mail');
+Route::get('courrier/add/outgoing', 'CourrierController@addOutgoing')->name('add_outgoing_mail');
 Route::get('courrier/all/internal', 'CourrierController@listInternal')->name('all_mails_internal');
+Route::get('courrier/single/{mail}/internal','CourrierController@showInternal')->name('single_internal_mail');
+Route::get('courrier/add/internal', 'CourrierController@addInternal')->name('add_internal_mail');
 Route::get('courrier/nottreated', 'CourrierController@not_treated')->name('not_treated_mails');
 Route::get('courrier/treated', 'CourrierController@treated')->name('treated_mails');
 Route::get('courrier/archived', 'CourrierController@archived')->name('archived_mails');
@@ -45,6 +51,7 @@ Route::get('courrier/deleted', 'CourrierController@deleted')->name('deleted_mail
 Route::get('courrier/add', 'CourrierController@add')->name('add_mail');
 Route::post('courrier/add','CourrierController@addMail')->name('add_mail_post');
 Route::get('courrier/single/{mail}','CourrierController@show')->name('single_mail');
+Route::patch('courrier/single/{mail}/forward', 'CourrierController@forward')->name('forward_mail');
 
 Route::get('contact', 'ContactsController@list')->name('contact');
 Route::get('contact/add', 'ContactsController@add')->name('add_contact');

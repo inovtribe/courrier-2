@@ -15,6 +15,11 @@ class CreateAvisTable extends Migration
     {
         Schema::create('avis', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('reason');
+            $table->string('content');
+            $table->dateTime('limit_date');
+            $table->unsignedInteger('courrier_id')->nullable();
+            $table->unsignedInteger('profile_id')->nullable();
             $table->timestamps();
         });
     }

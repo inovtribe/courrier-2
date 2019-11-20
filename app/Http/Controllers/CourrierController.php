@@ -32,20 +32,41 @@ class CourrierController extends Controller
             'all_mails' => $all_mails
         ];
     
-        return view('courriers.arrived', $context);
-    }
-    
-    public function listInternal() {
-        $all_mails = Courrier::where('category', 'internal')->get();
-        
-        // dd($all_mails);
-        $context = [
-            'all_mails' => $all_mails
-        ];
-    
-        return view('courriers.internal', $context);
+        return view('courriers.arriveds.all', $context);
     }
 
+    public function showArrived($mail){
+        $mail = Courrier::where('id', $mail)->firstOrFail();
+        $destinators = Profile::all();
+
+        $context = [
+            'courrier' => $mail,
+            'destinators' => $destinators,
+        ];
+
+        //  dd($mail);
+        return view('courriers.arriveds.single', $context);
+    }
+
+    public function addArrived() {
+
+        $services = Service::all();
+        $types = Type::all();
+        $expeditors_personal = Contact::getPersonal()->get();
+        $expeditors_company = Contact::getCompany()->get();
+        $destinators = Profile::all();
+
+        $context = [
+            'services' => $services,
+            'types' => $types,
+            'expeditors_personal' => $expeditors_personal,
+            'expeditors_company' => $expeditors_company,
+            'destinators' => $destinators,
+        ];
+
+        return view('courriers.arriveds.add', $context);
+    }
+    
     public function listOutgoing() {
         $all_mails = Courrier::where('category', 'outgoing')->get();
         
@@ -54,7 +75,83 @@ class CourrierController extends Controller
             'all_mails' => $all_mails
         ];
     
-        return view('courriers.outgoing', $context);
+        return view('courriers.outgoings.all', $context);
+    }
+
+    public function showOutgoing($mail){
+        $mail = Courrier::where('id', $mail)->firstOrFail();
+        $destinators = Profile::all();
+
+        $context = [
+            'courrier' => $mail,
+            'destinators' => $destinators,
+        ];
+
+        //  dd($mail);
+        return view('courriers.outgoings.single', $context);
+    }
+
+    public function addOutgoing() {
+
+        $services = Service::all();
+        $types = Type::all();
+        $expeditors_personal = Contact::getPersonal()->get();
+        $expeditors_company = Contact::getCompany()->get();
+        $destinators = Profile::all();
+
+        $context = [
+            'services' => $services,
+            'types' => $types,
+            'expeditors_personal' => $expeditors_personal,
+            'expeditors_company' => $expeditors_company,
+            'destinators' => $destinators,
+        ];
+
+        return view('courriers.outgoings.add', $context);
+    }
+
+
+    public function listInternal() {
+        $all_mails = Courrier::where('category', 'internal')->get();
+        
+        // dd($all_mails);
+        $context = [
+            'all_mails' => $all_mails
+        ];
+    
+        return view('courriers.internals.all', $context);
+    }
+
+    public function showInternal($mail){
+        $mail = Courrier::where('id', $mail)->firstOrFail();
+        $destinators = Profile::all();
+
+        $context = [
+            'courrier' => $mail,
+            'destinators' => $destinators,
+        ];
+
+        //  dd($mail);
+        return view('courriers.internals.single', $context);
+    }
+
+    public function addInternal() {
+
+        $services = Service::all();
+        $types = Type::all();
+        $expeditors_personal = Contact::getPersonal()->get();
+        $expeditors_company = Contact::getCompany()->get();
+        $destinators = Profile::all();
+
+        $context = [
+            'services' => $services,
+            'types' => $types,
+            'expeditors_personal' => $expeditors_personal,
+            'expeditors_company' => $expeditors_company,
+            'destinators' => $destinators,
+        ];
+
+        return view('courriers.internals.add', $context);
     }
 
     public function not_treated() {
@@ -151,7 +248,7 @@ class CourrierController extends Controller
               'attachment'           => $name,
               'reference'            => strtoupper($ref),
               'category'             => $request->get('category'),
-              'nature'               => $request->get('category'),
+              'nature'               => $request->get('nature'),
               'type_id'              => $request->get('type_id'),
               'priority'             => $request->get('priority'),
               'confidentiality'      => $request->get('confidentiality'),
@@ -172,13 +269,22 @@ class CourrierController extends Controller
     
     public function show($mail){
         $mail = Courrier::where('id', $mail)->firstOrFail();
+        $destinators = Profile::all();
 
         $context = [
             'courrier' => $mail,
+            'destinators' => $destinators,
         ];
 
         //  dd($mail);
         return view('courriers.single', $context);
+    }
+    
+    public function forward($mail){
+        $mail = Courrier::where('id', $mail)->firstOrFail();
+
+        //  dd($mail);
+        return redirect()->route('all_mails_arrived');
     }
     
 }

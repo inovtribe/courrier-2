@@ -18,9 +18,12 @@ class CreateProfilesTable extends Migration
             $table->string('username');
             $table->string('firs_name');
             $table->string('last_name');
+            $table->string('visa_path');
             $table->string('address');
             $table->string('phone');
             $table->string('role');
+            $table->unsignedInteger('service_id')->nullable(); // Service that user belong
+            $table->unsignedInteger('courrier_id')->nullable(); // Service that user belong
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
