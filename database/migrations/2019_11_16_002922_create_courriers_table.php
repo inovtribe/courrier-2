@@ -31,13 +31,11 @@ class CreateCourriersTable extends Migration
             $table->string('subject');
             $table->string('nature');
             $table->string('keywords')->nullable();;
-            $table->integer('service_dealing_id')->unsigned()->nullable();
             $table->dateTime('limit_processing_date')->nullable();
             $table->boolean('deleted')->nullable();
             $table->boolean('archived')->nullable();
             $table->boolean('noticed')->nullable();
             $table->boolean('annotated')->nullable();
-            $table->boolean('noticed')->nullable();
             $table->string('mention'); // Avis favorable, Classé sans suite,
             $table->string('status'); // Traitementen en cours, Non traité, Traité
             // $table->string('state'); // Attente d'avis, avis favorable, avis défavorable, aucun

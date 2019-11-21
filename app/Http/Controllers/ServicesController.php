@@ -11,6 +11,10 @@ class ServicesController extends Controller
     //
     public function list() {
         $services = Service::all();
+
+        $serv = Service::where('id', 1)->firstOrFail();
+
+        dd($serv->profile);
     
         // dd($services);
         $context = [

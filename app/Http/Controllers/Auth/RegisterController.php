@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'last_name' => ' ',
             'address' => ' ',
             'phone' => ' ',
+            'visa_path' => ' ',
             'role' => ' ',
             'user_id' => $user->id,
         ]);
