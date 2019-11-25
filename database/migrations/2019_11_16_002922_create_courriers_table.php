@@ -15,7 +15,6 @@ class CreateCourriersTable extends Migration
     {
         Schema::create('courriers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('attachment')->nullable();
             $table->string('reference');
             $table->string('category');
             $table->integer('type_id')->unsigned()->nullable();
@@ -26,18 +25,21 @@ class CreateCourriersTable extends Migration
             $table->dateTime('mail_date_arrived');
             $table->integer('expeditor_id')->unsigned()->nullable();
             $table->foreign('expeditor_id')->references('id')->on('contacts')->onDelete('cascade');
-            $table->unsignedInteger('initiate_service_id');
+            $table->unsignedInteger('initiate_service_id')->nullable();
+            $table->unsignedInteger('service_dealing_id')->nullable();
+            $table->unsignedInteger('destinator_id')->nullable();
             $table->string('subject');
             $table->string('nature');
             $table->string('keywords')->nullable();;
-            $table->integer('service_dealing_id')->unsigned()->nullable();
-            $table->foreign('service_dealing_id')->references('id')->on('services')->onDelete('cascade');
-            $table->integer('destinator_id')->unsigned()->nullable();
-            $table->foreign('destinator_id')->references('id')->on('profiles')->onDelete('cascade');
+            $table->dateTime('limit_processing_date')->nullable();
             $table->boolean('deleted')->nullable();
-            $table->dateTime('deadth_date')->nullable();
-            $table->integer('parapher_id')->unsigned()->nullable();
-            $table->foreign('parapher_id')->references('id')->on('paraphers')->onDelete('cascade');
+            $table->boolean('archived')->nullable();
+            $table->boolean('noticed')->nullable();
+            $table->boolean('annotated')->nullable();
+            $table->string('mention'); // Avis favorable, Classé sans suite,
+            $table->string('status'); // Traitementen en cours, Non traité, Traité
+            // $table->string('state'); // Attente d'avis, avis favorable, avis défavorable, aucun
+            $table->boolean('valid')->nullable(); // Admin service pour valider courrier de son collaborateur n-1
             $table->timestamps();
         });
     }

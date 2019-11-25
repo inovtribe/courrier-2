@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use View;
 use Illuminate\Http\Request;
 use App\Service;
 use App\Profile;
@@ -9,6 +10,14 @@ use App\Profile;
 class ServicesController extends Controller
 {
     //
+    public function __construct()
+    {
+        View::composers([
+            'App\Composers\NavComposer' => ['layouts.nav']
+        ]);
+    }
+
+    
     public function list() {
         $services = Service::all();
     

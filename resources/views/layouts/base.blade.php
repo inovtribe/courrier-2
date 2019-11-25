@@ -8,11 +8,11 @@
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    <meta name="description" content="Dipvision Editor">
 	    <meta name="author" content="Conids Sarl">
-	    <link rel="icon" href="{{ asset('imgs/conids-logo_black_85x85.png') }}">
-
+			
 	    <title>MINDDEVEL-COURRIER</title>
-
-		<!-- Bootstrap core CSS -->
+			
+	    <link rel="icon" href="{{ asset('imgs/conids-logo_black_85x85.png') }}">
+			<!-- Bootstrap core CSS -->
 	    <link href="{{ asset('bootstrap-4.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
 	    <!-- FontAwesome CSS -->
 	    <link href="{{ asset('fontawesome-5.8.2/css/all.css') }}" rel="stylesheet"/>
@@ -48,12 +48,12 @@
 			        <i class="material-icons">&#xE5C4;</i>
 			      </a>
 			    </nav>
-			  </div>
+				</div>
+				
 			  <!-- Menu left: start -->
-
-        @include("layouts.nav")
-	    
-			  <!-- Menu left: end -->
+				@include("layouts.nav")  
+				<!-- Menu left: end -->
+				
 			</aside>
 			<!-- End Main Sidebar -->
 			<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
@@ -113,8 +113,8 @@
 				<!-- End Default Light Table -->
 			  </div>
 			  <footer class="main-footer d-flex p-2 px-3 cds-bg-gray6 border-top" style="font-size: 14px; font-weight: 400">
-			    <span class="copyright ml-auto my-auto mr-2" style="color:white">Copyright © 2019 - All Rights Reserved,
-			      <a href='#' style="color:#000"> &copy; 2018 Tous les droits reservés </a>
+					<span class="copyright ml-auto my-auto mr-2" style="color:#000">
+							Copyright © 2019 - All Rights Reserved,
 			    </span>
 			  </footer>
 			</main>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use View;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +14,9 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        View::composers([
+            'App\Composers\NavComposer' => ['layouts.nav']
+        ]);
     }
 
     

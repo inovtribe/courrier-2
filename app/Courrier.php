@@ -12,29 +12,29 @@ class Courrier extends Model
     public function type() {
         return $this->hasOne(Type::class);
     }
-
-    public function destinator(){
-        return $this->hasOne(Profile::class);
+    
+    public function attachedFiles() {
+        return $this->hasMany(AttachedFile::class);
     }
     
     public function expeditor(){
         return $this->hasOne(Contact::class);
     }
-
-    public function destinatorInCopy(){
-        return $this->belongsToMany(Profile::class);
-    }
-
-    public function initiateService(){
+    
+    public function service(){
         return $this->belongsTo(Service::class);
     }
     
-    public function dealingService(){
-        return $this->belongsTo(Service::class);
+    public function destinator(){
+        return $this->belongsTo(Profile::class);
     }
-
-    public function parapheur(){
-        return $this->belongsTo(Parapheur::class);
+    
+    public function destinators() {
+        return $this->hasMany(Profile::class);
+    }
+    
+    public function avis() {
+        return $this->hasMany(Avis::class);
     }
 
 }

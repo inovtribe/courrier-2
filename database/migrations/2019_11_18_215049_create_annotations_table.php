@@ -15,6 +15,10 @@ class CreateAnnotationsTable extends Migration
     {
         Schema::create('annotations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('content');
+            $table->dateTime('date');
+            $table->unsignedInteger('courrier_id')->nullable();
+            $table->unsignedInteger('profile_id')->nullable();
             $table->timestamps();
         });
     }

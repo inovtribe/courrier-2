@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
 
+    // Mass assignement
     protected $guarded = [];
 
 
@@ -14,31 +15,27 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function parapherReceive(){
-        return $this->hasOne(Parapher::class);
-    }
-    
-    public function parapherSend(){
-        return $this->hasOne(Parapher::class);
-    }
-    
-    // public function allParaphers(){
-    //     return $this->hasMany(Parapher::class);
-    // }
-    
     public function service(){
         return $this->belongsTo(Service::class);
+    } 
+    
+    public function courriers(){
+        return $this->hasMany(Courrier::class);
     }
     
-    public function serviceResponsable(){
-        return $this->belongsTo(Service::class);
-    } 
-
-    // public function allCopieCourriers(){
-    //     return $this->belongsTo(Courrier::class);
-    // }
+    public function avis(){
+        return $this->hasMany(Avis::class);
+    }
+    
+    public function annotations(){
+        return $this->hasMany(Annotation::class);
+    }
     
     public function courrier(){
         return $this->belongsTo(Courrier::class);
+    } 
+    
+    public function roles(){
+        return $this->hasMany(Role::class);
     }
 }
