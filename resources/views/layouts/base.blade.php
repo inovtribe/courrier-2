@@ -51,11 +51,9 @@
 				</div>
 				
 			  <!-- Menu left: start -->
-				@section('navbar')
-					@include("layouts.nav")
-				@show
-	    
-			  <!-- Menu left: end -->
+				@include("layouts.nav")  
+				<!-- Menu left: end -->
+				
 			</aside>
 			<!-- End Main Sidebar -->
 			<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">

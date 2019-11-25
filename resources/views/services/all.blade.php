@@ -34,8 +34,19 @@
                           <td> {{ $service->responsable_id }} </td>
                           <td> 12 </td>
                           <td> 
-                            <a href="#" class="btn btn-primary">Consulter</a> 
-                            <a href="" class="btn btn-danger">Supprimer</a> 
+                            <div class="btn-group">
+                              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                                Action
+                              </button>
+                              <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">
+                                  Consulter
+                                </a>
+                                <a href="/service/single/{{ $service->id }}/delete" class="dropdown-item">
+                                  Supprimer
+                                </a>
+                              </div>
+                            </div> 
                           </td>
                         </tr>
                       @endforeach

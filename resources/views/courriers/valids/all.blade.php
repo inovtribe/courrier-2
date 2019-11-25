@@ -1,15 +1,11 @@
 @extends('layouts.base')
 
+
 @section('content')
 
     <div class="container">
         <div class="col">
-            <h3>Tous les courriers arrivés</h3>
-            <div class="row">
-              <div class="col" style="padding-top: 20px;">
-                <a href="{{ route('add_arrived_mail') }}" class="btn btn-md btn-primary">Nouveau courier arrivé</a> 
-              </div>
-            </div>
+        <h3>Tous les courriers valides</h3>
             <span class="mb-0 mt-6" id="infoAlert"></span>
             <div class="card card-small mt-4 p-4 mb-4"> 
               
@@ -40,7 +36,7 @@
                                 Action
                               </button>
                               <div class="dropdown-menu">
-                                <a href="/courrier/single/{{ $item->id }}/arrived" class="dropdown-item">
+                                <a href="/courrier/single/{{ $item->id }}/valid" class="dropdown-item">
                                   Consulter
                                 </a>
                                 <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
@@ -58,5 +54,4 @@
             </div>
         </div>
     </div>
-
 @endsection

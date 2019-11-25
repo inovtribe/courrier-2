@@ -16,12 +16,12 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username');
-            $table->string('firs_name');
+            $table->string('first_name');
             $table->string('last_name');
             $table->string('visa_path');
             $table->string('address');
             $table->string('phone');
-            $table->string('role');
+            $table->string('roles');
             $table->unsignedInteger('service_id')->nullable(); // Service that user belong
             $table->unsignedInteger('courrier_id')->nullable(); // Service that user belong
             $table->integer('user_id')->unsigned()->nullable();

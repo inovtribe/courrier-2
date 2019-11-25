@@ -3,7 +3,6 @@
 @section('customCSS')
 @endsection
 
-
 @section('content')
 
 <!-- Page Header -->
@@ -23,19 +22,16 @@
     <span class="mb-0 mt-6" id="infoAlert"></span>
     
     <div class="card card-small mb-4 container">
-      <form action="/courrier/{{ $courrier->id }}/validate" method="POST" class="card-body p-10 pb-3" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        {{ method_field('PATCH') }} 
         <h4 class="text-center" style="padding: 10px;">{{ $courrier->subject }}</h4> <hr>
         <div class="col pl-0"  align="">
-          <a href="{{ route('all_mails_arrived') }}" class="btn btn-light">
+          <a href="{{ route('valid_mails_arrived') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;
             Retour
           </a>
         </div>
         
         <div class="row">
-          <div class="col-5">
+          <div class="col-5 pl-50px">
             <h5 class="pb-20" style="border-bottom: 1px solid lightgray; padding-top: 15px; color: orange">
               Informations sur le courrier
             </h5>
@@ -110,34 +106,45 @@
 
         <div class="row" style="padding: 50px 0 30px 0px">
           <div class="col"  align="">
-            <a href="#" class="btn btn-secondary"> <i class="fas fa-pen"></i> Modifier</a> &nbsp; &nbsp;
+            <div class="col-3 pl-0">
+                <div class="btn-group">
+                    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                        <i class="fas fa-share"></i> 
+                        Coter le courrier
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#cotationServiceModalCenter">
+                          A un service
+                        </a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#cotationPersonModalCenter">
+                          A une personne
+                        </a>
+                        {{-- <a class="dropdown-item" data-toggle="modal" data-target="#cotationGroupModalCenter">
+                          A un groupe de personne
+                        </a> --}}
+                      {{-- <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
+                        A une personne
+                      </a>
+                      <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
+                        A un groupe personne
+                      </a> --}}
+                    </div>
+                  </div>
+            </div>
             {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cotationModalCenter">
               <i class="fas fa-share"></i>
-              Coter le courrier
-            </button>&nbsp; &nbsp;
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModalCenter">
-              <i class="fas fa-times"></i>
-              Supprimer
-            </button>&nbsp; &nbsp;
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#archivedModalCenter">
-              <i class="fas fa-inbox"></i> Archiver
-            </button> &nbsp; &nbsp; --}}
-            <button type="submit" class="btn btn-success">
-              <i class="fab fa-success"></i>
-              Valider
-            </button>&nbsp; &nbsp;
+              A un service
+            </button>&nbsp; &nbsp; --}}
           </div>
         </div>
             
       </div>
     </div>
   </div>
-</div>
 
-  
 
-  <!-- Modal -->
-  <div class="modal fade" id="cotationModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<div class="modal fade" id="cotationServiceModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -146,29 +153,30 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="#" method="POST" class="form">
+        <form action="/courrier/single/{{ $courrier->id }}/forward" method="POST" class="form">
           {{ csrf_field() }}
+          {{ method_field('PATCH') }}
           <div class="modal-body">
             <div class="row">
               <div class="col-12 text-center" style="padding-bottom: 20px;">
-                Veuillez selectionner le destinataire du courrier 
+                Veuillez selectionner le service de destination du courrier 
               </div>  
             </div>
             <div class="row">
               <div class="col-4" align="right">
                 <p style="vertical-align: -webkit-baseline-middle;display: inline;">
-                  Destinataire <i class="fas fa-user"></i>
+                  Service <i class="fas fa-cog"></i>
                 </p>
               </div>
               <div class="col-8" style="padding-bottom: 20px;">
-                <select name="destinator" class="form-control" id="destinator">
-                  <option value="" disabled>Expéditeur du courrier</option>
-                  @foreach ($destinators as $item)
-                    <option value="{{ $item->id }}">{{ $item->user->name }}</option>
+                <select name="service_dealing_id" class="form-control">
+                  <option value=""></option>
+                  @foreach ($services as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                   @endforeach
                 </select>
               </div>
-            </div>  
+            </div> 
           </div>
           <div class="modal-footer">
             <div class="col text-center">
@@ -182,63 +190,65 @@
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Supprimer le courrier</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12 text-center" style="padding-bottom: 20px;">
-              Êtes-vous sûre de vouloir supprimer ce courrier?
-            </div>  
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="col text-center">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
-            <a href="#" class="btn btn-danger">Supprimer</a>
-          </div>
-        </div>
-          
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="archivedModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Archiver le courrier</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12 text-center" style="padding-bottom: 20px;">
-              Vous êtes sur le point d'archiver le courrier "{{ $courrier->subject }}". 
-              Souhaitez-vous confirmer l'opération ?
-            </div>  
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="col text-center">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
-            <a href="#" class="btn btn-success">Archiver</a>
-          </div>
-        </div>
-          
-      </div>
-    </div>
-  </div>
 
+<!-- Modal -->
+<div class="modal fade" id="cotationPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Coter le courrier &nbsp;</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/courrier/single/{{ $courrier->id }}/forward" method="POST" class="form">
+          {{ csrf_field() }}
+          {{ method_field('PATCH') }}
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12 text-center" style="padding-bottom: 20px;">
+                Veuillez selectionner le destinataire du courrier 
+              </div>  
+            </div>
+            <div class="row">
+              <div class="col-4" align="right">
+                <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                  Service <i class="fas fa-cog"></i>
+                </p>
+              </div>
+              <div class="col-8" style="padding-bottom: 20px;">
+                <select name="service_dealing_id" class="form-control" id="service" onchange="myFunction(this)">
+                  <option value=""></option>
+                  @foreach ($services as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4" align="right">
+                <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                  Destinataire <i class="fas fa-user"></i>
+                </p>
+              </div>
+              <div class="col-8" style="padding-bottom: 20px;">
+                <select name="destinator_id" class="form-control" id="emptyDropdown">
+                  <option value="" ></option>
+                </select>
+              </div>
+            </div>    
+          </div>
+          <div class="modal-footer">
+            <div class="col text-center">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
+              <button type="submit" class="btn btn-success">Valider</button>
+            </div>
+          </div>
+        </form>
+          
+      </div>
+    </div>
+  </div>
   
 @endsection
 
@@ -264,6 +274,27 @@
         instance.loadDocument(link);
       }
     });
+
+  function myFunction(obj)
+  {
+    $('#emptyDropdown').empty()
+    var dropDown = document.getElementById("service");
+    var service_id = dropDown.options[dropDown.selectedIndex].value;
+    console.log("id", service_id)
+    $.ajax({
+            type: "GET",
+            url: `/api/profiles/${service_id}/all` ,
+            success: function(data){
+                // Parse the returned json data
+                var opts = $.parseJSON(data);
+                // Use jQuery's each to iterate over the opts value
+                $.each(opts, function(i, d) {
+                    // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                    $('#emptyDropdown').append('<option value="' + d.id + '">' + d.username + '</option>');
+                });
+            }
+        });
+  }
 
   </script>
 

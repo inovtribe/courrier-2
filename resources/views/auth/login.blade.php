@@ -9,7 +9,7 @@
         <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
           {{ csrf_field() }}
 					<span class="login100-form-title p-b-40">
-						GED  MINDDEVEL
+						GEC  MINDDEVEL
 					</span>
 					<span class="login100-form-avatar">
 						<img src="{{ asset('style_login/images/avatar-01.png') }}" alt="AVATAR">

@@ -39,7 +39,7 @@ class CreateCourriersTable extends Migration
             $table->string('mention'); // Avis favorable, Classé sans suite,
             $table->string('status'); // Traitementen en cours, Non traité, Traité
             // $table->string('state'); // Attente d'avis, avis favorable, avis défavorable, aucun
-            $table->boolean('valid'); // Admin service pour valider courrier de son collaborateur n-1
+            $table->boolean('valid')->nullable(); // Admin service pour valider courrier de son collaborateur n-1
             $table->timestamps();
         });
     }
