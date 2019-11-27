@@ -23,6 +23,8 @@ class CourrierValidController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
+        
         View::composers([
             'App\Composers\NavComposer' => ['layouts.nav']
         ]);
@@ -32,8 +34,11 @@ class CourrierValidController extends Controller
     public function validArrived() {
         $all_mails = Courrier::where('category', 'arrived')
                              ->where('valid', true)
+                             ->where('destinator_id', null)
                              ->get();
         $destinators = Profile::all();
+
+        // dd($all_mails);
 
         // dd($count);
         $context = [

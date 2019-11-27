@@ -17,6 +17,8 @@ class CourrierProcessingController extends Controller
     //
     public function __construct()
     {
+        $this->middleware('auth');
+
         View::composers([
             'App\Composers\NavComposer' => ['layouts.nav']
         ]);
@@ -42,7 +44,7 @@ class CourrierProcessingController extends Controller
 
     public function coteCourrier($courrier, Request $request){
         $courrier = Courrier::where('id', $courrier)->firstOrFail();
-        // dd($courrier);
+        // dd($request->user());
         if($request->get('destinator_id')){
             $data = [
                 'destinator_id' => $request->get('destinator_id'),
@@ -55,11 +57,10 @@ class CourrierProcessingController extends Controller
                 'service_dealing_id' => $request->get('service_dealing_id'),
             ];
         }
-        
 
         $courrier->update($data);
-
-        return back();
+        
+        return redirect()->route('valid_mails_arrived');
     }
 
     // public function coteCourrier($mail){

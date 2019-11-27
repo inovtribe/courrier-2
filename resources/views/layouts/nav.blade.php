@@ -59,8 +59,8 @@
       </a>
     </li>
     <li class="nav-item">
-      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
-      <a class="nav-link " href="#" style="padding: 15px">
+      <a class="nav-link " href="{{ route('all_my_mail') }}" style="padding: 15px">
+      {{-- <a class="nav-link " href="#" style="padding: 15px"> --}}
           {{-- <i class="fas fa-upload"></i> --}}
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">

@@ -22,13 +22,17 @@ class CourrierOutgoingController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
+        
         View::composers([
             'App\Composers\NavComposer' => ['layouts.nav']
         ]);
     }
 
     public function listOutgoing() {
-        $all_mails = Courrier::where('category', 'outgoing')->get();
+        $all_mails = Courrier::where('category', 'outgoing')
+                             ->where('destinator_id', null)
+                             ->get();
         
         // dd($all_mails);
         $context = [

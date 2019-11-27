@@ -43,6 +43,8 @@ Route::get('courrier/all/internal', 'CourrierInternalController@listInternal')->
 Route::get('courrier/single/{mail}/internal','CourrierInternalController@showInternal')->name('single_internal_mail');
 Route::get('courrier/add/internal', 'CourrierInternalController@addInternal')->name('add_internal_mail');
 
+Route::get('courrier/user/all', 'CourrierUserController@listCourriers')->name('all_my_mail');
+
 
 Route::get('courrier/nottreated', 'CourrierController@not_treated')->name('not_treated_mails');
 Route::get('courrier/treated', 'CourrierController@treated')->name('treated_mails');

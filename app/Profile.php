@@ -38,4 +38,8 @@ class Profile extends Model
     public function roles(){
         return $this->hasMany(Role::class);
     }
+
+    public function broadcastList() {
+        return $this->hasOne(BroadcastList::class);
+    }
 }
