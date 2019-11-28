@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBroadcastListsTable extends Migration
+class CreateCourrierAnnotationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateBroadcastListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('broadcast_lists', function (Blueprint $table) {
+        Schema::create('courrier_annotations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('annotation_id')->unsigned()->nullable();
+            $table->foreign('annotation_id')->references('id')->on('annotations')->onDelete('cascade');
             $table->integer('courrier_id')->unsigned()->nullable();
             $table->foreign('courrier_id')->references('id')->on('courriers')->onDelete('cascade');
-            $table->integer('destinator_id')->unsigned()->nullable();
-            $table->foreign('destinator_id')->references('id')->on('profiles')->onDelete('cascade');
-            $table->string('reason'); // Input select box (visualise, make avis, for annotation)
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateBroadcastListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('broadcast_lists');
+        Schema::dropIfExists('courrier_annotations');
     }
 }

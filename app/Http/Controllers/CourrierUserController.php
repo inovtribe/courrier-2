@@ -65,4 +65,32 @@ class CourrierUserController extends Controller
     //  Donc on a deux option de traitement, soit répondre (générer réponse, soit demander avis)
     // Si l'avis demandé n'est pas cloturé sur le courrier, la réponse ne peut pas etre émise
     // 
+
+    public function avisWaitCourrier($courrier)
+    {
+        // $user = Auth::user();
+        // $user_id = $user->id; 
+        // $profile = Profile::where('user_id', $user_id)->firstOrFail();
+        // $avis = Avis::where('profile_id', $profile->id)->firstOrFail();
+        // $courrier_id = $avis->courrier->id;
+        // $courrier = Courrier::where('id', $courrier_id)->firstOrFail();
+        // $all_courriers =  $courrier->avis;
+
+
+        // $my_courrier = Courrier::where('id', $courrier)->firstOrFail();
+        // $destinators = Profile::all();
+        // $services = Service::all();
+        // $attached_files = AtachedFile::where('courrier_id', $my_courrier->id)->get();
+
+        // $context = [
+        //     'courrier' => $my_courrier,
+        //     'destinators' => $destinators,
+        //     'services' => $services,
+        //     'attached_files' => $attached_files,
+        // ];
+
+        // //  dd($mail);
+        // return view('courriers.avis.all', $context);
+    }
+
 }

@@ -9,8 +9,11 @@ class Avis extends Model
     // Massive assignement
     protected $guarded = [];
 
-    public function courrier(){
-        return $this->belongsTo(Courrier::class);
+    /**
+     * The courriers that belong to avis
+    */
+    public function courriers(){
+        return $this->belongsToMany(Courrier::class, 'avis_courriers');
     }
     
     public function profile(){

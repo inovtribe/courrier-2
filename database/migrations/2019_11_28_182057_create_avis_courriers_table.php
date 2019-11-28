@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAtachedFilesTable extends Migration
+class CreateAvisCourriersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAtachedFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('atached_files', function (Blueprint $table) {
+        Schema::create('avis_courriers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('path');
-            $table->string('format');
-            $table->integer('courrier_id')->nullable();
+            $table->integer('avis_id')->unsigned()->nullable();
+            $table->foreign('avis_id')->references('id')->on('avis')->onDelete('cascade');
+            $table->integer('courrier_id')->unsigned()->nullable();
             $table->foreign('courrier_id')->references('id')->on('courriers')->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ class CreateAtachedFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('atached_files');
+        Schema::dropIfExists('avis_courriers');
     }
 }

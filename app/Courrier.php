@@ -25,19 +25,25 @@ class Courrier extends Model
         return $this->belongsTo(Service::class);
     }
     
-    public function destinator(){
-        return $this->belongsTo(Profile::class);
+    public function sendsTo(){
+        return $this->belongsToMany(Profile::class, 'expeditor_internal_id', 'destinator_id');
     }
     
-    public function destinators() {
-        return $this->hasMany(Profile::class);
+    public function folder(){
+        return $this->belongsTo(Folder::class);
+    }
+
+    /**
+     * The avis that belong to courrier
+    */
+    public function avis(){
+        return $this->belongsToMany(Avis::class, 'avis_courriers');
     }
     
-    public function avis() {
-        return $this->hasMany(Avis::class);
-    }
-    
-    public function broadcastList() {
-        return $this->hasOne(BroadcastList::class);
+    /**
+     * The annotation that belong to courrier
+    */
+    public function annotations(){
+        return $this->belongsToMany(Annotation::class, 'courrier_annotations');
     }
 }

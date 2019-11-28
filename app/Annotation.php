@@ -13,7 +13,14 @@ class Annotation extends Model
         return $this->belongsTo(Courrier::class);
     }
     
-    public function profile(){
-        return $this->belongsTo(Profile::class);
+    public function profiles(){
+        return $this->belongsToMany(Profile::class, 'annotation_profiles');
+    }
+    
+    /**
+     * The courrier that belong to annotation
+    */
+    public function courriers(){
+        return $this->belongsToMany(Courrier::class, 'courrier_annotations');
     }
 }

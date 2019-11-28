@@ -79,7 +79,7 @@
           {{-- <i class="fas fa-upload"></i> --}}
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">
-                <span>Mes courriers (traités)</span>
+                <span>En attente d'avis</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
                 {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}

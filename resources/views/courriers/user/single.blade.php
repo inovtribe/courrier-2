@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('customCSS')
+  <link href="{{ asset('bootstrap-datepicker/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -167,9 +168,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="#" method="POST" class="form">
+        <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form">
           {{ csrf_field() }}
-          {{ method_field('PATCH') }}
+          {{-- {{ method_field('PATCH') }} --}}
           <div class="modal-body">
             <div class="row">
               <div class="col-12 text-center" style="padding-bottom: 20px;">
@@ -202,12 +203,22 @@
                   <option value="" ></option>
                 </select>
               </div>
-            </div>    
+            </div>  
+            <div class="row">
+                <div class="col-4" align="right">
+                  <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                      Date limite <i class="fas fa-calendar"></i>
+                  </p>
+                </div>
+                <div class="col-8" style="padding-bottom: 20px;">
+                    <input class="form-control" name="limit_date" data-date-format="dd/mm/yyyy" id="datepicker">
+                </div>
+            </div>  
           </div>
           <div class="modal-footer">
             <div class="col text-center">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
-              <button type="submit" class="btn btn-success">Valider</button>
+              <button type="submit" class="btn btn-success">Envoyer</button>
             </div>
           </div>
         </form>
@@ -222,6 +233,8 @@
 
 <script src="{{ asset('webviewer/ui-legacy/external/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('webviewer/webviewer.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bootstrap-datepicker/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+
 
 <script>
     WebViewer({
@@ -261,6 +274,16 @@
             }
         });
   }
+
+
+  $('#datepicker').datepicker({
+      weekStart: 1,
+      daysOfWeekHighlighted: "6,0",
+      autoclose: true,
+      todayHighlight: true,
+      format:'yyyy-mm-dd'
+  });
+  $('#datepicker').datepicker("setDate", new Date());
 
   </script>
 

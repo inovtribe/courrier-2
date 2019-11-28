@@ -10,6 +10,7 @@ use App\Type;
 use App\Contact;
 use App\Profile;
 use App\AtachedFile;
+use App\Avis;
 
 
 class CourrierProcessingController extends Controller
@@ -63,21 +64,23 @@ class CourrierProcessingController extends Controller
         return redirect()->route('valid_mails_arrived');
     }
 
-    public function newAvis(Request $request, $courrier)
+    public function newAvis($courrier, Request $request)
     {
         $courrier = Courrier::where('id', $courrier)->firstOrFail();
+        $d1 = date($request->get('limit_date').' H:i:s');
 
-        $avis = [
-            'reason'        => '',
+        $values = [
+            'reason'        => 'Demande d\'avis',
             'content'       => '',
-            'limit_date'    => '',
+            'limit_date'    => $d1,
             'courrier_id'   => $courrier->id, 
             'profile_id'    => $request->get('destinator_id'), 
         ];
-         
-        dd($avis);
+        
+        $avis = Avis::create($values);
+        // dd($avis);
 
-        return redirect()->route('single_user_mail');
+        return redirect()->route('all_my_mail');
     }
 
     // public function coteCourrier($mail){

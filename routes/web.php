@@ -45,7 +45,7 @@ Route::get('courrier/add/internal', 'CourrierInternalController@addInternal')->n
 
 Route::get('courrier/user/all', 'CourrierUserController@listCourriers')->name('all_my_mail');
 Route::get('courrier/user/{mail}/arrived','CourrierUserController@singleCourrier')->name('single_user_mail');
-Route::get('courrier/user/{mail}/avis/request','CourrierProcessingController@newAvis')->name('user_mail_new_avis');
+Route::post('courrier/user/{mail}/avis/add','CourrierProcessingController@newAvis')->name('user_mail_new_avis');
 
 
 Route::get('courrier/nottreated', 'CourrierController@not_treated')->name('not_treated_mails');
