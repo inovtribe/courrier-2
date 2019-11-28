@@ -43,6 +43,10 @@ Route::get('courrier/all/internal', 'CourrierInternalController@listInternal')->
 Route::get('courrier/single/{mail}/internal','CourrierInternalController@showInternal')->name('single_internal_mail');
 Route::get('courrier/add/internal', 'CourrierInternalController@addInternal')->name('add_internal_mail');
 
+Route::get('courrier/user/all', 'CourrierUserController@listCourriers')->name('all_my_mail');
+Route::get('courrier/user/{mail}/arrived','CourrierUserController@singleCourrier')->name('single_user_mail');
+Route::get('courrier/user/{mail}/avis/request','CourrierProcessingController@newAvis')->name('user_mail_new_avis');
+
 
 Route::get('courrier/nottreated', 'CourrierController@not_treated')->name('not_treated_mails');
 Route::get('courrier/treated', 'CourrierController@treated')->name('treated_mails');
@@ -84,3 +88,5 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 
 // API GET FOR USERS 
 Route::get('api/profiles/{service}/all', 'ManageUserController@userList');
+
+Route::get('dossiers/all', 'FolderController@allFolders')->name('all_folders');

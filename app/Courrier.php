@@ -36,5 +36,8 @@ class Courrier extends Model
     public function avis() {
         return $this->hasMany(Avis::class);
     }
-
+    
+    public function broadcastList() {
+        return $this->hasOne(BroadcastList::class);
+    }
 }

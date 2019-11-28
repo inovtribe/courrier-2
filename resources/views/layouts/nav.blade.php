@@ -59,16 +59,16 @@
       </a>
     </li>
     <li class="nav-item">
-      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
-      <a class="nav-link " href="#" style="padding: 15px">
+      <a class="nav-link " href="{{ route('all_my_mail') }}" style="padding: 15px">
+      {{-- <a class="nav-link " href="#" style="padding: 15px"> --}}
           {{-- <i class="fas fa-upload"></i> --}}
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">
                 <span>Mes courriers (à traiter)</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
-                <span class="badge badge-pill badge-info">{{ 0 }}</span>
+                <span class="badge badge-pill badge-info">{{ $mes_courriers_a_traite ? $mes_courriers_a_traite : 0 }}</span>
+                {{-- <span class="badge badge-pill badge-info">{{ 0 }}</span> --}}
               </div>
           </div>
       </a>
@@ -80,6 +80,21 @@
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">
                 <span>Mes courriers (traités)</span>
+              </div>
+              <div style="display: inline-block;width: 15%;float: right;">
+                {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
+                <span class="badge badge-pill badge-info">{{ 0 }}</span>
+              </div>
+          </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
+      <a class="nav-link " href="{{ route('all_folders') }}" style="padding: 15px">
+          {{-- <i class="fas fa-upload"></i> --}}
+          <div style="display: inline-block;width: 100%;padding: 0px;">
+              <div style="display: inline-block;width: 80%;float: left;">
+                <span>Mes dossiers</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
                 {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}

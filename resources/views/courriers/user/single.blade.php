@@ -24,7 +24,7 @@
     <div class="card card-small mb-4 container">
         <h4 class="text-center" style="padding: 10px;">{{ $courrier->subject }}</h4> <hr>
         <div class="col pl-20 pb-20"  align="">
-          <a href="{{ route('valid_mails_arrived') }}" class="btn btn-light">
+          <a href="{{ route('all_my_mail') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;
             Retour
           </a>
@@ -38,7 +38,7 @@
               
             <div class="input-group mb-3">
               <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
-                <label for="selected_file">Document</label>
+                <label for="selected_file">Documents</label>
               </div>
               <select name="selected_file" class="form-control" id="selected_file">
                 <option value=""></option>
@@ -105,20 +105,33 @@
         </div>
 
         <div class="row" style="padding: 50px 0 30px 0px">
-          <div class="col"  align="">
+          <div class="col pl-20"  align="">
+              <a href="#" class="btn btn-secondary"> <i class="fas fa-pen"></i> Annuler</a> &nbsp; &nbsp;
+              <button class="btn btn-info" data-toggle="modal" data-target="#avisModalCenter">
+                  {{-- <i class="fas fa-share"></i>  --}}
+                  Demander avis
+              </button>
+
             <div class="col-3 pl-20">
+                
+
+
                 <div class="btn-group">
-                    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
-                        <i class="fas fa-share"></i> 
-                        Coter le courrier
-                    </button>
+                    
+
+                    {{-- <button type="submit" class="btn btn-success">
+                      <i class="fab fa-success"></i>
+                      Valider
+                    </button>&nbsp; &nbsp; 
+
+                    
                     <div class="dropdown-menu">
                         <a class="dropdown-item" data-toggle="modal" data-target="#cotationServiceModalCenter">
-                          A un service
+                          Demander commentaire
                         </a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#cotationPersonModalCenter">
+                        {{-- <a class="dropdown-item" data-toggle="modal" data-target="#cotationPersonModalCenter">
                           A une personne
-                        </a>
+                        </a> --}}
                         {{-- <a class="dropdown-item" data-toggle="modal" data-target="#cotationGroupModalCenter">
                           A un groupe de personne
                         </a> --}}
@@ -127,8 +140,8 @@
                       </a>
                       <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
                         A un groupe personne
-                      </a> --}}
-                    </div>
+                      </a>
+                    </div> --}}
                   </div>
             </div>
             {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cotationModalCenter">
@@ -144,70 +157,23 @@
 
 
 
-<div class="modal fade" id="cotationServiceModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Coter le courrier &nbsp;</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="/courrier/single/{{ $courrier->id }}/forward" method="POST" class="form">
-          {{ csrf_field() }}
-          {{ method_field('PATCH') }}
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-12 text-center" style="padding-bottom: 20px;">
-                Veuillez selectionner le service de destination du courrier 
-              </div>  
-            </div>
-            <div class="row">
-              <div class="col-4" align="right">
-                <p style="vertical-align: -webkit-baseline-middle;display: inline;">
-                  Service <i class="fas fa-cog"></i>
-                </p>
-              </div>
-              <div class="col-8" style="padding-bottom: 20px;">
-                <select name="service_dealing_id" class="form-control">
-                  <option value=""></option>
-                  @foreach ($services as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div> 
-          </div>
-          <div class="modal-footer">
-            <div class="col text-center">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
-              <button type="submit" class="btn btn-success">Valider</button>
-            </div>
-          </div>
-        </form>
-          
-      </div>
-    </div>
-  </div>
-
-
 <!-- Modal -->
-<div class="modal fade" id="cotationPersonModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="avisModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Coter le courrier &nbsp;</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Demande d'avis sur courrier</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/courrier/single/{{ $courrier->id }}/forward" method="POST" class="form">
+        <form action="#" method="POST" class="form">
           {{ csrf_field() }}
           {{ method_field('PATCH') }}
           <div class="modal-body">
             <div class="row">
               <div class="col-12 text-center" style="padding-bottom: 20px;">
-                Veuillez selectionner le destinataire du courrier 
+                Veuillez selectionner le destinataire pour avis
               </div>  
             </div>
             <div class="row">

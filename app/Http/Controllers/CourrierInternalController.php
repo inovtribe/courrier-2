@@ -22,6 +22,7 @@ class CourrierInternalController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
         View::composers([
             'App\Composers\NavComposer' => ['layouts.nav']
         ]);
@@ -29,7 +30,9 @@ class CourrierInternalController extends Controller
 
     
     public function listInternal() {
-        $all_mails = Courrier::where('category', 'internal')->get();
+        $all_mails = Courrier::where('category', 'internal')
+                             ->where('destinator_id', null)
+                             ->get();
         
         // dd($all_mails);
         $context = [

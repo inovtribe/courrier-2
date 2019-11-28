@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use View;
 use App\Profile;
@@ -70,7 +70,10 @@ class ManageUserController extends Controller
     }
 
     public function userList($service){
-        $profiles = Profile::where('service_id', $service)->get();;
+        $user = Auth::user();
+        $user_id = $user->id;
+        $current_profile = Profile::where('user_id', $user_id)->firstOrFail();
+        $profiles = Profile::where('service_id', $service)->get()->except([$current_profile->id]);
 
         echo json_encode($profiles);
         // $this->load->model('car_model');

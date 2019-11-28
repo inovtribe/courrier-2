@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use View;
 
 use Illuminate\Http\Request;
 use App\Contact;
@@ -13,10 +14,14 @@ class ContactsController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        // $this->middleware('auth');
+        
+        View::composers([
+            'App\Composers\NavComposer' => ['layouts.nav']
+        ]);
+    }
 
     
     public function list() {
