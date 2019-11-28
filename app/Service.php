@@ -16,6 +16,10 @@ class Service extends Model
     public function profile(){
         return $this->hasOne(Profile::class);
     }
+    
+    public function foulder(){
+        return $this->hasOne(Folder::class);
+    }
 
     public function courriers(){
         return $this->hasMany(Courrier::class);

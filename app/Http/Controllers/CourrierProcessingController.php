@@ -63,6 +63,23 @@ class CourrierProcessingController extends Controller
         return redirect()->route('valid_mails_arrived');
     }
 
+    public function newAvis(Request $request, $courrier)
+    {
+        $courrier = Courrier::where('id', $courrier)->firstOrFail();
+
+        $avis = [
+            'reason'        => '',
+            'content'       => '',
+            'limit_date'    => '',
+            'courrier_id'   => $courrier->id, 
+            'profile_id'    => $request->get('destinator_id'), 
+        ];
+         
+        dd($avis);
+
+        return redirect()->route('single_user_mail');
+    }
+
     // public function coteCourrier($mail){
     //     return redirect()->route('valid_mails_arrived');
     // }

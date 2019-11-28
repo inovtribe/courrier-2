@@ -35,7 +35,7 @@
                                 Action
                               </button>
                               <div class="dropdown-menu">
-                                <a href="/courrier/single/{{ $item->id }}/arrived" class="dropdown-item">
+                                <a href="/courrier/user/{{ $item->id }}/arrived" class="dropdown-item">
                                   Consulter
                                 </a>
                                 <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">

@@ -40,6 +40,7 @@ class CreateCourriersTable extends Migration
             $table->string('status'); // Traitementen en cours, Non traité, Traité
             // $table->string('state'); // Attente d'avis, avis favorable, avis défavorable, aucun
             $table->boolean('valid')->nullable(); // Admin service pour valider courrier de son collaborateur n-1
+            $table->unsignedInteger('folder_id')->nullable();
             $table->timestamps();
         });
     }

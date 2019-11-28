@@ -23,7 +23,7 @@
     
     <div class="card card-small mb-4 container">
         <h4 class="text-center" style="padding: 10px;">{{ $courrier->subject }}</h4> <hr>
-        <div class="col pl-0"  align="">
+        <div class="col pl-20 pb-20"  align="">
           <a href="{{ route('valid_mails_arrived') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;
             Retour
@@ -31,7 +31,7 @@
         </div>
         
         <div class="row">
-          <div class="col-5 pl-50px">
+          <div class="col-5 pl-50px" style="padding-left: 30px;">
             <h5 class="pb-20" style="border-bottom: 1px solid lightgray; padding-top: 15px; color: orange">
               Informations sur le courrier
             </h5>
@@ -106,7 +106,7 @@
 
         <div class="row" style="padding: 50px 0 30px 0px">
           <div class="col"  align="">
-            <div class="col-3 pl-0">
+            <div class="col-3 pl-20">
                 <div class="btn-group">
                     <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
                         <i class="fas fa-share"></i> 

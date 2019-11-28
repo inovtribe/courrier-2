@@ -42,4 +42,8 @@ class Profile extends Model
     public function broadcastList() {
         return $this->hasOne(BroadcastList::class);
     }
+    
+    public function folder() {
+        return $this->hasOne(Folder::class);
+    }
 }
