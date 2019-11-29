@@ -59,7 +59,7 @@
               <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                 <label for="">Type de courrier</label>
               </div>
-              <input type="text" disabled value="{{ $courrier->type_id }}" class="form-control" placeholder="" name="subject">
+              <input type="text" disabled value="{{ $courrier->type->name }}" class="form-control" placeholder="" name="subject">
             </div> 
             
             <div class="input-group mb-3">

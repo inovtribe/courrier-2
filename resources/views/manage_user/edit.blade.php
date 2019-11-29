@@ -65,12 +65,18 @@
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="service_id">Service</label>
                   </div>
-                  <select name="service_id" class="form-control" id="service_id">
-                    <option value="" ></option>
-                    @foreach ($services as $item)
-                      <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
-                  </select>
+                  @if ($profile->service_id)
+                    <select name="service_id" class="form-control" id="service_id">
+                      <option value="{{ $profile->service_id }}"> {{ $profile->service->name }} </option>  
+                    </select>                    
+                  @else
+                    <select name="service_id" class="form-control" id="service_id">
+                      <option value="" ></option>
+                      @foreach ($services as $item)
+                        <option value="{{ $item->id }}" {{ old('service_id') ==  $item->id ? 'selected' : ''  }}>{{ $item->name }}</option>
+                      @endforeach
+                    </select>
+                  @endif
                   <div style="width: 100%; text-align: left; color: red">
                     <i style="font-size: 9px">{{ $errors->first('service_id') }}</i> 
                   </div>

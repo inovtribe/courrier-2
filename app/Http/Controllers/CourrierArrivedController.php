@@ -50,6 +50,8 @@ class CourrierArrivedController extends Controller
         $destinators = Profile::all();
         $attached_files = AtachedFile::where('courrier_id', $arrived_mail->id)->get();
 
+        // dd($arrived_mail->type);
+
         $context = [
             'courrier' => $arrived_mail,
             'destinators' => $destinators,
@@ -113,9 +115,7 @@ class CourrierArrivedController extends Controller
             // 'initiate_service_id'  => '',
             'deleted'               => false,
             'archived'              => false,
-            'noticed'               => false,
             'valid'                 => false,
-            'annotated'             => false,
             'mention'               => ' ',
             'status'                => ' ',
         ];

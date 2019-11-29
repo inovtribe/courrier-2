@@ -28,11 +28,16 @@
         <h4 class="text-center" style="padding: 10px;">Profile de {{ $profile->username }} </h4> <hr>
         <br />
         <div class="container">
-          <div class="col-6">
+          <div class="col-12">
             <p><b style="font-weight: bold">Nom et prénom</b>: {{ $profile->first_name }} {{ $profile->last_name }}</p>
             <p><b style="font-weight: bold">Téléphone</b>: {{ $profile->phone }}</p>
             <p><b style="font-weight: bold">Adresse</b>: {{ $profile->address }}</p>
-            <p><b style="font-weight: bold">Service</b>: {{ $profile->service_id }}</p>
+            @if ($profile->service_id)
+              <p><b style="font-weight: bold">Service</b>: {{ $profile->service->name }}</p>
+            @else
+              <p><b style="font-weight: bold">Service</b>: {{ 'Aucun service' }}</p>
+            @endif
+            
             <p><b style="font-weight: bold">Roles</b>: {{ $profile->role }}</p>
 
             <a href="/manage/users/{{ $profile->id }}/edit" class="btn btn-secondary">

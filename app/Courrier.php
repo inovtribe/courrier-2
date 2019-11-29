@@ -10,11 +10,15 @@ class Courrier extends Model
     protected $guarded = [];
 
     public function type() {
-        return $this->hasOne(Type::class);
+        return $this->belongsTo(Type::class);
     }
     
     public function attachedFiles() {
         return $this->hasMany(AttachedFile::class);
+    }
+    
+    public function demandesAvis() {
+        return $this->hasMany(DemandeAvis::class);
     }
     
     public function expeditor(){

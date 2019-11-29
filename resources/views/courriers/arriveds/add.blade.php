@@ -50,8 +50,8 @@
                     <label for="">Doucment joint</label>
                   </div>
                   <div class="custom-file">
-                    <input required type="file" name="attachment" id="attachment" class="custom-file-input" onchange="javascript:updateList()">
-                    <label for="attachment" class="custom-file-label">Choisissez un fichier...</label>
+                    <input required type="file" name="attachment" id="attachment" class="form-control" onchange="javascript:updateList()">
+                    {{-- <label for="attachment" class="custom-file-label">Choisissez un fichier...</label> --}}
                     <div class="pt-2" id="fileName">
                       {{-- <span class="file-name">finame.pdf<i class="fas fa-times-circle file-name-cross" id="cross"></i></span> --}}
                     </div>
@@ -300,11 +300,11 @@
           console.log("aaaaaaaaaaaaaaa")
           filelist[i] = input.files.item(i).name;
           fileobjectlist[i] = input.files.item(i);
-          HTML += '<span id="nameBlock" class="file-name">' + filelist[i] + '<i id="del" class="fas fa-times-circle file-name-cross"></i></span>'
+          // HTML += '<span id="nameBlock" class="file-name">' + filelist[i] + '<i id="del" class="fas fa-times-circle file-name-cross"></i></span>'
         }
 
-        HTML += "</div>";
-        output.innerHTML += HTML;
+        // HTML += "</div>";
+        // output.innerHTML += HTML;
 
         instance.loadDocument(fileobjectlist[0]);
       }

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Courrier;
 use App\Profile;
+use App\Type;
+use App\Service;
 
 
 
@@ -33,9 +35,17 @@ class NavComposer
                                           ->where('valid', false)
                                           ->where('category', 'arrived')
                                           ->count();
+
+        $courrier_type_count = Type::all()->count();
+        
+        $service_count = Service::all()->count();
+
+
         $view->with('variable', '')
              ->with('courrier_valid_count', $courrier_valid_count)
              ->with('courrier_arrived_count', $courrier_arrived_count)
+             ->with('courrier_type_count', $courrier_type_count)
+             ->with('service_count', $service_count)
              ->with('mes_courriers_a_traite', $mes_courriers_a_traite);
     }
 }

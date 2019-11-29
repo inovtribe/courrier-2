@@ -31,7 +31,7 @@
                         <tr>
                           <td> {{ $item->reference }}</td>
                           <td> {{ $item->subject }} </td>
-                          <td> {{ $item->type_id }} </td>
+                          <td> {{ $item->type->name }} </td>
                           <td> {{ $item->category }} </td>
                           <td> {{ $item->mail_date_arrived }} </td>
                           <td> 
