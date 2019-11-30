@@ -57,7 +57,7 @@
                     <select  name="responsable_id" class="form-control" id="responsable">
                         <option value="" disabled>Nom du responsable du service</option>
                         @foreach ($responsables as $item)
-                          <option value="{{ $item->id }}">{{ $item->username }}</option>
+                          <option value="{{ $item->id }}">{{ $item->first_name.' '.$item->last_name }}</option>
                         @endforeach
                     </select>
                 </div>

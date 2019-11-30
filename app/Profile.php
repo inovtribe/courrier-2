@@ -31,4 +31,9 @@ class Profile extends Model
     public function folder() {
         return $this->hasOne(Folder::class);
     }
+    
+
+    public function demandeAvisUser(){
+        return $this->belongsToMany(DemandeAvisUser::class, 'demande_avis_profile');
+    }
 }

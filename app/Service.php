@@ -14,7 +14,7 @@ class Service extends Model
     }
 
     public function profile(){
-        return $this->hasOne(Profile::class);
+        return $this->belongsTo(Profile::class, 'responsable_id');
     }
     
     public function foulder(){

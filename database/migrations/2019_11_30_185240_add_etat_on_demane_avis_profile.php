@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDemandeAvisTable extends Migration
+class AddEtatOnDemaneAvisProfile extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateDemandeAvisTable extends Migration
      */
     public function up()
     {
-        Schema::create('demande_avis', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('courrier_id')->nullable();
-            $table->dateTime('limit_date')->nullable();
+        Schema::table('demande_avis_users', function($table){
             $table->string('etat')->nullable();
-            $table->timestamps();
         });
     }
 
@@ -29,6 +25,6 @@ class CreateDemandeAvisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('demande_avis');
+        $table->dropColumn('etat');
     }
 }

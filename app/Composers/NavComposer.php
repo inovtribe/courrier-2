@@ -6,6 +6,8 @@ use App\Courrier;
 use App\Profile;
 use App\Type;
 use App\Service;
+use App\DemandeAvisUser;
+use App\Contact;
 
 
 
@@ -37,8 +39,10 @@ class NavComposer
                                           ->count();
 
         $courrier_type_count = Type::all()->count();
-        
         $service_count = Service::all()->count();
+        $contact_count = Contact::all()->count();
+        $demande_avis_count = DemandeAvisUser::where('profile_id', $profile->id)->count();
+        // $demande_avis_count = '';
 
 
         $view->with('variable', '')
@@ -46,6 +50,8 @@ class NavComposer
              ->with('courrier_arrived_count', $courrier_arrived_count)
              ->with('courrier_type_count', $courrier_type_count)
              ->with('service_count', $service_count)
+             ->with('demande_avis_count', $demande_avis_count)
+             ->with('contact_count', $contact_count)
              ->with('mes_courriers_a_traite', $mes_courriers_a_traite);
     }
 }

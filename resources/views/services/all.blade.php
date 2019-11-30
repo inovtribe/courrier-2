@@ -31,7 +31,7 @@
                         <tr>
                           <td> {{ $service->name }}</td>
                           <td> {{ $service->acronym }} </td>
-                          <td> {{ $service->responsable_id }} </td>
+                          <td> {{ $service->profile->first_name.' '.$service->profile->last_name }} </td>
                           <td> 12 </td>
                           <td> 
                             <div class="btn-group">

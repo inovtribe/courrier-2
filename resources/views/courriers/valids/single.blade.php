@@ -87,7 +87,7 @@
               <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                 <label for="">Expéditeur</label>
               </div>
-              <input type="text" disabled value="{{ $courrier->expeditor_id }}" class="form-control" placeholder="" name="subject">
+              <input type="text" disabled value="{{ $courrier->expeditor->first_name.' '.$courrier->expeditor->last_name }}" class="form-control" placeholder="" name="subject">
             </div> 
             
             {{-- <div class="input-group mb-3">

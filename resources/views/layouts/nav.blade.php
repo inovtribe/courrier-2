@@ -32,9 +32,9 @@
           </div>
       </a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link " href="{{ route('all_mails_internal') }}" style="padding: 15px">
-          {{-- <i class="fas fa-folder"></i> --}}
+          <i class="fas fa-folder"></i>
           <div style="display: inline-block;width: 100%;padding: 0px;">
             <div style="display: inline-block;width: 80%;float: left;">
               <span>Courriers internes</span>
@@ -44,7 +44,7 @@
             </div>
           </div>
       </a>
-    </li>
+    </li> --}}
     <li class="nav-item">
       <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px">
           {{-- <i class="fas fa-upload"></i> --}}
@@ -64,7 +64,7 @@
           {{-- <i class="fas fa-upload"></i> --}}
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">
-                <span>Mes courriers (à traiter)</span>
+                <span>Mes courriers (En traitement)</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
                 <span class="badge badge-pill badge-info">{{ $mes_courriers_a_traite ? $mes_courriers_a_traite : 0 }}</span>
@@ -73,36 +73,21 @@
           </div>
       </a>
     </li>
-    <li class="nav-item">
-      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
+    {{-- <li class="nav-item">
+      <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px">
       <a class="nav-link " href="#" style="padding: 15px">
-          {{-- <i class="fas fa-upload"></i> --}}
+          <i class="fas fa-upload"></i>
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">
                 <span>En attente d'avis</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
+                <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span>
                 <span class="badge badge-pill badge-info">{{ 0 }}</span>
               </div>
           </div>
       </a>
-    </li>
-    <li class="nav-item">
-      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
-      <a class="nav-link " href="{{ route('all_folders') }}" style="padding: 15px">
-          {{-- <i class="fas fa-upload"></i> --}}
-          <div style="display: inline-block;width: 100%;padding: 0px;">
-              <div style="display: inline-block;width: 80%;float: left;">
-                <span>Mes dossiers</span>
-              </div>
-              <div style="display: inline-block;width: 15%;float: right;">
-                {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
-                <span class="badge badge-pill badge-info">{{ 0 }}</span>
-              </div>
-          </div>
-      </a>
-    </li>
+    </li> --}}
     {{-- <li class="nav-item">
       <a class="nav-link " href="{{ route('not_treated_mails') }}" style="padding: 15px">
           {{-- <i class="fas fa-upload"></i> 
@@ -159,6 +144,34 @@
       </a>
     </li> --}}
     <li class="nav-item">
+      <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
+      {{-- <i class="fas fa-crosshairs"></i> --}}
+      <div style="display: inline-block;width: 100%;padding: 0px;">
+          <div style="display: inline-block;width: 80%;float: left;">
+            <span>Demandes d'avis</span>
+          </div>
+          <div style="display: inline-block;width: 15%;float: right;">
+            <span class="badge badge-pill badge-info">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span>
+          </div>
+      </div> 
+      </a>
+    </li>
+    <li class="nav-item">
+        {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
+        <a class="nav-link " href="{{ route('all_folders') }}" style="padding: 15px">
+            {{-- <i class="fas fa-upload"></i> --}}
+            <div style="display: inline-block;width: 100%;padding: 0px;">
+                <div style="display: inline-block;width: 80%;float: left;">
+                  <span>Mes dossiers</span>
+                </div>
+                <div style="display: inline-block;width: 15%;float: right;">
+                  {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
+                  <span class="badge badge-pill badge-info">{{ 0 }}</span>
+                </div>
+            </div>
+        </a>
+      </li>
+    <li class="nav-item">
       <a class="nav-link " href="{{ route('services') }}" style="padding: 15px">
       {{-- <i class="fas fa-crosshairs"></i> --}}
       <div style="display: inline-block;width: 100%;padding: 0px;">
@@ -179,7 +192,7 @@
             <span>Contact</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+            <span class="badge badge-pill badge-info">{{ $contact_count ? $contact_count : 0 }}</span>
           </div>
       </div>
       </a>

@@ -11,4 +11,8 @@ class DemandeAvis extends Model
     public function courrier(){
         return $this->belongsTo(Courrier::class);
     }
+
+    public function profiles(){
+        return $this->belongsToMany(DemandeAvisUser::class, 'demande_avis_profile');
+    }
 }

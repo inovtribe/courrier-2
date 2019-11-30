@@ -14,7 +14,7 @@ class Courrier extends Model
     }
     
     public function attachedFiles() {
-        return $this->hasMany(AttachedFile::class);
+        return $this->hasMany(AtachedFile::class);
     }
     
     public function demandesAvis() {
@@ -22,7 +22,7 @@ class Courrier extends Model
     }
     
     public function expeditor(){
-        return $this->hasOne(Contact::class);
+        return $this->belongsTo(Contact::class);
     }
     
     public function service(){

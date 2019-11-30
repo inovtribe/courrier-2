@@ -17,7 +17,7 @@ class CreateAvisTable extends Migration
             $table->increments('id');
             $table->string('etat'); //Vue, favorable, a compléter à éditer, à etc
             $table->string('motif');
-            $table->dateTime('limit_date');
+            $table->string('contenu')->nullable();
             $table->timestamps();
         });
     }

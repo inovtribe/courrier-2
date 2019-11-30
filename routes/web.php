@@ -44,8 +44,9 @@ Route::get('courrier/single/{mail}/internal','CourrierInternalController@showInt
 Route::get('courrier/add/internal', 'CourrierInternalController@addInternal')->name('add_internal_mail');
 
 Route::get('courrier/user/all', 'CourrierUserController@listCourriers')->name('all_my_mail');
-Route::get('courrier/user/{mail}/arrived','CourrierUserController@singleCourrier')->name('single_user_mail');
-Route::post('courrier/user/{mail}/avis/add','CourrierProcessingController@newAvis')->name('user_mail_new_avis');
+Route::get('courrier/user/{mail}','CourrierUserController@singleCourrier')->name('single_user_mail');
+Route::post('courrier/user/{mail}/avis/request/add','CourrierProcessingController@addAvisRequest')->name('user_mail_new_avis');
+Route::post('avis/courrier/{mail}/new','CourrierProcessingController@addNewAvis')->name('add_new_avis');
 
 
 Route::get('courrier/nottreated', 'CourrierController@not_treated')->name('not_treated_mails');
@@ -60,6 +61,8 @@ Route::get('courrier/single/{mail}','CourrierController@show')->name('single_mai
 Route::patch('courrier/{mail}/validate', 'CourrierProcessingController@validateCourrier')->name('validate_courrier');
 Route::patch('courrier/single/{mail}/forward', 'CourrierProcessingController@coteCourrier')->name('forward_mail');
 
+Route::get('avis/request/all', 'DemandeAvisController@list')->name('avis_request_all');
+Route::get('avis/courrier/{mail}','DemandeAvisController@showCourrier')->name('avis_mail');
 
 Route::get('contact', 'ContactsController@list')->name('contact');
 Route::get('contact/add', 'ContactsController@add')->name('add_contact');
