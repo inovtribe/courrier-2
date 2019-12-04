@@ -3,13 +3,13 @@
 
 @section('content')
 
-<div class="limiter">
+<div class="limiter" style="">
 		<div class="container-login100">
-			<div class="wrap-login100 p-t-40 p-b-20">
+			<div class="wrap-login100 p-t-20 p-b-20 p-l-20 p-r-20">
         <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
           {{ csrf_field() }}
-					<span class="login100-form-title p-b-40">
-						GEC  MINDDEVEL
+					<span class="login100-form-title p-b-15">
+						DareGED
 					</span>
 					<span class="login100-form-avatar">
 						<img src="{{ asset('style_login/images/avatar-01.png') }}" alt="AVATAR">

@@ -33,7 +33,7 @@
     
     <div class="card card-small mb-4 container">
       <div class="card-body p-10 pb-3">
-        <h4 class="text-center" style="padding: 10px;">Enregistrement d'un courrier arrivé</h4> <hr>
+        <h5 class="text-center" style="padding: 10px; text-transform: uppercase">Enregistrement d'un courrier arrivé</h5> <hr>
         <div class="col pl-0"  align="">
           <a href="{{ route('all_mails_arrived') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;
@@ -244,7 +244,7 @@
             </div>
             <div class="row" style="padding: 50px 0 30px 0px">
               <div class="col"  align="">
-                <a href="{{ route('all_mails_arrived') }}" class="btn btn-secondary">Annuller</a> &nbsp; &nbsp;
+                <a href="{{ route('all_mails_arrived') }}" class="btn btn-secondary">Annuler</a> &nbsp; &nbsp;
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
               </div>
             </div>

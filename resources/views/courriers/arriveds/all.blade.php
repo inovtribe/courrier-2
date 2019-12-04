@@ -13,7 +13,7 @@
             <span class="mb-0 mt-6" id="infoAlert"></span>
             <div class="card card-small mt-4 p-4 mb-4"> 
               
-                <table class="table table-striped">
+                <table class="table table-striped" id="example">
 
                     <thead>
                       <tr>
@@ -36,7 +36,7 @@
                           <td> {{ $item->mail_date_arrived }} </td>
                           <td> 
                             <div class="btn-group">
-                              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                              <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
                                 Action
                               </button>
                               <div class="dropdown-menu">
@@ -58,5 +58,15 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('customJS')
+
+<script>
+    $(document).ready(function(){
+      $('#example').DataTable();
+    });
+</script>
 
 @endsection

@@ -140,9 +140,13 @@
 
                         <div class="row" style="width: 100%">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-light mx-auto" style="display: block; margin-top: 50px; padding-left:20px; padding-right:20px">
-                                    Enregistrer
-                                </button>
+                                <div class="mx-auto"  style="display: block; margin-top: 50px; padding-left:40px; padding-right:20px">
+                                    <a href="/login" class="btn btn-secondary">Retour</a> &nbsp; &nbsp;
+                                    <button type="submit" class="btn btn-light">
+                                        Enregistrer
+                                    </button>
+                                </div>
+                                
                             </div>
                         </div>
                     </form>

@@ -8,7 +8,7 @@
             <h3>Tous les courriers départs</h3>
             <div class="row">
               <div class="col" style="padding-top: 20px;">
-                <a href="{{ route('add_outgoing_mail') }}" class="btn btn-md btn-primary">Nouveau courier départ</a> 
+                <a href="{{ route('add_outgoing_mail') }}" class="btn btn-md btn-success">Nouveau courier départ</a> 
               </div>
             </div>
             <span class="mb-0 mt-6" id="infoAlert"></span>
@@ -37,7 +37,7 @@
                           <td> {{ $item->mail_date_arrived }} </td>
                           <td> 
                             <div class="btn-group">
-                              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                              <button class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
                                 Action
                               </button>
                               <div class="dropdown-menu">

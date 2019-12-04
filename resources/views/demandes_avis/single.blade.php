@@ -126,7 +126,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form">
+        <form action="{{ route('add_new_avis', $courrier->id) }}" method="POST" class="form">
           {{ csrf_field() }}
           {{-- {{ method_field('PATCH') }} --}}
           <div class="modal-body">

@@ -49,6 +49,8 @@ class CourrierUserController extends Controller
         $destinators = Profile::all();
         $services = Service::all();
         $attached_files = AtachedFile::where('courrier_id', $my_courrier->id)->get();
+        $avis = $my_courrier->avis;
+        $avis_count = $my_courrier->avis->count();
 
         // dd($my_courrier->expeditor->first_name);
 
@@ -56,6 +58,8 @@ class CourrierUserController extends Controller
             'courrier' => $my_courrier,
             'destinators' => $destinators,
             'services' => $services,
+            'avis' => $avis,
+            'avis_count' => $avis_count,
             'attached_files' => $attached_files,
         ];
 

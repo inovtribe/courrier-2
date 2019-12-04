@@ -122,7 +122,7 @@ class CourrierProcessingController extends Controller
 
         AvisCourrier::create($avis_courrier);
         
-        $$avis_profile = [
+        $avis_profile = [
             'avis_id'           => $avis->id,
             'profile_id'       => $user->id,
         ];

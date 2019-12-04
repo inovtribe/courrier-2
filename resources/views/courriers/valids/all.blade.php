@@ -32,7 +32,7 @@
                           <td> {{ $item->mail_date_arrived }} </td>
                           <td> 
                             <div class="btn-group">
-                              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                              <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
                                 Action
                               </button>
                               <div class="dropdown-menu">

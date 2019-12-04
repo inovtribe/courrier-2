@@ -26,7 +26,7 @@
       <form action="/courrier/{{ $courrier->id }}/validate" method="POST" class="card-body p-10 pb-3" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('PATCH') }} 
-        <h4 class="text-center" style="padding: 10px;">{{ $courrier->subject }}</h4> <hr>
+        <h5 class="text-center" style="padding: 10px;text-transform:uppercase">{{ $courrier->subject }}</h5> <hr>
         <div class="col pl-0"  align="">
           <a href="{{ route('all_mails_arrived') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;
@@ -123,7 +123,7 @@
               <i class="fas fa-inbox"></i> Archiver
             </button> &nbsp; &nbsp; --}}
             <button type="submit" class="btn btn-success">
-              <i class="fab fa-success"></i>
+              <i class="fab fa-primary"></i>
               Valider
             </button>&nbsp; &nbsp;
           </div>
@@ -173,7 +173,7 @@
           <div class="modal-footer">
             <div class="col text-center">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
-              <button type="submit" class="btn btn-success">Valider</button>
+              <button type="submit" class="btn btn-primary">Valider</button>
             </div>
           </div>
         </form>

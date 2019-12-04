@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AvisProfile extends Model
 {
-    //
+    protected $guarded = [];
 }

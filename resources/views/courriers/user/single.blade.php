@@ -2,6 +2,13 @@
 
 @section('customCSS')
   <link href="{{ asset('bootstrap-datepicker/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+  <style>
+      @media (min-width: 576px){
+        .modal-dialog {
+            max-width: 800px;
+        }
+      }
+  </style>
 @endsection
 
 @section('content')
@@ -24,7 +31,7 @@
     
     <div class="card card-small mb-4 container">
         <h4 class="text-center" style="padding: 10px;">{{ $courrier->subject }}</h4> <hr>
-        <div class="row" style="padding-left: 20px">
+        <div class="row" style="padding-left: 20px; padding-bottom: 20px">
           <div class="col-5">
             <a href="{{ route('all_my_mail') }}" class="btn btn-light">
               <i class="fas fa-arrow-left"></i> &nbsp;
@@ -32,9 +39,19 @@
             </a>
           </div>
           <div class="col-7 pl-0">
-            <a class="btn btn-info" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
+            <a class="btn btn-info popover-dismiss" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Tous les avis" data-html="true" 
+              data-content=
+                "
+                  
+                    <p>
+                      @foreach($avis as $item)
+                        <b>{{ $item->motif }}</b><br />{{ $item->contenu }}. <br /><br />
+                      @endforeach
+                  </p>
+                  
+                ">
               <i class="fas fa-eye"></i> &nbsp;
-              Avis 5
+              Avis ({{ $avis_count }})
             </a>
             <span class="btn btn-warning text-white">
               <i class="fas fa-comment"></i> &nbsp;
@@ -116,6 +133,14 @@
             
           </div>
         </div>
+        <div class="row">
+            <div >
+                {{-- <h3 style="color:green;">WWW.SANWEBCORNER.COM</h3>
+                
+                <p>m</p> --}}
+            </div>
+            {{-- <button id="pdfview">Download PDF</button> --}}
+        </div>
 
         <div class="row" style="padding: 50px 0 30px 20px">
           <div class="col pl-20"  align="">
@@ -123,44 +148,12 @@
               <button class="btn btn-info" data-toggle="modal" data-target="#avisModalCenter">
                   {{-- <i class="fas fa-share"></i>  --}}
                   Demander avis
+              </button> &nbsp; &nbsp;
+
+              <button class="btn btn-success" data-toggle="modal" data-target="#responseModalCenter">
+                  <i class="fas fa-edit"></i> 
+                  Répondre
               </button>
-
-            <div class="col-3 pl-20">
-                
-
-
-                <div class="btn-group">
-                    
-
-                    {{-- <button type="submit" class="btn btn-success">
-                      <i class="fab fa-success"></i>
-                      Valider
-                    </button>&nbsp; &nbsp; 
-
-                    
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" data-toggle="modal" data-target="#cotationServiceModalCenter">
-                          Demander commentaire
-                        </a>
-                        {{-- <a class="dropdown-item" data-toggle="modal" data-target="#cotationPersonModalCenter">
-                          A une personne
-                        </a> --}}
-                        {{-- <a class="dropdown-item" data-toggle="modal" data-target="#cotationGroupModalCenter">
-                          A un groupe de personne
-                        </a> --}}
-                      {{-- <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
-                        A une personne
-                      </a>
-                      <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
-                        A un groupe personne
-                      </a>
-                    </div> --}}
-                  </div>
-            </div>
-            {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cotationModalCenter">
-              <i class="fas fa-share"></i>
-              A un service
-            </button>&nbsp; &nbsp; --}}
           </div>
         </div>
             
@@ -171,11 +164,11 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="avisModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="responseModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Demande d'avis sur courrier</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Création de la réponse</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -185,70 +178,315 @@
           {{-- {{ method_field('PATCH') }} --}}
           <div class="modal-body">
             <div class="row">
-              <div class="col-12 text-center" style="padding-bottom: 20px;">
-                Veuillez selectionner le destinataire pour avis
-              </div>  
-            </div>
-            <div class="row">
-              <div class="col-4" align="right">
-                <p style="vertical-align: -webkit-baseline-middle;display: inline;">
-                  Service <i class="fas fa-cog"></i>
-                </p>
-              </div>
-              <div class="col-8" style="padding-bottom: 20px;">
-                <select name="service_dealing_id" class="form-control" id="service" onchange="myFunction(this)">
-                  <option value=""></option>
-                  @foreach ($services as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4" align="right">
-                <p style="vertical-align: -webkit-baseline-middle;display: inline;">
-                  Destinataire <i class="fas fa-user"></i>
-                </p>
-              </div>
-              <div class="col-8" style="padding-bottom: 20px;">
-                <select name="destinator_id" class="form-control" id="emptyDropdown">
-                  <option value="" ></option>
-                </select>
-              </div>
-            </div>  
-            <div class="row">
-                <div class="col-4" align="right">
-                  <p style="vertical-align: -webkit-baseline-middle;display: inline;">
-                      Date limite <i class="fas fa-calendar"></i>
-                  </p>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="objet">Objet la réponse</label>
+                  <input type="text" name="objet" id="contenu" class="form-control">
                 </div>
-                <div class="col-8" style="padding-bottom: 20px;">
-                    <input class="form-control" name="limit_date" data-date-format="dd/mm/yyyy" id="datepicker">
+                <div class="form-group">
+                  <label for="contenu">Contenue de la réponse</label>
+                  <textarea class="form-control" name="contenu" id="contenu"></textarea>
                 </div>
-            </div>  
+                <div class="col" style="padding-left: 0px; padding-bottom: 300px;">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
+                  <button type="button" class="btn btn-primary" id="genRep">Générer réponse</button>
+                  <button type="submit" class="btn btn-success">Envoyer</button>
+                </div>
+
+
+                <div class="container" style="display: none" id="pdfdiv">
+                    <div class="offset-2 col-8">
+                        <div class="col-12">
+                            <p style="text-align: right">12 Dec. 2019</p>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                                Steph Cyrille <br />
+                                Agent du courrier <br />
+                                stephcyril.sc@gmail.com <br />
+                                Service du Courrier<br />
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p style="text-align: right">A monsieur John Doe</p>
+                        </div>
+                        <div class="col-12">
+                            <p style="text-align: justify">
+                                Monsieur, je viens au près de vous aujourd'hui lorem ipsum dollor all suiluim dor rol
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                            </p>
+                            <p style="text-align: justify">
+                                lorem ipsum dollor all suiluim dor rol lorem ipsum dollor all suiluim gor fout loram
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                            </p>
+                            <p style="text-align: justify">
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                            </p>
+                        </div>
+            
+                        <div class="col-12">
+                            <p style="">Cordialement</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+              </div>
+              <div class="col-6" id="editor"></div>
+              
+            </div>
           </div>
           <div class="modal-footer">
-            <div class="col text-center">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
-              <button type="submit" class="btn btn-success">Envoyer</button>
-            </div>
+            
           </div>
         </form>
           
       </div>
     </div>
   </div>
-  
+
+
+
+  <!-- Modal -->
+<div class="modal fade" id="avisModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Demande d'avis sur courrier</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form">
+        {{ csrf_field() }}
+        {{-- {{ method_field('PATCH') }} --}}
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 text-center" style="padding-bottom: 20px;">
+              Veuillez selectionner le destinataire pour avis
+            </div>  
+          </div>
+          <div class="row">
+            <div class="col-4" align="right">
+              <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                Service <i class="fas fa-cog"></i>
+              </p>
+            </div>
+            <div class="col-8" style="padding-bottom: 20px;">
+              <select name="service_dealing_id" class="form-control" id="service" onchange="myFunction(this)">
+                <option value=""></option>
+                @foreach ($services as $item)
+                  <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4" align="right">
+              <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                Destinataire <i class="fas fa-user"></i>
+              </p>
+            </div>
+            <div class="col-8" style="padding-bottom: 20px;">
+              <select name="destinator_id" class="form-control" id="emptyDropdown">
+                <option value="" ></option>
+              </select>
+            </div>
+          </div>  
+          <div class="row">
+              <div class="col-4" align="right">
+                <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                    Date limite <i class="fas fa-calendar"></i>
+                </p>
+              </div>
+              <div class="col-8" style="padding-bottom: 20px;">
+                  <input class="form-control" name="limit_date" data-date-format="dd/mm/yyyy" id="datepicker">
+              </div>
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <div class="col text-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
+            <button type="submit" class="btn btn-success">Envoyer</button>
+          </div>
+        </div>
+      </form>
+        
+    </div>
+  </div>
+</div>
+
+
+
+
 @endsection
 
 @section('customJS')
 
 <script src="{{ asset('webviewer/ui-legacy/external/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/popper.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bootstrap-4.3.1/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('webviewer/webviewer.js') }}" type="text/javascript"></script>
 <script src="{{ asset('bootstrap-datepicker/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/jspdf.debug.js') }}" type="text/javascript"></script>
+
+
+
+<script type="text/javascript">
+    $('#genRep').click(function () {
+      var doc = new jsPDF('p', 'pt', 'A4');
+      var objet = $('#objet');
+      console.log('objet', objet)
+      // var objet = $('#objet').val();
+      var contenu = $('#contenu').val();
+
+      margins = {
+        top: 40,
+        bottom: 60,
+        left: 50,
+        right: 20,
+        width: 490
+      }
+
+      var source = `
+                    <div class="container" style="line-height: 150%">
+                      <div class="offset-2 col-8">
+                          <div class="col-12">
+                              <p style="margin-left: 450px">Douala, le 12 Dec. 2019</p>
+                          </div>
+                          <div class="col-12">
+                              <p style="margin-top: 50px;">
+                                  Steph Cyrille <br />
+                                  Agent du courrier <br />
+                                  stephcyril.sc@gmail.com <br />
+                                  Service du Courrier<br />
+                              </p>
+                          </div>
+                          <div class="col-12">
+                              <p style="margin-top: 50px; margin-bottom: 20px"><u style="font-weight:bold">Objet:</u> ${objet}</p>
+                          </div>
+                          <div class="col-12">
+                              <p style="text-align: justify">
+                                  Monsieur, je viens au près de vous aujourd'hui lorem ipsum dollor all suiluim dor rol
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                              </p>
+                              <p style="text-align: justify">
+                                  ${contenu}
+                              </p>
+                              <p style="text-align: justify">
+                                  lorem ipsum dollor all suiluim dor rol lorem ipsum dollor all suiluim gor fout loram
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                              </p>
+                              <p style="text-align: justify">
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
+                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                              </p>
+                          </div>
+
+                          <div class="col-12">
+                              <p style="">Cordialement</p>
+                          </div>
+                      </div>
+                  </div>`
+
+      var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+    }
+
+      // doc.fromHTML($('#pdfdiv').html(), margins.left, margins.top, {
+      //     'width': margins.width,
+      //     'elementHandlers': specialElementHandlers
+      // });
+      
+      doc.fromHTML(source, margins.left, margins.top, {
+          'width': margins.width,
+          'elementHandlers': specialElementHandlers
+      });
+
+      var string = doc.output('datauristring');
+
+
+      WebViewer({
+        initialDoc: string,
+        // initialDoc: ' ',
+        // extension: 'pdf',
+        showLocalFilePicker: true,
+        path: 'http://localhost:8000/webviewer/',
+        fullAPI: true,
+      }, document.getElementById('editor')).then(instance => {
+        instance.loadDocument(initialDoc);
+      });  
+    });
+
+
+
+  $(window).on('load', function () {
+    // console.log("Yooooooooooooooooooooooooo")
+    // var doc = new jsPDF();
+    // doc.text('Hello world!', 20, 20);
+    // doc.text('This is client-side Javascript, pumping out a PDF.', 20, 30);
+    // doc.addPage('a6', 'l');
+    // doc.text('Do you like that?', 20, 20);
+    
+    // var specialElementHandlers = {
+    //     '#editor': function (element, renderer) {
+    //         return true;
+    //     }
+    // };
+    // doc.fromHTML($('#pdfdiv').html(), 15, 15, {
+    //         'width': 100,
+    //         'elementHandlers': specialElementHandlers
+    //     });
+
+    // var string = doc.output('datauristring');
+    // var embed = "<embed width='100%' height='100%' src='" + string + "'/>";
+
+
+    
+
+
+
+    // var x = window; 
+    // console.log('embed' ,x)
+    // x.document.open();
+    // x.document.write(embed);
+    // x.document.close();
+
+    // var specialElementHandlers = {
+    //     '#editor': function (element, renderer) {
+    //         return true;
+    //     }
+    // };
+    
+    // $('#pdfview').click(function () {
+    //     doc.fromHTML($('#pdfdiv').html(), 15, 15, {
+    //         'width': 100,
+    //         'elementHandlers': specialElementHandlers
+    //     });
+    //     doc.save('file.pdf');
+    // });
+  });
+</script>
+
 
 
 <script>
+
+
+
+
 
   $('.popover-dismiss').popover({
     trigger: 'focus'

@@ -23,7 +23,7 @@
     
     <div class="card card-small mb-4 container">
       <div class="card-body p-10 pb-3">
-        <h4 class="text-center" style="padding: 10px;">{{ $courrier->subject }}</h4> <hr>
+        <h5 class="text-center" style="padding: 10px; text-transform: uppercase">{{ $courrier->subject }}</h5> <hr>
         <div class="col pl-0"  align="">
           <a href="{{ route('all_mails_outgoing') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;
@@ -166,7 +166,7 @@
           </div>
           <div class="modal-footer">
             <div class="col text-center">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
               <button type="submit" class="btn btn-success">Valider</button>
             </div>
           </div>

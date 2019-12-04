@@ -33,7 +33,7 @@
     
     <div class="card card-small mb-4 container">
       <div class="card-body p-10 pb-3">
-        <h4 class="text-center" style="padding: 10px;">Enregistrement d'un courrier départ</h4> <hr>
+        <h5 class="text-center" style="padding: 10px; text-transform: uppercase">Enregistrement d'un courrier départ</h5> <hr>
         <div class="col pl-0"  align="">
           <a href="{{ route('all_mails_outgoing') }}" class="btn btn-light">
             <i class="fas fa-arrow-left"></i> &nbsp;

@@ -14,7 +14,7 @@
               <span>Courriers arrivés</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-info">{{ $courrier_arrived_count ? $courrier_arrived_count : 0 }}</span>
+              <span class="badge badge-pill badge-light text-primary">{{ $courrier_arrived_count ? $courrier_arrived_count : 0 }}</span>
             </div>
           </div>
       </a>
@@ -27,7 +27,7 @@
               <span>Courriers départ</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+              <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span>
             </div>
           </div>
       </a>
@@ -40,7 +40,7 @@
               <span>Courriers internes</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+              <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span>
             </div>
           </div>
       </a>
@@ -53,7 +53,7 @@
                 <span>Courriers valide</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span>
+                <span class="badge badge-pill badge-light text-primary">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span>
               </div>
           </div>
       </a>
@@ -67,8 +67,8 @@
                 <span>Mes courriers (En traitement)</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                <span class="badge badge-pill badge-info">{{ $mes_courriers_a_traite ? $mes_courriers_a_traite : 0 }}</span>
-                {{-- <span class="badge badge-pill badge-info">{{ 0 }}</span> --}}
+                <span class="badge badge-pill badge-light text-primary">{{ $mes_courriers_a_traite ? $mes_courriers_a_traite : 0 }}</span>
+                {{-- <span class="badge badge-pill badge-light text-primary">{{ 0 }}</span> --}}
               </div>
           </div>
       </a>
@@ -82,8 +82,8 @@
                 <span>En attente d'avis</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span>
-                <span class="badge badge-pill badge-info">{{ 0 }}</span>
+                <span class="badge badge-pill badge-light text-primary">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span>
+                <span class="badge badge-pill badge-light text-primary">{{ 0 }}</span>
               </div>
           </div>
       </a>
@@ -96,7 +96,7 @@
                 <span>Courriers Non Traités</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+                <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span>
               </div>
           </div>
       </a>
@@ -109,7 +109,7 @@
                 <span>Courriers Non Traités</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
-                <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+                <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span>
               </div>
           </div>
           <span>Courriers Traités</span>
@@ -123,7 +123,7 @@
               <span>Courriers Non Traités</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+              <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span>
             </div>
         </div>
         <span>Courriers Archivés</span>
@@ -137,7 +137,7 @@
             <span>Courriers Non Traités</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span>
+            <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span>
           </div>
       </div>
       <span>Courriers Supprimés</span>
@@ -151,7 +151,7 @@
             <span>Demandes d'avis</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            <span class="badge badge-pill badge-info">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span>
+            <span class="badge badge-pill badge-light text-primary">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span>
           </div>
       </div> 
       </a>
@@ -165,8 +165,8 @@
                   <span>Mes dossiers</span>
                 </div>
                 <div style="display: inline-block;width: 15%;float: right;">
-                  {{-- <span class="badge badge-pill badge-info">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
-                  <span class="badge badge-pill badge-info">{{ 0 }}</span>
+                  {{-- <span class="badge badge-pill badge-light text-primary">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
+                  <span class="badge badge-pill badge-light text-primary">{{ 0 }}</span>
                 </div>
             </div>
         </a>
@@ -179,7 +179,7 @@
             <span>Services</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            <span class="badge badge-pill badge-info">{{ $service_count ? $service_count : 0 }}</span>
+            <span class="badge badge-pill badge-light text-primary">{{ $service_count ? $service_count : 0 }}</span>
           </div>
       </div> 
       </a>
@@ -192,7 +192,7 @@
             <span>Contact</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            <span class="badge badge-pill badge-info">{{ $contact_count ? $contact_count : 0 }}</span>
+            <span class="badge badge-pill badge-light text-primary">{{ $contact_count ? $contact_count : 0 }}</span>
           </div>
       </div>
       </a>
@@ -205,7 +205,7 @@
             <span>Types de courrier</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            <span class="badge badge-pill badge-info">{{ $courrier_type_count ? $courrier_type_count : 0 }}</span>
+            <span class="badge badge-pill badge-light text-primary">{{ $courrier_type_count ? $courrier_type_count : 0 }}</span>
           </div>
       </div>
       </a>
@@ -218,7 +218,7 @@
             <span>Gestion des utilisateurs</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            {{-- <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span> --}}
+            {{-- <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span> --}}
           </div>
       </div>
       </a>
@@ -231,7 +231,7 @@
             <span>Profile</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            {{-- <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span> --}}
+            {{-- <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span> --}}
           </div>
       </div>
       </a>
@@ -244,7 +244,7 @@
               <span>Configurations</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              {{-- <span class="badge badge-pill badge-info">{{ $variable ? $variable : 0 }}</span> --}}
+              {{-- <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span> --}}
             </div>
         </div>
       </a>

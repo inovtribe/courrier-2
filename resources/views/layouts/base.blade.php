@@ -21,11 +21,18 @@
     	<link rel="stylesheet" href="{{ asset('shards/css/extras.1.1.0.min.css') }}">
 	    <!-- Custom styles for conids template -->
       <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.css') }}"/>
-
+			
       <script src="{{ asset('jquery/jquery-3.4.1.min.js') }}"></script>
       <script src="{{ asset('bootstrap-4.3.1/js/bootstrap.bundle.min.js') }}"></script>
       <script src="{{ asset('DataTables/datatables.js') }}"></script>
-
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+			<style>
+				.display-4 {
+						font-size: 1.915rem;
+						line-height: 1;
+						font-weight: bold;
+				}
+			</style>
       @yield('customCSS')
 
 
@@ -35,13 +42,13 @@
 		<div class="container-fluid">
 			<div class="row">
 			<!-- Main Sidebar -->
-			<aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+			<aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0 text-white" style="background-color: #2c54e6 !important">
 			  <div class="main-navbar">
 			    <nav class="navbar align-items-stretch navbar-light cds-bg-gold flex-md-nowrap border-bottom p-0">
 			      <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
 			        <div class="d-table m-auto">
 			          <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="">
-			          <span class="d-none d-md-inline ml-1" id="cds-title-top">MINDDEVEL-COURRIER</span>
+			          <span class="d-none d-md-inline ml-1 text-white display-4" id="cds-title-top">DareGEC</span>
 			        </div>
 			      </a>
 			      <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -57,21 +64,37 @@
 			</aside>
 			<!-- End Main Sidebar -->
 			<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
-			  <div class="main-navbar sticky-top" style="background-color: #fff; margin-bottom: 30px;">
+			  <div class="main-navbar sticky-top" style="margin-bottom: 30px; background-color: #2c54e6 !important">
 			    <!-- Main Navbar -->
 			    <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-			      <div class="main-navbar__search w-100 d-none d-md-flex d-lg-flex"
-			      style="margin: auto; padding-left: 15px">
-				  <!-- -->
-				  <i class="fas fa-folder" id="cds-cur-project"></i> &nbsp;&nbsp;
-			      <span class="cds-font-white" style="font-weight: 500; font-size: 17px">
-					&nbsp; GESTION NUMERIQUE DU COURRIER  &nbsp; </span>
-	              </div>
+			      <div class="main-navbar__search w-100 d-none d-md-flex d-lg-flex text-white"
+							style="margin: auto; padding-left: 15px">
+							<i class="fas fa-folder" id="cds-cur-project"></i> &nbsp;&nbsp;
+							<span class="cds-font-white" style="font-weight: 500; font-size: 17px; width: 70%;">
+								&nbsp; GESTION NUMERIQUE DU COURRIER  &nbsp; 
+							</span>
+
+							<form action="" method="get" class="form-inline" style="width: 100%;">
+								
+									<input type="text" name="keySearch" placeholder="Rechercher un courrier ici" class="form-control mr-sm-2 search-line" style="width: 70%;"/>
+								
+									<button class="btn btn-light">Rechercher</button>
+
+							</form>
+
+						</div>
 			      <ul class="navbar-nav cds-border-left flex-row">
 			        <li class="nav-item dropdown">
-			          <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								<a class="nav-link dropdown-toggle text-nowrap px-3 btn btn-outline-light" 
+									data-toggle="dropdown" 
+									href="#" 
+									role="button" 
+									aria-haspopup="true" 
+									aria-expanded="false"
+									style="margin: 10px"
+									>
                   <!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
-			            <span class="d-none d-md-inline-block cds-font-white">
+			            <span class="d-none d-md-inline-block cds-font-white text-white">
                     <i class="fas fa-user"></i>  
                     User
                   </span>
@@ -80,14 +103,21 @@
 			            <a class="dropdown-item" href="#">
 			              <i class="fas fa-user"></i>&nbsp;&nbsp; Profil</a>
 			            <div class="dropdown-divider"></div>
-									<a class="dropdown-item text-danger" href="#">
+									<a class="dropdown-item text-white" href="#">
 			              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
 			          </div>
 							</li>
 			        <li class="nav-item dropdown">
-			          <a class="nav-link text-nowrap px-3" href="{{ route('logout') }}" role="button" aria-haspopup="true" aria-expanded="false">
+								<a 
+									class="nav-link text-nowrap px-3 btn btn-outline-light" 
+									href="{{ route('logout') }}" 
+									role="button" 
+									aria-haspopup="true" 
+									aria-expanded="false"
+									style="margin: 10px"
+									>
                   <!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
-			            <span class="d-none d-md-inline-block cds-font-white text-danger">
+			            <span class="d-none d-md-inline-block cds-font-white text-white">
 										<i class="fas fa-sign-out-alt"></i>
 										Déconnexion
                   </span>
