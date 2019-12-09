@@ -8,6 +8,7 @@ class Courrier extends Model
 {
     //
     protected $guarded = [];
+    protected $dates = ['mail_date_arrived'];
 
     public function type() {
         return $this->belongsTo(Type::class);
@@ -33,6 +34,10 @@ class Courrier extends Model
         return $this->belongsToMany(Profile::class, 'expeditor_internal_id', 'destinator_id');
     }
     
+    public function createdBy(){
+        return $this->belongsTo(Profile::class, 'created_by');
+    }
+
     public function folder(){
         return $this->belongsTo(Folder::class);
     }

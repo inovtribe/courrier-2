@@ -18,6 +18,9 @@ class NavComposer
         $user = Auth::user();
         $user_id = $user->id; 
         $profile = Profile::where('user_id', $user_id)->firstOrFail();
+
+        $role = $profile->roles;
+        // dd($role);
         $mes_courriers_a_traite = Courrier::where('destinator_id', $profile->id)->count();
 
 
@@ -46,6 +49,7 @@ class NavComposer
 
 
         $view->with('variable', '')
+             ->with('role', $role)
              ->with('courrier_valid_count', $courrier_valid_count)
              ->with('courrier_arrived_count', $courrier_arrived_count)
              ->with('courrier_type_count', $courrier_type_count)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use View;
 
 use App\Courrier;
@@ -83,9 +84,13 @@ class CourrierArrivedController extends Controller
 
     public function postAddArrived(Request $request) {
         // dd(public_path());
+        $user = Auth::user(); 
+        $profile = Profile::where('user_id', $user->id)->firstOrFail();
+
         $uniqid = uniqid();
         $rand_start = rand(1,8);
-        $ref = 'mail-'.date("d").date("m").date("Y").substr($uniqid, $rand_start, 5);
+        // Au lieu de mail recupere le service auquel appartient le current user
+        $ref = $profile->service->acronym.'-'.date("d").date("m").date("Y").substr($uniqid, $rand_start, 5);
 
         // Set all dates with datetime
         $d1 = date($request->get('mail_date').' H:i:s');
@@ -102,6 +107,7 @@ class CourrierArrivedController extends Controller
         $values = [
             'reference'            => strtoupper($ref),
             'category'             => $request->get('category'),
+            'created_by'           => $profile->id,
             'type_id'              => $request->get('type_id'),
             'priority'             => $request->get('priority'),
             'confidentiality'      => $request->get('confidentiality'),
@@ -139,7 +145,7 @@ class CourrierArrivedController extends Controller
 
         AtachedFile::create($data);
         // dd($data);
-        return redirect()->route('all_mails_arrived');
+        return redirect()->route('single_decharge', $courrier->id);
 
     }
 }

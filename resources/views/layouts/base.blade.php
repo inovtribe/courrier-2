@@ -84,6 +84,20 @@
 
 						</div>
 			      <ul class="navbar-nav cds-border-left flex-row">
+							<li class="nav-item">
+								<a 
+									class="nav-link text-nowrap px-3" 
+									href="#" 
+									style="margin: 10px"
+									>
+									<!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
+									<span class="d-none d-md-inline-block cds-font-white text-white">
+										<i class="fas fa-bell"></i>
+										<span class="badge badge-pill badge-light text-primary"> 0 </span>
+									</span>
+								</a>
+							</li>
+
 			        <li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle text-nowrap px-3 btn btn-outline-light" 
 									data-toggle="dropdown" 
@@ -103,25 +117,9 @@
 			            <a class="dropdown-item" href="#">
 			              <i class="fas fa-user"></i>&nbsp;&nbsp; Profil</a>
 			            <div class="dropdown-divider"></div>
-									<a class="dropdown-item text-white" href="#">
+									<a class="dropdown-item" href="{{ route('logout') }}" >
 			              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
 			          </div>
-							</li>
-			        <li class="nav-item dropdown">
-								<a 
-									class="nav-link text-nowrap px-3 btn btn-outline-light" 
-									href="{{ route('logout') }}" 
-									role="button" 
-									aria-haspopup="true" 
-									aria-expanded="false"
-									style="margin: 10px"
-									>
-                  <!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
-			            <span class="d-none d-md-inline-block cds-font-white text-white">
-										<i class="fas fa-sign-out-alt"></i>
-										Déconnexion
-                  </span>
-			          </a>
 							</li>
 			      </ul>
 			      <nav class="nav"><div style="width:40px"></div></nav>

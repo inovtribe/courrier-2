@@ -57,6 +57,10 @@ Route::get('courrier/add', 'CourrierController@add')->name('add_mail');
 Route::post('courrier/add','CourrierController@addMail')->name('add_mail_post');
 Route::get('courrier/single/{mail}','CourrierController@show')->name('single_mail');
 
+// Routes for decharge
+Route::get('courrier/{mail}/decharge','DechargeController@single')->name('single_decharge');
+
+
 // Processing each update on courrier
 Route::patch('courrier/{mail}/validate', 'CourrierProcessingController@validateCourrier')->name('validate_courrier');
 Route::patch('courrier/single/{mail}/forward', 'CourrierProcessingController@coteCourrier')->name('forward_mail');

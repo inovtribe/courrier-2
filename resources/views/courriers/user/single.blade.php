@@ -180,8 +180,16 @@
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label for="objet">Objet la réponse</label>
-                  <input type="text" name="objet" id="contenu" class="form-control">
+                    <label for="contenu">Type de réponse</label>
+                  <select class="form-control" name="typeDeReponse" id="typeDeReponse">
+                    <option value="Note">Note</option>
+                    <option value="Circulaire">Circulaire</option>
+                    <option value="Lettre d'approbation">Lettre d'approbation</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="objet_reponse">Objet la réponse</label>
+                  <input type="text" name="objet_reponse" id="objet_reponse" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="contenu">Contenue de la réponse</label>
@@ -193,47 +201,6 @@
                   <button type="submit" class="btn btn-success">Envoyer</button>
                 </div>
 
-
-                <div class="container" style="display: none" id="pdfdiv">
-                    <div class="offset-2 col-8">
-                        <div class="col-12">
-                            <p style="text-align: right">12 Dec. 2019</p>
-                        </div>
-                        <div class="col-12">
-                            <p>
-                                Steph Cyrille <br />
-                                Agent du courrier <br />
-                                stephcyril.sc@gmail.com <br />
-                                Service du Courrier<br />
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <p style="text-align: right">A monsieur John Doe</p>
-                        </div>
-                        <div class="col-12">
-                            <p style="text-align: justify">
-                                Monsieur, je viens au près de vous aujourd'hui lorem ipsum dollor all suiluim dor rol
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
-                            </p>
-                            <p style="text-align: justify">
-                                lorem ipsum dollor all suiluim dor rol lorem ipsum dollor all suiluim gor fout loram
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
-                            </p>
-                            <p style="text-align: justify">
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
-                            </p>
-                        </div>
-            
-                        <div class="col-12">
-                            <p style="">Cordialement</p>
-                        </div>
-                    </div>
-                </div>
 
 
 
@@ -255,7 +222,7 @@
 
   <!-- Modal -->
 <div class="modal fade" id="avisModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Demande d'avis sur courrier</h5>
@@ -263,7 +230,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form">
+      <form action="{{ route('user_mail_new_avis',$courrier->id) }}" method="POST" class="form">
         {{ csrf_field() }}
         {{-- {{ method_field('PATCH') }} --}}
         <div class="modal-body">
@@ -341,10 +308,11 @@
 <script type="text/javascript">
     $('#genRep').click(function () {
       var doc = new jsPDF('p', 'pt', 'A4');
-      var objet = $('#objet');
-      console.log('objet', objet)
-      // var objet = $('#objet').val();
+
+      var objet = $('#objet_reponse').val();
       var contenu = $('#contenu').val();
+
+      console.log("objets et contenu", objet, contenu)
 
       margins = {
         top: 40,
