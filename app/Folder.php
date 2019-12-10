@@ -8,7 +8,7 @@ class Folder extends Model
 {
     protected $guarded = [];
 
-    public function profile(){
+    public function responsable(){
         return $this->belongsTo(Profile::class);
     } 
     

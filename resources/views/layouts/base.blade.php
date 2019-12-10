@@ -32,6 +32,15 @@
 						line-height: 1;
 						font-weight: bold;
 				}
+				.main-navbar .navbar .navbar-nav .dropdown-menu.custom {
+					position: inherit;
+					right: 0;
+					width: 100%;
+					padding: 10px;
+					border-top-left-radius: 0;
+					border-top-right-radius: 0;
+					border-top: none;
+				}
 			</style>
       @yield('customCSS')
 
@@ -74,28 +83,42 @@
 								&nbsp; GESTION NUMERIQUE DU COURRIER  &nbsp; 
 							</span>
 
-							<form action="" method="get" class="form-inline" style="width: 100%;">
+							{{-- <form action="" method="get" class="form-inline" style="width: 100%;">
 								
 									<input type="text" name="keySearch" placeholder="Rechercher un courrier ici" class="form-control mr-sm-2 search-line" style="width: 70%;"/>
 								
 									<button class="btn btn-light">Rechercher</button>
 
-							</form>
+							</form> --}}
 
 						</div>
 			      <ul class="navbar-nav cds-border-left flex-row">
 							<li class="nav-item">
 								<a 
-									class="nav-link text-nowrap px-3" 
+									class="nav-link text-nowrap px-3 nav-link dropdown-toggle" 
 									href="#" 
 									style="margin: 10px"
+									role="button" 
+									data-toggle="dropdown"
+									aria-haspopup="true" 
+									aria-expanded="false"
 									>
 									<!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
 									<span class="d-none d-md-inline-block cds-font-white text-white">
 										<i class="fas fa-bell"></i>
-										<span class="badge badge-pill badge-light text-primary"> 0 </span>
+										<span class="badge badge-pill badge-light text-primary"> {{ $user_notifs_count ? $user_notifs_count : 0 }} </span>
 									</span>
 								</a>
+								<div class="dropdown-menu dropdown-menu-small custom">
+									@foreach ($user_notifs as $item)
+										<a class="dropdown-item" href="#">
+											{!! $item->notifications->read === 1 ? "" : html_entity_decode("(<i style='color:green; font-weight: bold'>Nouveau</i>)") !!}<br />
+											<span style="font-weight: bold"> {{ $item->notifications->title }} </span> <br>
+											<span> {{ $item->notifications->message }} </span>
+										</a>
+										<div class="dropdown-divider"></div>
+									@endforeach
+								</div>
 							</li>
 
 			        <li class="nav-item dropdown">
@@ -115,7 +138,8 @@
 			          </a>
 			          <div class="dropdown-menu dropdown-menu-small">
 			            <a class="dropdown-item" href="#">
-			              <i class="fas fa-user"></i>&nbsp;&nbsp; Profil</a>
+										<i class="fas fa-user"></i>&nbsp;&nbsp; Profil
+									</a>
 			            <div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{ route('logout') }}" >
 			              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>

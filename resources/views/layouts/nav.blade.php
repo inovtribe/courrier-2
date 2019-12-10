@@ -64,6 +64,7 @@
       </a>
     </li>
     @endif
+    @if ($role === 'SG' || $role === 'AT' || $role === 'ADMIN')
     <li class="nav-item">
       <a class="nav-link " href="{{ route('all_my_mail') }}" style="padding: 15px">
       {{-- <a class="nav-link " href="#" style="padding: 15px"> --}}
@@ -150,6 +151,22 @@
       </a>
     </li> --}}
     <li class="nav-item">
+      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
+      <a class="nav-link " href="{{ route('all_folders') }}" style="padding: 15px">
+          {{-- <i class="fas fa-upload"></i> --}}
+          <div style="display: inline-block;width: 100%;padding: 0px;">
+              <div style="display: inline-block;width: 80%;float: left;">
+                <span>Dossiers</span>
+              </div>
+              <div style="display: inline-block;width: 15%;float: right;">
+                <span class="badge badge-pill badge-light text-primary">{{ $folders_count ? $folders_count : 0 }}</span>
+                {{-- <span class="badge badge-pill badge-light text-primary">{{ 0 }}</span> --}}
+              </div>
+          </div>
+      </a>
+    </li>
+    @endif
+    <li class="nav-item">
       <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
       {{-- <i class="fas fa-crosshairs"></i> --}}
       <div style="display: inline-block;width: 100%;padding: 0px;">
@@ -162,19 +179,18 @@
       </div> 
       </a>
     </li>
+    
     <li class="nav-item">
-      {{-- <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px"> --}}
-      <a class="nav-link " href="{{ route('all_folders') }}" style="padding: 15px">
-          {{-- <i class="fas fa-upload"></i> --}}
-          <div style="display: inline-block;width: 100%;padding: 0px;">
-              <div style="display: inline-block;width: 80%;float: left;">
-                <span>Mes dossiers</span>
-              </div>
-              <div style="display: inline-block;width: 15%;float: right;">
-                {{-- <span class="badge badge-pill badge-light text-primary">{{ $courrier_valid_count ? $courrier_valid_count : 0 }}</span> --}}
-                <span class="badge badge-pill badge-light text-primary">{{ 0 }}</span>
-              </div>
+      <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
+      {{-- <i class="fas fa-crosshairs"></i> --}}
+      <div style="display: inline-block;width: 100%;padding: 0px;">
+          <div style="display: inline-block;width: 80%;float: left;">
+            <span>Mes avis</span>
           </div>
+          <div style="display: inline-block;width: 15%;float: right;">
+            {{-- <span class="badge badge-pill badge-light text-primary">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span> --}}
+          </div>
+      </div> 
       </a>
     </li>
     @if ($role === 'ADMIN')
@@ -232,32 +248,20 @@
         </div>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{ route('settings') }}" style="padding: 15px">
+          {{-- <i class="fas fa-cog"></i> --}}
+          <div style="display: inline-block;width: 100%;padding: 0px;">
+              <div style="display: inline-block;width: 80%;float: left;">
+                <span>Configurations</span>
+              </div>
+              <div style="display: inline-block;width: 15%;float: right;">
+                {{-- <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span> --}}
+              </div>
+          </div>
+        </a>
+      </li>
     @endif
-    <li class="nav-item">
-      <a class="nav-link " href="{{ route('profile') }}" style="padding: 15px">
-      {{-- <i class="fas fa-exchange-alt"></i> --}}
-      <div style="display: inline-block;width: 100%;padding: 0px;">
-          <div style="display: inline-block;width: 80%;float: left;">
-            <span>Profile</span>
-          </div>
-          <div style="display: inline-block;width: 15%;float: right;">
-            {{-- <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span> --}}
-          </div>
-      </div>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " href="{{ route('settings') }}" style="padding: 15px">
-        {{-- <i class="fas fa-cog"></i> --}}
-        <div style="display: inline-block;width: 100%;padding: 0px;">
-            <div style="display: inline-block;width: 80%;float: left;">
-              <span>Configurations</span>
-            </div>
-            <div style="display: inline-block;width: 15%;float: right;">
-              {{-- <span class="badge badge-pill badge-light text-primary">{{ $variable ? $variable : 0 }}</span> --}}
-            </div>
-        </div>
-      </a>
-    </li>
   </ul>
 </div>

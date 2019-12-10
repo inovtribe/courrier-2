@@ -17,7 +17,6 @@ class CreateDemandeAvisTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('courrier_id')->nullable();
             $table->dateTime('limit_date')->nullable();
-            $table->string('etat')->nullable();
             $table->timestamps();
         });
     }

@@ -47,6 +47,8 @@ class CreateCourriersTable extends Migration
             $table->boolean('valid')->nullable(); // Admin service pour valider courrier de son collaborateur n-1
             $table->integer('folder_id')->unsigned()->nullable();
             $table->foreign('folder_id')->references('id')->on('folders')->onDelete('cascade');
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->foreign('created_by')->references('id')->on('profiles')->onDelete('cascade');
             $table->timestamps();
         });
     }

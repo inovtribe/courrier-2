@@ -38,7 +38,7 @@
               <p><b style="font-weight: bold">Service</b>: {{ 'Aucun service' }}</p>
             @endif
             
-            <p><b style="font-weight: bold">Roles</b>: {{ $profile->role }}</p>
+            <p><b style="font-weight: bold">Roles</b>: {{ $profile->roles }}</p>
 
             <a href="/manage/users/{{ $profile->id }}/edit" class="btn btn-secondary">
               Modifier

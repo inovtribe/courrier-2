@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Contact Us</h1>
+    <h2>Tous les contacts</h2>
 
     <div class="row">
         <div class="col">

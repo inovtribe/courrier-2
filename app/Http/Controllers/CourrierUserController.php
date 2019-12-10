@@ -12,6 +12,7 @@ use App\Type;
 use App\Contact;
 use App\Profile;
 use App\AtachedFile;
+use App\Folder;
 
 
 
@@ -24,7 +25,8 @@ class CourrierUserController extends Controller
         $this->middleware('auth');
 
         View::composers([
-            'App\Composers\NavComposer' => ['layouts.nav']
+            'App\Composers\NavComposer' => ['layouts.nav'],
+            'App\Composers\NavComposer' => ['layouts.base']
         ]);
     }
 
@@ -48,6 +50,7 @@ class CourrierUserController extends Controller
         $my_courrier = Courrier::where('id', $courrier)->firstOrFail();
         $destinators = Profile::all();
         $services = Service::all();
+        $folders = Folder::all();
         $attached_files = AtachedFile::where('courrier_id', $my_courrier->id)->get();
         $avis = $my_courrier->avis;
         $avis_count = $my_courrier->avis->count();
@@ -58,6 +61,7 @@ class CourrierUserController extends Controller
             'courrier' => $my_courrier,
             'destinators' => $destinators,
             'services' => $services,
+            'folders' => $folders,
             'avis' => $avis,
             'avis_count' => $avis_count,
             'attached_files' => $attached_files,

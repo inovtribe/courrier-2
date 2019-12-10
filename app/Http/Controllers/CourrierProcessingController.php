@@ -28,7 +28,8 @@ class CourrierProcessingController extends Controller
         $this->middleware('auth');
 
         View::composers([
-            'App\Composers\NavComposer' => ['layouts.nav']
+            'App\Composers\NavComposer' => ['layouts.nav'],
+            'App\Composers\NavComposer' => ['layouts.base']
         ]);
     }
 
@@ -69,6 +70,20 @@ class CourrierProcessingController extends Controller
         $courrier->update($data);
         
         return redirect()->route('valid_mails_arrived');
+    }
+    
+    
+    public function addToFolder($courrier, Request $request){
+        $courrier = Courrier::where('id', $courrier)->firstOrFail();
+        // dd($request->user());
+        
+        $data = [
+            'folder_id' => $request->get('folder_id'),
+        ];
+  
+        $courrier->update($data);
+        
+        return redirect()->route('all_folders');
     }
 
     public function addAvisRequest($courrier, Request $request)

@@ -15,6 +15,7 @@ class DemandeAvisUser extends Migration
     {
         Schema::create('demande_avis_users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('etat')->nullable();
             $table->integer('demande_avis_id')->unsigned()->nullable();
             $table->foreign('demande_avis_id')->references('id')->on('demande_avis')->onDelete('cascade');
             $table->integer('profile_id')->unsigned()->nullable();

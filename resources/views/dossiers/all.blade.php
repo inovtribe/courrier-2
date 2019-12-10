@@ -7,14 +7,14 @@
             <h3>Tous les Dossier</h3>
             <div class="row">
               <div class="col" style="padding-top: 20px;">
-                {{-- <a href="{{ route('add_arrived_mail') }}" class="btn btn-md btn-primary">Nouveau Dossier</a>  --}}
-                <a href="#" class="btn btn-md btn-primary">Nouveau Dossier</a> 
+                <a href="{{ route('folder_form') }}" class="btn btn-md btn-primary">Nouveau Dossier</a> 
+                {{-- <a href="#" class="btn btn-md btn-primary">Nouveau Dossier</a>  --}}
               </div>
             </div>
             <span class="mb-0 mt-6" id="infoAlert"></span>
             <div class="card card-small mt-4 p-4 mb-4"> 
               
-                <table class="table table-striped">
+                <table class="table table-striped" id="example">
 
                     <thead>
                       <tr>
@@ -35,11 +35,11 @@
                           <td> {{ $item->open_date }} </td>
                           <td> 
                             <div class="btn-group">
-                              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
+                              <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">
                                 Action
                               </button>
                               <div class="dropdown-menu">
-                                <a href="/courrier/single/{{ $item->id }}/arrived" class="dropdown-item">
+                                <a href="{{ route('single_folder', $item->id) }}" class="dropdown-item">
                                   Consulter
                                 </a>
                                 <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
@@ -58,4 +58,13 @@
         </div>
     </div>
 
+@endsection
+
+@section('customJS')
+    
+<script>
+    $(document).ready(function(){
+      $('#example').DataTable();
+    });
+</script>
 @endsection

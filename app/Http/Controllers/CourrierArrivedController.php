@@ -12,6 +12,8 @@ use App\Type;
 use App\Contact;
 use App\Profile;
 use App\AtachedFile;
+use App\UserNotification;
+use App\Notification;
 
 
 
@@ -27,7 +29,8 @@ class CourrierArrivedController extends Controller
         $this->middleware('auth');
         
         View::composers([
-            'App\Composers\NavComposer' => ['layouts.nav']
+            'App\Composers\NavComposer' => ['layouts.nav'],
+            'App\Composers\NavComposer' => ['layouts.base']
         ]);
     }
 
@@ -145,6 +148,22 @@ class CourrierArrivedController extends Controller
 
         AtachedFile::create($data);
         // dd($data);
+
+        $notification = Notification::create([
+            'title' => "Nouveau courrier arrivé",
+            'message' => "Un nouveau courrier arrivé a été enregistré",
+            'read' => false
+        ]);
+        $listDiffusion = Profile::where('roles', 'SC')->get();
+
+        foreach ($listDiffusion as $key => $value) {
+            $data = [
+                'notification_id' => $notification->id,
+                'profile_id' => $value->id,
+            ];
+            UserNotification::create($data);
+        }
+
         return redirect()->route('single_decharge', $courrier->id);
 
     }

@@ -8,6 +8,8 @@ use App\Type;
 use App\Service;
 use App\DemandeAvisUser;
 use App\Contact;
+use App\Folder;
+use App\UserNotification;
 
 
 
@@ -42,9 +44,12 @@ class NavComposer
                                           ->count();
 
         $courrier_type_count = Type::all()->count();
+        $folders_count = Folder::all()->count();
         $service_count = Service::all()->count();
         $contact_count = Contact::all()->count();
         $demande_avis_count = DemandeAvisUser::where('profile_id', $profile->id)->count();
+        $user_notifs = UserNotification::where('profile_id', 4)->get();
+        $user_notifs_count = UserNotification::where('profile_id', 4)->count();
         // $demande_avis_count = '';
 
 
@@ -53,6 +58,9 @@ class NavComposer
              ->with('courrier_valid_count', $courrier_valid_count)
              ->with('courrier_arrived_count', $courrier_arrived_count)
              ->with('courrier_type_count', $courrier_type_count)
+             ->with('folders_count', $folders_count)
+             ->with('user_notifs', $user_notifs)
+             ->with('user_notifs_count', $user_notifs_count)
              ->with('service_count', $service_count)
              ->with('demande_avis_count', $demande_avis_count)
              ->with('contact_count', $contact_count)

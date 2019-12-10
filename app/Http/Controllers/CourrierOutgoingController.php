@@ -25,7 +25,8 @@ class CourrierOutgoingController extends Controller
         $this->middleware('auth');
         
         View::composers([
-            'App\Composers\NavComposer' => ['layouts.nav']
+            'App\Composers\NavComposer' => ['layouts.nav'],
+            'App\Composers\NavComposer' => ['layouts.base']
         ]);
     }
 

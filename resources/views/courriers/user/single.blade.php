@@ -153,7 +153,14 @@
               <button class="btn btn-success" data-toggle="modal" data-target="#responseModalCenter">
                   <i class="fas fa-edit"></i> 
                   Répondre
-              </button>
+              </button> &nbsp; &nbsp;
+
+              @if (!$courrier->folder_id)
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#folderModalCenter">
+                  <i class="fas fa-folder"></i>
+                  Ajouter au dossier
+                </button>
+              @endif
           </div>
         </div>
             
@@ -289,6 +296,53 @@
   </div>
 </div>
 
+  
+<!-- Modal -->
+<div class="modal fade" id="folderModalCenter" tabindex="-1" role="dialog" aria-labelledby="folderModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ajouter au dossier</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('add_mail_to_folder',$courrier->id) }}" method="POST" class="form">
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 text-center" style="padding-bottom: 20px;">
+              Veuillez selectionner le dossier du courrier 
+            </div>  
+          </div>
+          <div class="row">
+            <div class="col-4" align="right">
+              <p style="vertical-align: -webkit-baseline-middle;display: inline;">
+                Dossier <i class="fas fa-folder"></i>
+              </p>
+            </div>
+            <div class="col-8" style="padding-bottom: 20px;">
+              <select name="folder_id" class="form-control" id="folder_id">
+                <option value=""></option>
+                @foreach ($folders as $item)
+                  <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <div class="col text-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+          </div>
+        </div>
+      </form>
+        
+    </div>
+  </div>
+</div>
 
 
 

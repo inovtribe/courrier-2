@@ -64,6 +64,7 @@ Route::get('courrier/{mail}/decharge','DechargeController@single')->name('single
 // Processing each update on courrier
 Route::patch('courrier/{mail}/validate', 'CourrierProcessingController@validateCourrier')->name('validate_courrier');
 Route::patch('courrier/single/{mail}/forward', 'CourrierProcessingController@coteCourrier')->name('forward_mail');
+Route::patch('courrier/single/{mail}/folder/add', 'CourrierProcessingController@addToFolder')->name('add_mail_to_folder');
 
 Route::get('avis/request/all', 'DemandeAvisController@list')->name('avis_request_all');
 Route::get('avis/courrier/{mail}','DemandeAvisController@showCourrier')->name('avis_mail');
@@ -97,3 +98,6 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 Route::get('api/profiles/{service}/all', 'ManageUserController@userList');
 
 Route::get('dossiers/all', 'FolderController@allFolders')->name('all_folders');
+Route::get('dossiers/add', 'FolderController@form')->name('folder_form');
+Route::post('dossiers/add', 'FolderController@add')->name('add_folder');
+Route::get('dossiers/{id}/single', 'FolderController@single')->name('single_folder');

@@ -29,7 +29,7 @@
                           <td> {{ $item->first_name }} </td>
                           <td> {{ $item->last_name }} </td>
                           <td> {{ $item->phone }} </td>
-                          <td> {{ $item->role }} </td>
+                          <td> {{ $item->roles }} </td>
                           <td> 
                             <div class="btn-group">
                               <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true", aria-expanded="false">

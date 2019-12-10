@@ -11,6 +11,7 @@ use App\Type;
 use App\Contact;
 use App\Profile;
 use App\AtachedFile;
+use App\Folder;
 
 
 
@@ -26,7 +27,8 @@ class CourrierValidController extends Controller
         $this->middleware('auth');
         
         View::composers([
-            'App\Composers\NavComposer' => ['layouts.nav']
+            'App\Composers\NavComposer' => ['layouts.nav'],
+            'App\Composers\NavComposer' => ['layouts.base']
         ]);
     }
     
@@ -54,11 +56,13 @@ class CourrierValidController extends Controller
         $destinators = Profile::all();
         $attached_files = AtachedFile::where('courrier_id', $arrived_mail->id)->get();
         $services = Service::all();
+        $folders = Folder::all();
 
         $context = [
             'courrier' => $arrived_mail,
             'destinators' => $destinators,
             'services' => $services,
+            'folders' => $folders,
             'attached_files' => $attached_files,
         ];
 
