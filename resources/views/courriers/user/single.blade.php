@@ -180,7 +180,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form">
+        <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form" enctype="multipart/form-data">
           {{ csrf_field() }}
           {{-- {{ method_field('PATCH') }} --}}
           <div class="modal-body">
@@ -196,16 +196,16 @@
                 </div>
                 <div class="form-group">
                   <label for="objet_reponse">Objet la réponse</label>
-                  <input type="text" name="objet_reponse" id="objet_reponse" class="form-control">
+                  <input type="text" name="objet_reponse" id="objet_reponse" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="contenu">Contenue de la réponse</label>
-                  <textarea class="form-control" name="contenu" id="contenu"></textarea>
+                  <textarea class="form-control" name="contenu" id="contenu"  required></textarea>
                 </div>
                 <div class="col" style="padding-left: 0px; padding-bottom: 300px;">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
                   <button type="button" class="btn btn-primary" id="genRep">Générer réponse</button>
-                  <button type="submit" class="btn btn-success">Envoyer</button>
+                  <button type="submit" class="btn btn-success" id="subButton">Envoyer</button>
                 </div>
 
 
@@ -360,13 +360,21 @@
 
 
 <script type="text/javascript">
+$("#subButton").hide()
+// genRep
+// subButton
     $('#genRep').click(function () {
+      
       var doc = new jsPDF('p', 'pt', 'A4');
 
       var objet = $('#objet_reponse').val();
       var contenu = $('#contenu').val();
 
-      console.log("objets et contenu", objet, contenu)
+      if(!objet && !contenu){
+        alert("remplissez les champs")
+      }
+      else{
+        console.log("objets et contenu", objet, contenu)
 
       margins = {
         top: 40,
@@ -449,57 +457,14 @@
         fullAPI: true,
       }, document.getElementById('editor')).then(instance => {
         instance.loadDocument(initialDoc);
-      });  
-    });
+      });
 
+      $("#subButton").show()  
+      // $(this).toggle()  
+    }
+      }
 
-
-  $(window).on('load', function () {
-    // console.log("Yooooooooooooooooooooooooo")
-    // var doc = new jsPDF();
-    // doc.text('Hello world!', 20, 20);
-    // doc.text('This is client-side Javascript, pumping out a PDF.', 20, 30);
-    // doc.addPage('a6', 'l');
-    // doc.text('Do you like that?', 20, 20);
-    
-    // var specialElementHandlers = {
-    //     '#editor': function (element, renderer) {
-    //         return true;
-    //     }
-    // };
-    // doc.fromHTML($('#pdfdiv').html(), 15, 15, {
-    //         'width': 100,
-    //         'elementHandlers': specialElementHandlers
-    //     });
-
-    // var string = doc.output('datauristring');
-    // var embed = "<embed width='100%' height='100%' src='" + string + "'/>";
-
-
-    
-
-
-
-    // var x = window; 
-    // console.log('embed' ,x)
-    // x.document.open();
-    // x.document.write(embed);
-    // x.document.close();
-
-    // var specialElementHandlers = {
-    //     '#editor': function (element, renderer) {
-    //         return true;
-    //     }
-    // };
-    
-    // $('#pdfview').click(function () {
-    //     doc.fromHTML($('#pdfdiv').html(), 15, 15, {
-    //         'width': 100,
-    //         'elementHandlers': specialElementHandlers
-    //     });
-    //     doc.save('file.pdf');
-    // });
-  });
+      );
 </script>
 
 

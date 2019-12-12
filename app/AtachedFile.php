@@ -12,4 +12,8 @@ class AtachedFile extends Model
     public function courrier(){
         return $this->belongsTo(Courrier::class);
     }
+    
+    public function parapher(){
+        return $this->belongsTo(Parapher::class);
+    }
 }

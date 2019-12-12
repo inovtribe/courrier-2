@@ -35,6 +35,7 @@ class CourrierUserController extends Controller
         $user_id = $user->id; 
         $profile = Profile::where('user_id', $user_id)->firstOrFail();
         $courriers = Courrier::where('destinator_id', $profile->id)
+                             ->where('status', 'En cours de traitement')
                              ->where('category', 'arrived')
                              ->get();
         

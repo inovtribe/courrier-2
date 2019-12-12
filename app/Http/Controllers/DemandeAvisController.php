@@ -33,7 +33,7 @@ class DemandeAvisController extends Controller
         $demandes = DemandeAvisUser::where('profile_id', $user->id)
                              ->get();
         
-        // dd($all_mails);
+        // dd($demandes);
         $context = [
             'demandes' => $demandes
         ];
@@ -45,7 +45,7 @@ class DemandeAvisController extends Controller
         $courrier = Courrier::where('id', $courrier)->firstOrFail();;
         $attached_files = AtachedFile::where('courrier_id', $courrier->id)->get();
 
-        // dd($arrived_mail->type);
+        // dd($courrier);
 
         $context = [
             'courrier' => $courrier,

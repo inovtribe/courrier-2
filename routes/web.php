@@ -32,6 +32,8 @@ Route::get('courrier/single/{mail}/arrived','CourrierArrivedController@showArriv
 Route::get('courrier/add/arrived', 'CourrierArrivedController@addArrived')->name('add_arrived_mail');
 Route::post('courrier/add/arrived', 'CourrierArrivedController@postAddArrived')->name('post_add_arrived_mail');
 
+Route::get('courrier/all', 'CourrierController@all')->name('all_mails');
+
 Route::get('courrier/all/arrived/valid', 'CourrierValidController@validArrived')->name('valid_mails_arrived');
 Route::get('courrier/single/{mail}/valid','CourrierValidController@showValid')->name('single_valid_mail');
 
@@ -56,6 +58,9 @@ Route::get('courrier/deleted', 'CourrierController@deleted')->name('deleted_mail
 Route::get('courrier/add', 'CourrierController@add')->name('add_mail');
 Route::post('courrier/add','CourrierController@addMail')->name('add_mail_post');
 Route::get('courrier/single/{mail}','CourrierController@show')->name('single_mail');
+
+// Route API 
+Route::post('courrier/response','CourrierProcessingController@saveResponse')->name('post_response');
 
 // Routes for decharge
 Route::get('courrier/{mail}/decharge','DechargeController@single')->name('single_decharge');

@@ -133,7 +133,7 @@
                   <!-- <img class="user-avatar rounded-circle mr-2" src="" alt="User Avatar"> -->
 			            <span class="d-none d-md-inline-block cds-font-white text-white">
                     <i class="fas fa-user"></i>  
-                    User
+                    {{ $profile->username }}
                   </span>
 			          </a>
 			          <div class="dropdown-menu dropdown-menu-small">

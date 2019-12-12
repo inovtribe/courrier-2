@@ -91,7 +91,7 @@
                   <select  name="priority" class="form-control" id="priority">
                     <option value="" disabled>Priorité du courrier</option>
                     <option value="Normal">Normal</option>
-                    <option value="Nrgent">Urgent</option>
+                    <option value="Urgent">Urgent</option>
                     <option value="Très urgent">Très urgent</option>
                   </select>
                 </div>

@@ -32,6 +32,10 @@ class Profile extends Model
         return $this->hasOne(Folder::class);
     }
     
+    public function parapher() {
+        return $this->hasOne(Parapher::class);
+    }
+    
 
     public function demandeAvisUser(){
         return $this->belongsToMany(DemandeAvisUser::class, 'demande_avis_profile');

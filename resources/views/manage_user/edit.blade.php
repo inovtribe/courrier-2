@@ -27,7 +27,7 @@
       <div class="card-body p-10 pb-3">
         <h4 class="text-center" style="padding: 10px;">Modifier profile</h4> <hr>
 
-        <form action="/manage/users/{{ $profile->id }}/edit" method="POST" class="container">
+        <form action="/manage/users/{{ $profile->id }}/edit" method="POST" class="container" enctype="multipart/form-data">
           {{ csrf_field() }}
           {{ method_field('PATCH') }} 
           <div class="row">
@@ -65,18 +65,11 @@
                   <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                     <label for="service_id">Service</label>
                   </div>
-                  @if ($profile->service_id)
-                    <select name="service_id" class="form-control" id="service_id">
-                      <option value="{{ $profile->service_id }}"> {{ $profile->service->name }} </option>  
-                    </select>                    
-                  @else
-                    <select name="service_id" class="form-control" id="service_id">
-                      <option value="" ></option>
-                      @foreach ($services as $item)
-                        <option value="{{ $item->id }}" {{ old('service_id') ==  $item->id ? 'selected' : ''  }}>{{ $item->name }}</option>
-                      @endforeach
-                    </select>
-                  @endif
+                  <select name="service_id" class="form-control" id="service_id">
+                    @foreach ($services as $item)
+                      <option {{ old('service_id', $profile->service_id) ==  $item->id ? 'selected' : ''  }} value="{{ $item->id }}" >{{ $item->name }}</option>
+                    @endforeach
+                  </select>
                   <div style="width: 100%; text-align: left; color: red">
                     <i style="font-size: 9px">{{ $errors->first('service_id') }}</i> 
                   </div>
@@ -104,20 +97,29 @@
                   <i style="font-size: 9px">{{ $errors->first('phone') }}</i> 
                 </div>
               </div>
+
+
+              
               <div class="input-group mb-3">
                 <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                   <label for="roles">Roles</label>
                 </div>
-                  <input type="text" value="{{ old('roles') ?? $profile->roles }}" class="form-control" placeholder="Définissez les roles" name="roles">
+                <select name="roles" class="form-control" id="roles">
+                  @foreach ($roles as $item)
+                    <option {{ old('roles', $profile->roles) ==  $item->key ? 'selected' : ''  }} value="{{ $item->key }}" >{{ $item->value }}</option>
+                  @endforeach
+                </select>
                 <div style="width: 100%; text-align: left; color: red">
                   <i style="font-size: 9px">{{ $errors->first('roles') }}</i> 
                 </div>
               </div>
+
+
               <div class="input-group mb-3">
                 <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
-                  <label for="visa">Signature</label>
+                  <label for="visa_path">Signature</label>
                 </div>
-                  <input type="text" value="" class="form-control" placeholder="" name="visa_path" disabled>
+                  <input type="file" value="" class="form-control" placeholder="" name="visa_path">
                 <div style="width: 100%; text-align: left; color: red">
                   <i style="font-size: 9px">{{ $errors->first('visa') }}</i> 
                 </div>

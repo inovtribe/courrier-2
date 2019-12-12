@@ -34,7 +34,7 @@
                               </button>
                               <div class="dropdown-menu">
                                 <a href="{{ route('avis_mail', $item->demandeAvis->courrier->id) }}" class="dropdown-item">
-                                  Consulter
+                                  Ajouter avis sur courrier
                                 </a>
                                 {{-- <a href="/courrier/single/{{ $item->id }}/delete" class="dropdown-item">
                                   Supprimer

@@ -42,6 +42,10 @@ class Courrier extends Model
         return $this->belongsTo(Folder::class);
     }
 
+    public function parapher(){
+        return $this->belongsTo(Parapher::class);
+    }
+
     /**
      * The avis that belong to courrier
     */

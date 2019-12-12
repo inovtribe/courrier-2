@@ -17,8 +17,12 @@ class Service extends Model
         return $this->belongsTo(Profile::class, 'responsable_id');
     }
     
-    public function foulder(){
+    public function folder(){
         return $this->hasOne(Folder::class);
+    }
+    
+    public function parapher(){
+        return $this->hasOne(Parapher::class);
     }
 
     public function courriers(){

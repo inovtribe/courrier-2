@@ -18,6 +18,7 @@ use App\AvisProfile;
 use App\DemandeAvis;
 use App\DemandeAvisUser;
 
+use Response;
 
 
 class CourrierProcessingController extends Controller
@@ -26,6 +27,7 @@ class CourrierProcessingController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        // $this->middleware('ajax', ['only' => 'saveResponse']);
 
         View::composers([
             'App\Composers\NavComposer' => ['layouts.nav'],
@@ -43,6 +45,7 @@ class CourrierProcessingController extends Controller
         $courrier = Courrier::where('id', $courrier)->firstOrFail();
 
         $data = [
+            'status' => 'En attente de traitement',
             'valid' => true,
         ];
 
@@ -59,11 +62,13 @@ class CourrierProcessingController extends Controller
                 'destinator_id' => $request->get('destinator_id'),
                 // 'initiate_service_id' => $request->get('initiate_service_id'),
                 'service_dealing_id' => $request->get('service_dealing_id'),
+                'status'             => 'En cours de traitement',
             ];
         }
         else{
             $data = [
                 'service_dealing_id' => $request->get('service_dealing_id'),
+                'status'             => 'En cours de traitement',
             ];
         }
 
@@ -149,8 +154,12 @@ class CourrierProcessingController extends Controller
         return redirect()->route('all_my_mail');
     }
 
-    // public function coteCourrier($mail){
-    //     return redirect()->route('valid_mails_arrived');
-    // }
+    public function saveResponse(Request $request){
+        dd($request);
+        $arr = array('msg' => 'response');
+
+        return Response()->json($arr);
+        
+    }
 
 }

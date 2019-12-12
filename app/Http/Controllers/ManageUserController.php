@@ -7,6 +7,16 @@ use View;
 use App\Profile;
 use App\Service;
 
+class Role{
+    public $key;
+    public $value;
+
+    public function __construct($key, $val)
+    {
+        $this->key = $key;
+        $this->value = $val;
+    }
+}
 
 class ManageUserController extends Controller
 {
@@ -44,13 +54,25 @@ class ManageUserController extends Controller
         return view('manage_user.single', $context);
     }
     
-    public function edit($profile){
+    public function edit($profile, Request $request){
         $profile = Profile::where('id', $profile)->firstOrFail();
         $services = Service::all();
 
+        $sg = new Role('SG', 'Superviseur général');
+        $sc = new Role('SC', 'Superviseur du courrier');
+        $at = new Role('AT', 'Agent traitant');
+        $ac = new Role('AC', 'Agent du courrier');
+        $admin = new Role('ADMIN', 'Administrateur du système');
+        
+        $roles = [
+            $sg, $sc, $at, $ac, $admin
+        ];
+
+        // dd($roles);
         $context = [
             'profile' => $profile,
             'services' => $services,
+            'roles' => $roles,
         ];
 
         return view('manage_user.edit', $context);
@@ -60,9 +82,15 @@ class ManageUserController extends Controller
     {
         $profile = Profile::where('id', $profile)->firstOrFail();
 
+        $files = $request->file('visa_path');
+        $file_name = $profile->username.'_'.time();
+        $files->move(public_path('visa_path'), ($file_name.'.'.$request->file('visa_path')->getClientOriginalExtension()));
+        $visa = '/visa_path/'.$file_name.'.'.$request->file('visa_path')->getClientOriginalExtension();
+
         $values = [
             'username' => $request->get('username'),
             'service_id' => $request->get('service_id'),
+            'visa_path' => $visa
         ];
 
         // dd($values);

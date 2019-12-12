@@ -40,10 +40,19 @@ class CourrierArrivedController extends Controller
                              ->where('valid', false)
                              ->where('destinator_id', null)
                              ->get();
+
+        $user = Auth::user();
+        $user_id = $user->id; 
+        $profile = Profile::where('user_id', $user_id)->firstOrFail();
+        $courriers_userarrived = Courrier::where('destinator_id', $profile->id)
+                             ->where('category', 'arrived')
+                             ->get();
         
         // dd($all_mails);
         $context = [
-            'all_mails' => $all_mails
+            'all_mails' => $all_mails,
+            'profile'   => $profile,
+            'courriers_userarrived'   => $courriers_userarrived,
         ];
     
         return view('courriers.arriveds.all', $context);
@@ -126,7 +135,7 @@ class CourrierArrivedController extends Controller
             'archived'              => false,
             'valid'                 => false,
             'mention'               => ' ',
-            'status'                => ' ',
+            'status'                => 'En attente de traitement',
         ];
 
         // dd($values);

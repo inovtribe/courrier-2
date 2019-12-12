@@ -1,14 +1,28 @@
 <div class="nav-wrapper">
   <ul class="nav flex-column">
-    @if ($role === 'SG' || $role === 'ADMIN')
+    @if ($role === 'SG')
       <li class="nav-item">
         <a class="nav-link " href="{{ route('home') }}" style="padding: 15px">
           {{-- <i class="fas fa-cog"></i> --}}
           <span>Statistiques</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('all_mails') }}" style="padding: 15px">
+            {{-- <i class="fas fa-folder"></i> --}}
+            <div style="display: inline-block;width: 100%;padding: 0px;">
+              <div style="display: inline-block;width: 80%;float: left;">
+                <span>Tous les courriers</span>
+              </div>
+              <div style="display: inline-block;width: 15%;float: right;">
+                <span class="badge badge-pill badge-light text-primary">
+                  {{ $all_courrier_count }}
+                </span>
+              </div>
+            </div>
+        </a>
+      </li>
     @endif
-    @if ($role === 'SG' || $role === 'SC' || $role === 'AC' || $role === 'ADMIN')
     <li class="nav-item">
       <a class="nav-link" href="{{ route('all_mails_arrived') }}" style="padding: 15px">
           {{-- <i class="fas fa-folder"></i> --}}
@@ -17,12 +31,15 @@
               <span>Courriers arrivés</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-light text-primary">{{ $courrier_arrived_count ? $courrier_arrived_count : 0 }}</span>
+              <span class="badge badge-pill badge-light text-primary">
+                {{ $profile->roles === 'AT' || $profile->roles === 'SC' || $profile->roles === 'SG' || $profile->roles === 'ADMIN' ? 
+                  $courriers_userarrived_count : $courrier_arrived_count 
+                }}
+              </span>
             </div>
           </div>
       </a>
     </li>
-    @endif
     <li class="nav-item">
       <a class="nav-link " href="{{ route('all_mails_outgoing') }}" style="padding: 15px">
           {{-- <i class="fas fa-folder"></i> --}}
@@ -49,7 +66,7 @@
           </div>
       </a>
     </li> --}}
-    @if ($role === 'SG' || $role === 'SC' || $role === 'ADMIN')
+    @if ($role === 'SG' || $role === 'SC')
     <li class="nav-item">
       <a class="nav-link " href="{{ route('valid_mails_arrived') }}" style="padding: 15px">
           {{-- <i class="fas fa-upload"></i> --}}
@@ -64,14 +81,14 @@
       </a>
     </li>
     @endif
-    @if ($role === 'SG' || $role === 'AT' || $role === 'ADMIN')
+    @if ($role === 'SG' || $role === 'AT')
     <li class="nav-item">
       <a class="nav-link " href="{{ route('all_my_mail') }}" style="padding: 15px">
       {{-- <a class="nav-link " href="#" style="padding: 15px"> --}}
           {{-- <i class="fas fa-upload"></i> --}}
           <div style="display: inline-block;width: 100%;padding: 0px;">
               <div style="display: inline-block;width: 80%;float: left;">
-                <span>Mes courriers (En traitement)</span>
+                <span>Courriers en traitement</span>
               </div>
               <div style="display: inline-block;width: 15%;float: right;">
                 <span class="badge badge-pill badge-light text-primary">{{ $mes_courriers_a_traite ? $mes_courriers_a_traite : 0 }}</span>
@@ -180,6 +197,22 @@
       </a>
     </li>
     
+    @if ($role === 'SG')
+      <li class="nav-item">
+        <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
+        {{-- <i class="fas fa-crosshairs"></i> --}}
+        <div style="display: inline-block;width: 100%;padding: 0px;">
+            <div style="display: inline-block;width: 80%;float: left;">
+              <span>Mes parapheurs</span>
+            </div>
+            <div style="display: inline-block;width: 15%;float: right;">
+              {{-- <span class="badge badge-pill badge-light text-primary">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span> --}}
+            </div>
+        </div> 
+        </a>
+      </li>
+    @endif
+
     <li class="nav-item">
       <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
       {{-- <i class="fas fa-crosshairs"></i> --}}
