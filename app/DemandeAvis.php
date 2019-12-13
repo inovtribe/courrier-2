@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class DemandeAvis extends Model
+{
+    protected $guarded = [];
+
+    public function courrier(){
+        return $this->belongsTo(Courrier::class);
+    }
+
+    public function profiles(){
+        return $this->belongsToMany(DemandeAvisUser::class, 'demande_avis_profile');
+    }
+}

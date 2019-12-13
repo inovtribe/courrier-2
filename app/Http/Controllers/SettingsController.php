@@ -16,6 +16,11 @@ class SettingsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        
+        View::composers([
+            'App\Composers\NavComposer' => ['layouts.nav'],
+            'App\Composers\NavComposer' => ['layouts.base']
+        ]);
     }
 
 

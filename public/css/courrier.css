@@ -1,0 +1,12 @@
+.file-name{
+    display: block; 
+    width: 100%
+}
+
+.file-name-cross{
+    padding-left: 10px;
+}
+.file-name-cross:hover{
+    cursor: pointer;
+    color: red;
+}

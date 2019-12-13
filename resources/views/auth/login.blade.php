@@ -1,69 +1,85 @@
 @extends('layouts.app')
 
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+<div class="limiter" style="">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-20 p-b-20 p-l-20 p-r-20">
+        <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+          {{ csrf_field() }}
+					<span class="login100-form-title p-b-15">
+						DareGEC
+					</span>
+					<span class="login100-form-avatar">
+						<img src="{{ asset('style_login/images/avatar-01.png') }}" alt="AVATAR">
+					</span>
+                    
+					<div class="wrap-input100 validate-input m-t-50 m-b-35" data-validate = "Entrez votre email">
+            <input id="email" type="email" class="input100" name="email" value="{{ old('email') }}" required autofocus>
+            <span class="focus-input100" data-placeholder="email"></span>
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+					</div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+					<div class="wrap-input100 validate-input m-b-20" data-validate="Enter password">
+              <input id="password" type="password" class="input100" name="password" required>
+              <span class="focus-input100" data-placeholder="Mot de passe"></span>
+              @if ($errors->has('password'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+              @endif
+          </div>
+                    
+          <div class="form-group">
+              <div class="col-md-6 col-md-offset-4 p-l-0">
+                  <div class="checkbox">
+                      <label>
+                          <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                      </label>
+                  </div>
+              </div>
+          </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Se connecter
+						</button>
+					</div>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+					<ul class="login-more p-t-40" align="center">
+						<li class="m-b-8">
+							<span class="txt1">
+                Mot de pass oublié ? 
+							</span>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+							<a href="{{ route('password.request') }}" class="txt2">
+								Réinitialisé
+              </a>
+                
+						</li>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+						<li>
+							<span class="txt1">
+								Pas encore inscris ?
+							</span>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+							<a href="{{ route('register') }}" class="txt2">
+                S'inscrire
+							</a>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+    <div id="dropDownSelect1"></div>
+    
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

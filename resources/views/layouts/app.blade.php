@@ -10,86 +10,53 @@
 
     <title>MINDDEVEL-COURRIER</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('bootstrap-4.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- FontAwesome CSS -->
-    <link href="{{ asset('fontawesome-5.8.2/css/all.css') }}" rel="stylesheet"/>
-    <!-- Custom styles for X template -->
-    <link rel="stylesheet" href="{{ asset('shards/css/shards-dashboards.1.1.0.css') }}">
-    <link rel="stylesheet" href="{{ asset('shards/css/extras.1.1.0.min.css') }}">
-    <!-- Custom styles for conids template -->
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
+    <!--===============================================================================================-->
+	    <link rel="stylesheet" type="text/css" href="{{ asset('style_login/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('style_login/css/main.css') }}">
+    <!--===============================================================================================-->
 
-    <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="DataTables/datatables.js"></script>
-
-    @yield('customCSS')
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+     
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
-    </div>
+    @yield('content')
+    
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!--===============================================================================================-->
+	    <script src="{{ asset('style_login/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ asset('style_login/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ asset('style_login/vendor/bootstrap/js/popper.js') }}"></script>
+        <script src="{{ asset('style_login/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ asset('style_login/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ asset('style_login/vendor/daterangepicker/moment.min.js') }}"></script>
+        <script src="{{ asset('style_login/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ asset('style_login/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+        <script src="{{ asset('style_login/js/main.js') }}"></script>
+
     @yield('customJS')
 
 </body>
