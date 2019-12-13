@@ -213,19 +213,19 @@
       </li>
     @endif
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
-      {{-- <i class="fas fa-crosshairs"></i> --}}
+      <i class="fas fa-crosshairs"></i>
       <div style="display: inline-block;width: 100%;padding: 0px;">
           <div style="display: inline-block;width: 80%;float: left;">
             <span>Mes avis</span>
           </div>
           <div style="display: inline-block;width: 15%;float: right;">
-            {{-- <span class="badge badge-pill badge-light text-primary">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span> --}}
+            <span class="badge badge-pill badge-light text-primary">{{ $demande_avis_count ? $demande_avis_count : 0 }}</span>
           </div>
       </div> 
       </a>
-    </li>
+    </li> --}}
     @if ($role === 'ADMIN')
       <li class="nav-item">
         <a class="nav-link " href="{{ route('services') }}" style="padding: 15px">
