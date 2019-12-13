@@ -77,14 +77,19 @@ Route::get('avis/courrier/{mail}','DemandeAvisController@showCourrier')->name('a
 Route::get('contact', 'ContactsController@list')->name('contact');
 Route::get('contact/add', 'ContactsController@add')->name('add_contact');
 Route::post('contact/add', 'ContactsController@addContact')->name('add_contact_post');
+Route::get('contact/{id}/delete', 'ContactsController@delete')->name('delete_contact');
 
 Route::get('services', 'ServicesController@list')->name('services');
 Route::get('services/add', 'ServicesController@add')->name('add_services');
 Route::post('services/add', 'ServicesController@addService')->name('add_services_post');
+Route::get('services/{id}/delete', 'ServicesController@delete')->name('delete_service');
+Route::get('services/{id}/edit', 'ServicesController@editForm')->name('edit_form_service');
+Route::patch('services/{id}/edit', 'ServicesController@edit')->name('edit_service');
 
 Route::get('types', 'TypesController@list')->name('types');
 Route::get('types/add', 'TypesController@add')->name('add_types');
 Route::post('types/add', 'TypesController@addType')->name('add_types_post');
+Route::get('types/{id}/delete', 'TypesController@delete')->name('delete_type');
 
 Route::get('profile', 'UserProfilesController@list')->name('profile');
 

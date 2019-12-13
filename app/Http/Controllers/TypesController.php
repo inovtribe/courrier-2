@@ -51,4 +51,13 @@ class TypesController extends Controller
 
         return redirect()->route('types');
     }
+
+    public function delete($c)
+    {
+        $type = Type::where('id', $c)->firstOrFail();
+        $type->delete();
+
+        return redirect()->route('types');
+
+    }
 }

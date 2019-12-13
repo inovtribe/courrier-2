@@ -35,7 +35,7 @@
                           <td> {{ $contact->address }} </td>
                           <td> 
                             <a href="#" class="btn btn-primary">Consulter</a> 
-                            <a href="" class="btn btn-danger">Supprimer</a> 
+                            <a href="{{ route('delete_contact',$contact->id) }}" class="btn btn-danger">Supprimer</a> 
                           </td>
                         </tr>
                       @endforeach
@@ -67,7 +67,7 @@
                           <td> {{ $contact->address }} </td>
                           <td> 
                             <a href="#" class="btn btn-primary">Consulter</a> 
-                            <a href="" class="btn btn-danger">Supprimer</a> 
+                            <a href="{{ route('delete_contact',$contact->id) }}" class="btn btn-danger">Supprimer</a> 
                           </td>
                         </tr>
                       @endforeach
@@ -79,4 +79,10 @@
             </div>
         </div>
     </div>
+
+
+
+
+    
+    
 @endsection

@@ -55,4 +55,42 @@ class ServicesController extends Controller
 
         return redirect()->route('services');
     }
+
+    public function delete($c)
+    {
+        $service = Service::where('id', $c)->firstOrFail();
+        $service->delete();
+
+        return redirect()->route('services');
+
+    }
+
+    public function editForm($s) {
+        $service = Service::where('id', $s)->firstOrFail();
+        $responsables = Profile::all();
+    
+        // dd($services);
+        $context = [
+            'service' => $service,
+            'responsables' => $responsables,
+        ];
+    
+        return view('services.form.edit', $context);
+    }
+    
+    public function edit($s)
+    {
+        $service = Service::where('id', $s)->firstOrFail();
+        $data = request()->validate([
+            'name'   =>  'required|min:3',
+            'acronym'    =>  'required|min:2',
+            'responsable_id'  =>  'required'
+        ]);
+
+        $service->update($data);
+
+
+        return redirect()->route('services');
+
+    }
 }

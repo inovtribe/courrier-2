@@ -29,7 +29,7 @@
                           <td> {{ $item->name }}</td>
                           <td> 
                             <a href="#" class="btn btn-primary">Consulter</a> 
-                            <a href="" class="btn btn-danger">Supprimer</a> 
+                            <a href="{{ route('delete_type',$item->id) }}" class="btn btn-danger">Supprimer</a> 
                           </td>
                         </tr>
                       @endforeach

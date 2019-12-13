@@ -235,7 +235,7 @@
               <span>Services</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-light text-primary">{{ $service_count ? $service_count : 0 }}</span>
+              {{-- <span class="badge badge-pill badge-light text-primary">{{ $service_count ? $service_count : 0 }}</span> --}}
             </div>
         </div> 
         </a>
@@ -248,7 +248,7 @@
               <span>Contact</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-light text-primary">{{ $contact_count ? $contact_count : 0 }}</span>
+              {{-- <span class="badge badge-pill badge-light text-primary">{{ $contact_count ? $contact_count : 0 }}</span> --}}
             </div>
         </div>
         </a>
@@ -262,7 +262,7 @@
               <span>Types de courrier</span>
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
-              <span class="badge badge-pill badge-light text-primary">{{ $courrier_type_count ? $courrier_type_count : 0 }}</span>
+              {{-- <span class="badge badge-pill badge-light text-primary">{{ $courrier_type_count ? $courrier_type_count : 0 }}</span> --}}
             </div>
         </div>
         </a>

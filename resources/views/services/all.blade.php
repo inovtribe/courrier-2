@@ -42,7 +42,10 @@
                                 <a href="#" class="dropdown-item">
                                   Consulter
                                 </a>
-                                <a href="/service/single/{{ $service->id }}/delete" class="dropdown-item">
+                                <a href="{{ route('edit_form_service',$service->id) }}" class="dropdown-item">
+                                  Modifier
+                                </a>
+                                <a href="{{ route('delete_service',$service->id) }}" class="dropdown-item">
                                   Supprimer
                                 </a>
                               </div>

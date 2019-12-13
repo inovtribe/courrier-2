@@ -82,14 +82,20 @@ class ManageUserController extends Controller
     {
         $profile = Profile::where('id', $profile)->firstOrFail();
 
-        $files = $request->file('visa_path');
-        $file_name = $profile->username.'_'.time();
-        $files->move(public_path('visa_path'), ($file_name.'.'.$request->file('visa_path')->getClientOriginalExtension()));
-        $visa = '/visa_path/'.$file_name.'.'.$request->file('visa_path')->getClientOriginalExtension();
+        if($request->file('visa_path')){
+            $files = $request->file('visa_path');
+            $file_name = $profile->username.'_'.time();
+            $files->move(public_path('visa_path'), ($file_name.'.'.$request->file('visa_path')->getClientOriginalExtension()));
+            $visa = '/visa_path/'.$file_name.'.'.$request->file('visa_path')->getClientOriginalExtension();
+        } else {
+            $visa = '';
+        }
+        
 
         $values = [
             'username' => $request->get('username'),
             'service_id' => $request->get('service_id'),
+            'roles' => $request->get('roles'),
             'visa_path' => $visa
         ];
 

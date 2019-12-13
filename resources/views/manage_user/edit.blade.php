@@ -119,7 +119,7 @@
                 <div class="" style="padding-left: 0px; padding-top: 5px; width: 100%; text-align: left">
                   <label for="visa_path">Signature</label>
                 </div>
-                  <input type="file" value="" class="form-control" placeholder="" name="visa_path">
+                  <input type="file" value="" class="form-control" placeholder="" name="visa_path" accept="image/*" >
                 <div style="width: 100%; text-align: left; color: red">
                   <i style="font-size: 9px">{{ $errors->first('visa') }}</i> 
                 </div>

@@ -71,5 +71,14 @@ class ContactsController extends Controller
         Contact::create($data);
 
         return redirect()->route('contact');
-     }
+    }
+
+    public function delete($c)
+    {
+        $contact = Contact::where('id', $c)->firstOrFail();
+        $contact->delete($contact);
+
+        return redirect()->route('contact');
+
+    }
 }
