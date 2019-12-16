@@ -137,7 +137,7 @@
                   </span>
 			          </a>
 			          <div class="dropdown-menu dropdown-menu-small">
-			            <a class="dropdown-item" href="#">
+									<a class="dropdown-item" href="{{ route('manage_user_show', $profile->id) }}">
 										<i class="fas fa-user"></i>&nbsp;&nbsp; Profil
 									</a>
 			            <div class="dropdown-divider"></div>

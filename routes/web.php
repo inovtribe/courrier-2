@@ -60,11 +60,13 @@ Route::post('courrier/add','CourrierController@addMail')->name('add_mail_post');
 Route::get('courrier/single/{mail}','CourrierController@show')->name('single_mail');
 
 // Route API 
-Route::post('courrier/response','CourrierProcessingController@saveResponse')->name('post_response');
+Route::post('courrier/{id}/response','CourrierProcessingController@saveResponse')->name('post_response');
 
 // Routes for decharge
 Route::get('courrier/{mail}/decharge','DechargeController@single')->name('single_decharge');
 
+// Paraphers
+Route::get('paraphers/all', 'ParapherController@list')->name('all_paraphers');
 
 // Processing each update on courrier
 Route::patch('courrier/{mail}/validate', 'CourrierProcessingController@validateCourrier')->name('validate_courrier');
@@ -97,6 +99,7 @@ Route::get('manage/users', 'ManageUserController@list')->name('manage_user_list'
 Route::get('manage/users/{profile}/single','ManageUserController@show')->name('manage_user_single');
 Route::get('manage/users/{profile}/edit','ManageUserController@edit')->name('manage_user_edit');
 Route::patch('manage/users/{profile}/edit','ManageUserController@update')->name('manage_user_update');
+Route::get('manage/users/{profile}/show','ManageUserController@showSingle')->name('manage_user_show');
 
 Route::get('settings', 'SettingsController@list')->name('settings');
 

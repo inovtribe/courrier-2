@@ -29,7 +29,7 @@
                     </thead>
 
                     <tbody>
-                      @if ($profile->roles === 'AC') 
+                      @if ($profile->roles === 'AC' || $profile->roles === 'SC') 
                         @foreach ($all_mails as $item)
                           <tr>
                             <td> {{ $item->reference }}</td>

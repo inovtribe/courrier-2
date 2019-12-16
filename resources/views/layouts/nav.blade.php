@@ -32,7 +32,7 @@
             </div>
             <div style="display: inline-block;width: 15%;float: right;">
               <span class="badge badge-pill badge-light text-primary">
-                {{ $profile->roles === 'AT' || $profile->roles === 'SC' || $profile->roles === 'SG' || $profile->roles === 'ADMIN' ? 
+                {{ $profile->roles === 'AT' || $profile->roles === 'SG' || $profile->roles === 'ADMIN' ? 
                   $courriers_userarrived_count : $courrier_arrived_count 
                 }}
               </span>
@@ -197,7 +197,7 @@
       </a>
     </li>
     
-    @if ($role === 'SG')
+    @if ($role === 'SG' || $role === 'AT' || $role === 'SC')
       <li class="nav-item">
         <a class="nav-link " href="{{ route('avis_request_all') }}" style="padding: 15px">
         {{-- <i class="fas fa-crosshairs"></i> --}}

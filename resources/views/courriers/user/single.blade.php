@@ -180,15 +180,15 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/courrier/user/{{ $courrier->id }}/avis/add" method="POST" class="form" enctype="multipart/form-data">
+        <form action="{{ route('post_response',$courrier->id) }}" method="POST" class="form" enctype="multipart/form-data">
           {{ csrf_field() }}
           {{-- {{ method_field('PATCH') }} --}}
           <div class="modal-body">
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                    <label for="contenu">Type de réponse</label>
-                  <select class="form-control" name="typeDeReponse" id="typeDeReponse">
+                    <label for="type">Type de réponse</label>
+                  <select class="form-control" name="type" id="typeDeReponse">
                     <option value="Note">Note</option>
                     <option value="Circulaire">Circulaire</option>
                     <option value="Lettre d'approbation">Lettre d'approbation</option>
@@ -196,11 +196,11 @@
                 </div>
                 <div class="form-group">
                   <label for="objet_reponse">Objet la réponse</label>
-                  <input type="text" name="objet_reponse" id="objet_reponse" class="form-control" required>
+                  <input type="text" name="subject" id="objet_reponse" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label for="contenu">Contenue de la réponse</label>
-                  <textarea class="form-control" name="contenu" id="contenu"  required></textarea>
+                  <textarea class="form-control" name="content" id="contenu"  required></textarea>
                 </div>
                 <div class="col" style="padding-left: 0px; padding-bottom: 300px;">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuller</button>
@@ -384,11 +384,13 @@ $("#subButton").hide()
         width: 490
       }
 
+      var d = new Date();
+
       var source = `
                     <div class="container" style="line-height: 150%">
                       <div class="offset-2 col-8">
                           <div class="col-12">
-                              <p style="margin-left: 450px">Douala, le 12 Dec. 2019</p>
+                              <p style="margin-left: 450px">${d.toDateString()}</p>
                           </div>
                           <div class="col-12">
                               <p style="margin-top: 50px;">

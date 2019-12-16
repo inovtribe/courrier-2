@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use View;
 use App\Profile;
 use App\Service;
+use PDF;
+
+
 
 class Role{
     public $key;
@@ -54,6 +57,20 @@ class ManageUserController extends Controller
         return view('manage_user.single', $context);
     }
     
+    public function showSingle($profile){
+        $profile = Profile::where('id', $profile)->firstOrFail();
+        $services = Service::all();
+
+        $context = [
+            'profile' => $profile,
+            'services' => $services,
+        ];
+
+        return view('manage_user.show', $context);
+        // return PDF::html('manage_user.show', $context);
+    }
+
+
     public function edit($profile, Request $request){
         $profile = Profile::where('id', $profile)->firstOrFail();
         $services = Service::all();

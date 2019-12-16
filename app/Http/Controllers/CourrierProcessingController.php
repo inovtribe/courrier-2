@@ -17,8 +17,9 @@ use App\AvisCourrier;
 use App\AvisProfile;
 use App\DemandeAvis;
 use App\DemandeAvisUser;
+use App\Response;
+use App\Parapher;
 
-use Response;
 
 
 class CourrierProcessingController extends Controller
@@ -154,11 +155,35 @@ class CourrierProcessingController extends Controller
         return redirect()->route('all_my_mail');
     }
 
-    public function saveResponse(Request $request){
-        dd($request);
-        $arr = array('msg' => 'response');
+    public function saveResponse(Request $request, $c){
+        $courrier = Courrier::where('id', $c)->firstOrFail();
+        $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id)->firstOrFail();
+        $sg = Profile::where('roles', 'SG')->firstOrFail();
 
-        return Response()->json($arr);
+
+        $p = [
+            "title"             => $courrier->subject,
+            "expeditor_id"      => $profile->id,
+            "destinator_id"     => $sg->id,
+            "service_id"        => $profile->service_id,
+        ];
+
+        $parapher = Parapher::create($p);
+
+        
+        $values = [
+            'profile_id'       => $profile->id,
+            'courrier_id'      => $courrier->id,
+            'type'             => $request->get('type'),
+            'subject'          => $request->get('subject'),
+            'content'          => $request->get('content'),
+            'parapher_id'      => $parapher->id,
+        ];
+
+        $response = Response::create($values);
+
+        return redirect()->route('all_paraphers');
         
     }
 
