@@ -394,9 +394,9 @@ $("#subButton").hide()
                           </div>
                           <div class="col-12">
                               <p style="margin-top: 50px;">
-                                  Steph Cyrille <br />
+                                  John Doe<br />
                                   Agent du courrier <br />
-                                  stephcyril.sc@gmail.com <br />
+                                  johndoe@gmail.com <br />
                                   Service du Courrier<br />
                               </p>
                           </div>
@@ -405,23 +405,17 @@ $("#subButton").hide()
                           </div>
                           <div class="col-12">
                               <p style="text-align: justify">
-                                  Monsieur, je viens au près de vous aujourd'hui lorem ipsum dollor all suiluim dor rol
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                                  Monsieur, je viens au près de vous aujourd'hui en réponse au courrier 
+                                  dont l'objet est <b>${objet}</b>.<br />
                               </p>
                               <p style="text-align: justify">
                                   ${contenu}
                               </p>
                               <p style="text-align: justify">
-                                  lorem ipsum dollor all suiluim dor rol lorem ipsum dollor all suiluim gor fout loram
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                                  <br />
                               </p>
                               <p style="text-align: justify">
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore
-                                  de vous aujourd'hui lorem ipsum dollor all suiluim dor rol de vous aujourd'hui lore<br />
+                                  <br />
                               </p>
                           </div>
 

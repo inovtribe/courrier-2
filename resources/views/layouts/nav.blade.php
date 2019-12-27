@@ -226,7 +226,7 @@
       </div> 
       </a>
     </li> --}}
-    @if ($role === 'ADMIN')
+    @if ($role === 'ADMIN' || $role === 'SG')
       <li class="nav-item">
         <a class="nav-link " href="{{ route('services') }}" style="padding: 15px">
         {{-- <i class="fas fa-crosshairs"></i> --}}

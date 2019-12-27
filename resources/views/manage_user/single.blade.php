@@ -43,7 +43,7 @@
             <a href="/manage/users/{{ $profile->id }}/edit" class="btn btn-secondary">
               Modifier
             </a>
-            <a href="{{ route('manage_user_list') }}" class="btn btn-danger">Annuler</a> &nbsp; &nbsp;
+            <a href="{{ route('manage_user_list') }}" class="btn btn-danger">Retour</a> &nbsp; &nbsp;
           </div>
         </div>
        

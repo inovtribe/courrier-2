@@ -21,8 +21,8 @@
                         <th scope="col">Objet</th>
                         {{-- <th scope="col">Type</th> --}}
                         <th scope="col">Priorité</th>
-                        <th scope="col">Catégorie</th>
                         <th scope="col">Date d'arrivéé</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
 
@@ -43,10 +43,10 @@
                             @endif
                             </td>
                             {{-- <td> {!! $item->priority === 'Normal' ? html_entity_decode("<i style='font-weight: bold' class='badge badge-success'>$item->priority</i>") : "" !!}</td> --}}
-                            <td> 
-                                {{ $item->category }}
-                            </td>
                             <td> {{ $item->mail_date_arrived }} </td>
+                            <td> 
+                              <a href="{{ route('delete_mail',$item->id) }}" class="btn btn-danger">Supprimer</a> 
+                            </td>
                           </tr>
                         @endforeach                     
                     </tbody>

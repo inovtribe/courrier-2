@@ -40,5 +40,12 @@ class CourrierController extends Controller
     
         return view('courriers.all', $context);
     }
+
+    public function delete($c)
+    {
+        $courrier = Courrier::where('id', $c)->firstOrFail();
+        $courrier->delete();
+        return redirect()->route('all_mails');
+    }
     
 }

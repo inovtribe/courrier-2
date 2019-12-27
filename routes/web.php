@@ -33,6 +33,7 @@ Route::get('courrier/add/arrived', 'CourrierArrivedController@addArrived')->name
 Route::post('courrier/add/arrived', 'CourrierArrivedController@postAddArrived')->name('post_add_arrived_mail');
 
 Route::get('courrier/all', 'CourrierController@all')->name('all_mails');
+Route::get('courrier/all', 'CourrierController@all')->name('all_mails');
 
 Route::get('courrier/all/arrived/valid', 'CourrierValidController@validArrived')->name('valid_mails_arrived');
 Route::get('courrier/single/{mail}/valid','CourrierValidController@showValid')->name('single_valid_mail');
@@ -54,7 +55,7 @@ Route::post('avis/courrier/{mail}/new','CourrierProcessingController@addNewAvis'
 Route::get('courrier/nottreated', 'CourrierController@not_treated')->name('not_treated_mails');
 Route::get('courrier/treated', 'CourrierController@treated')->name('treated_mails');
 Route::get('courrier/archived', 'CourrierController@archived')->name('archived_mails');
-Route::get('courrier/deleted', 'CourrierController@deleted')->name('deleted_mails');
+Route::get('courrier/{id}/deleted', 'CourrierController@delete')->name('delete_mail');
 Route::get('courrier/add', 'CourrierController@add')->name('add_mail');
 Route::post('courrier/add','CourrierController@addMail')->name('add_mail_post');
 Route::get('courrier/single/{mail}','CourrierController@show')->name('single_mail');

@@ -120,7 +120,7 @@ class ManageUserController extends Controller
 
         $profile->update($values);
         
-        return redirect('/manage/users/'. $profile->id .'/single');
+        return redirect()->route('manage_user_list');
     }
 
     public function userList($service){
